@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
