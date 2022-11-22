@@ -20,6 +20,8 @@ void Game::runGame() {
             case sf::Event::KeyPressed:
                 if (e.key.code == sf::Keyboard::Escape)
                     mainWindow->getWindow()->close();
+                if (e.key.code == sf::Keyboard::Up)
+
                 break;
             default:
                 break;
@@ -28,7 +30,7 @@ void Game::runGame() {
 
         mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
 
-        // draw game between these two
+        mainWindow->render();
 
         mainWindow->getWindow()->display(); // indicates that the mainWindow is done rendering
     }

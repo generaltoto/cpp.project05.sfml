@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Audio.hpp>
 
 class MainWindow {
 
@@ -23,6 +24,10 @@ public:
 
     /// Renders our mainWindow.
     void render();
+
+    /// Displays the menu when ESC is pressed (paused = true)
+    /// or when we launch the game (pause = false).
+    void displayMenuView(bool paused);
 };
 
 
