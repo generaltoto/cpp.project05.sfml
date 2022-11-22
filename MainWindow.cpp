@@ -18,8 +18,7 @@ void MainWindow::initWindow() {
 }
 
 void MainWindow::render() {
-    Pokemon pika;
-    this->window->draw(*pika.getSprite());
+    
 }
 
 void MainWindow::displayMenuView(bool paused)

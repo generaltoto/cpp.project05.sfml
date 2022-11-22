@@ -134,15 +134,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="Pokeball.cpp" />
     <ClCompile Include="Pokemon.cpp" />
+    <ClCompile Include="Spray.cpp" />
+    <ClCompile Include="TexturedElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="NPC.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="Pokeball.h" />
     <ClInclude Include="Pokemon.h" />
-    <ClInclude Include="SFMLDrawer.h" />
+    <ClInclude Include="Spray.h" />
+    <ClInclude Include="Structures.h" />
+    <ClInclude Include="TexturedElement.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\pikachu.png" />
