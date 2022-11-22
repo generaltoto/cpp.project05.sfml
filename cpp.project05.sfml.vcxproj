@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{d446064e-25b8-424f-b1d6-1ce0d750ead3}</ProjectGuid>
     <RootNamespace>cppproject05sfml</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,16 +134,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainWindow.cpp" />
+    <ClCompile Include="Pokeball.cpp" />
     <ClCompile Include="Pokemon.cpp" />
-    <ClCompile Include="SFMLDrawer.cpp" />
+    <ClCompile Include="Spray.cpp" />
+    <ClCompile Include="TexturedElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="NPC.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="MainWindow.h" />
+    <ClInclude Include="Pokeball.h" />
     <ClInclude Include="Pokemon.h" />
-    <ClInclude Include="SFMLDrawer.h" />
+    <ClInclude Include="Spray.h" />
+    <ClInclude Include="Structures.h" />
+    <ClInclude Include="TexturedElement.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\pikachu.png" />
