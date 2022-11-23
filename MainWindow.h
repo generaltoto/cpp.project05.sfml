@@ -8,6 +8,7 @@
 #include <SFML/Audio.hpp>
 
 #include "TexturedElement.h"
+#include "Button.h"
 
 class MainWindow {
 
@@ -30,6 +31,15 @@ public:
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
     void displayMenuView(bool paused);
+
+    /// Draws a button depending on the following arguments
+    void drawButton(
+        sf::Vector2f dim,
+        std::string fontPath,
+        std::string text,
+        sf::Color textCol,
+        sf::Color shapeCol
+    );
 };
 
 

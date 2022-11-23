@@ -27,5 +27,7 @@ public:
 
 	void displayEntity(sf::RenderWindow* window);
 
+	void resizeSprite(float screenH, float screenW);
+
 	void setPos(int x, int y);
 };

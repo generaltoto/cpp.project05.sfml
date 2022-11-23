@@ -29,6 +29,13 @@ void TexturedElement::displayEntity(sf::RenderWindow* window)
 	window->draw(this->sprite);
 }
 
+void TexturedElement::resizeSprite(float screenH, float screenW)
+{
+	float scaleFactorX = (screenW) / 1600;
+	float scaleFactorY = (screenH) / 900;
+	this->sprite.scale(scaleFactorX, scaleFactorY);
+}
+
 void TexturedElement::setPos(int x, int y) {
 	this->posX = x;
 	this->posY = y;
