@@ -4,14 +4,14 @@
 
 class Player : public TexturedElement {
 private:
-	Pokemon team[6];
+	Pokemon* team[6];
 	int bag[2];
 
 public:
 	Player();
 	~Player();
 
-	void addPokemon(Pokemon p);
+	void addPokemon(Pokemon* p);
 
 	void removePokemon(int id);
 

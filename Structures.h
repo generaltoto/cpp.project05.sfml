@@ -5,7 +5,7 @@ enum Types { FIGHT, DRAKE, WATER, ELEC, FIRE, ICE, BUG, POISON, PSY, ROCK, GROUN
 
 enum Stat { HP, ATK, ATKSPE, DEF, DEFSPE, VIT };
 
-enum Status { POISON, SLEEP, BURN, PARALYSIS };
+enum Status { POISONED, SLEPT, BURNING, PARALYSED };
 
 struct Capacity {
 	int damage;
@@ -16,7 +16,7 @@ struct Capacity {
 };
 
 struct Level {
-	int level, currentExp, ExpToNext; //ExpToNext = level^3
+	int level, currentExp, ExpToNext, evolveLvl; //ExpToNext = level^3
 };
 
 /*

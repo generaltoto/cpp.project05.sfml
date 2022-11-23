@@ -1,7 +1,7 @@
 # pragma once
 # include <string>
 # include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
+# include <SFML/Audio.hpp>
 # include "Structures.h"
 
 class TexturedElement {

@@ -6,4 +6,5 @@ int main() {
     Game::runGame();
 
     Game::endGame();
+    return 0;
 }
