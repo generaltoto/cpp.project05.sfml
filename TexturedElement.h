@@ -8,6 +8,7 @@ class TexturedElement {
 protected:
 	int posX, posY;
 	std::string name;
+	std::string path;
 	sf::Texture asset;
 	sf::Sprite sprite;
 

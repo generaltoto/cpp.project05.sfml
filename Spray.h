@@ -1,7 +1,7 @@
 #pragma once
 # include "Pokemon.h"
 
-class Spray : protected TexturedElement {
+class Spray : public TexturedElement {
 private:
 	int heal;
 

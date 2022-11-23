@@ -2,7 +2,7 @@
 # include "TexturedElement.h"
 # include "Pokemon.h"
 
-class NPC : protected TexturedElement {
+class NPC : public TexturedElement {
 private:
 	Pokemon team[6];
 	std::string dialogs[10];

@@ -2,7 +2,7 @@
 # include "Pokemon.h"
 # include "Player.h"
 
-class Pokeball : protected TexturedElement {
+class Pokeball : public TexturedElement {
 public:
 	Pokeball();
 	~Pokeball();
