@@ -5,7 +5,7 @@ enum Types { FIGHT, DRAKE, WATER, ELEC, FIRE, ICE, BUG, POISON, PSY, ROCK, GROUN
 
 enum Stat { HP, ATK, ATKSPE, DEF, DEFSPE, VIT };
 
-enum Status { POISON, SLEEP, BURN, PARALYSIS };
+enum Status { POISONED, SLEPT, BURNING, PARALYSED };
 
 struct Capacity {
 	int damage;

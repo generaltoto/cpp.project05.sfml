@@ -7,6 +7,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
 
+#include "TexturedElement.h"
+
 class MainWindow {
 
 private:

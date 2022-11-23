@@ -17,8 +17,12 @@ void MainWindow::initWindow() {
     );
 }
 
-void MainWindow::render() {
-    
+void MainWindow::render() 
+{
+    TexturedElement* background = new TexturedElement(
+        0,0,"background","assets/Menu.jpg"
+    );
+    background->displayEntity(this->window);
 }
 
 void MainWindow::displayMenuView(bool paused)

@@ -155,6 +155,7 @@
     <ClInclude Include="TexturedElement.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\Menu.jpg" />
     <Image Include="assets\pikachu.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
