@@ -135,7 +135,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Downloads\sqlite-amalgamation-3400000\sqlite-amalgamation-3400000\sqlite3.c" />
     <ClCompile Include="db_perlin.cpp" />
     <ClCompile Include="Demo.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -147,6 +146,7 @@
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Spray.cpp" />
     <ClCompile Include="TexturedElement.cpp" />
+    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -159,9 +159,11 @@
     <ClInclude Include="Spray.h" />
     <ClInclude Include="Structures.h" />
     <ClInclude Include="TexturedElement.h" />
+    <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\pikachu.png" />
+    <Image Include="tileSet.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
