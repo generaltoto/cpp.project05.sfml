@@ -19,6 +19,8 @@ struct Level {
 	int level, currentExp, ExpToNext; //ExpToNext = level^3
 };
 
+enum ViewType { MENU, PLAY, COMBAT };
+
 /*
 {
 	{ HP, 0 },

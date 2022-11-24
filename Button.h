@@ -15,6 +15,7 @@ public:
 	Button(
 		sf::Vector2f pos, sf::Vector2f dim,
 		sf::Font* font, std::string text,
+		int textSize,
 		sf::Color textCol, sf::Color shapeCol
 	);
 	~Button();

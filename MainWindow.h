@@ -9,6 +9,7 @@
 
 #include "TexturedElement.h"
 #include "Button.h"
+#include "Structures.h"
 
 class MainWindow {
 
@@ -26,17 +27,26 @@ public:
     void initWindow();
 
     /// Renders our mainWindow.
-    void render();
+    void render(ViewType view, bool isPaused);
 
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
-    void displayMenuView(bool paused);
+    void displayMenuView(ViewType view, bool isPaused);
+
+    void drawText(
+        unsigned int x, unsigned int y,
+        std::string fontPath, 
+        std::string text, 
+        sf::Color textColor
+    );
 
     /// Draws a button depending on the following arguments
     void drawButton(
         sf::Vector2f dim,
+        sf::Vector2f pos,
         std::string fontPath,
         std::string text,
+        int textSize,
         sf::Color textCol,
         sf::Color shapeCol
     );

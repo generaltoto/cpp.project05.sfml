@@ -17,13 +17,12 @@ void MainWindow::initWindow() {
     );
 }
 
-void MainWindow::render() 
+void MainWindow::render(ViewType view, bool isPaused)
 {
-    bool paused = false;
-    displayMenuView(paused);
+    displayMenuView(view, isPaused);
 }
 
-void MainWindow::displayMenuView(bool paused)
+void MainWindow::displayMenuView(ViewType view, bool isPaused)
 {
     TexturedElement background = TexturedElement(
         0, 0, "background", "assets/Menu.jpg"
@@ -31,49 +30,58 @@ void MainWindow::displayMenuView(bool paused)
     background.resizeSprite(this->vMode.height, this->vMode.width);
     background.displayEntity(this->window);
 
-    if (paused)
+    if (isPaused)
     {
+        sf::Vector2f btnSize = { 600,300 };
         drawButton(
-            { 600, 300 },
+            btnSize,
+            {
+                (this->vMode.width / 2) + (btnSize.x / 2),
+                (this->vMode.height / 2) + (btnSize.y / 2)
+            },
             "assets/pixelFont.ttf",
-            "Resume",
+            "Press ENTER to resume",
+            20,
             { 0,0,0,255 },
             { 127,127,127,127 }
         );
     }
     else
     {
+        sf::Vector2f btnSize = { 200,50 };
         drawButton(
-            { 600, 300 },
+            btnSize,
+            {
+                (this->vMode.width / 2.f) - (btnSize.x / 2.f),
+                (this->vMode.height / 2.f) - (btnSize.y / 2.f)
+            },
             "assets/pixelFont.ttf",
-            "Play",
+            "Press ENTER to play",
+            20,
             { 0,0,0,255 },
             { 127,127,127,127 }
         );
     }
-
-    
 }
 
 void MainWindow::drawButton(
     sf::Vector2f dim,
+    sf::Vector2f pos,
     std::string fontPath,
     std::string text,
+    int textSize,
     sf::Color textCol,
     sf::Color shapeCol
 )
 {
-    sf::Vector2f btnPos{
-        this->vMode.width - dim.x / 2,
-        this->vMode.height - dim.y / 2
-    };
-
     sf::Font font;
     if (!font.loadFromFile(fontPath))
         std::cout << "Couldn't load font " << fontPath << std::endl;
     else
     {
-        Button button = Button(btnPos, dim, &font, text, textCol, shapeCol);
+        Button button = Button(
+            pos, dim, &font, text, textSize, textCol, shapeCol
+        );
         button.display(this->window);
     }
 }
