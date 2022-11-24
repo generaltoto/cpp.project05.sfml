@@ -19,5 +19,5 @@ public:
 
 	void removeItem(int bag, int sub);
 
-	void move();
+	void move(int x, int y);
 };
