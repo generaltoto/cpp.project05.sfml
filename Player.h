@@ -4,14 +4,15 @@
 
 class Player : public TexturedElement {
 private:
-	Pokemon team[6];
+	Pokemon* team[6];
+	int xOnMap, yOnMap;
 	int bag[2];
 
 public:
 	Player();
 	~Player();
 
-	void addPokemon(Pokemon p);
+	void addPokemon(Pokemon* p);
 
 	void removePokemon(int id);
 
@@ -19,5 +20,5 @@ public:
 
 	void removeItem(int bag, int sub);
 
-	void move();
+	void updatePlayer(sf::Keyboard::Key pressed, int* frameCount);
 };

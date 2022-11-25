@@ -10,7 +10,8 @@ private:
 	//Audio;
 
 public:
-	std::map<Stat, int> Stats;
+	std::map<Stat, int> baseStats;
+	std::map<Stat, int> currentStats;
 
 	Pokemon(
 		int x,
@@ -24,4 +25,11 @@ public:
 	);
 	~Pokemon();
 
+	void initStats(int stats[6], int level);
+
+	void levelUp(int expEarn);
+
+	void updateCurrentStat();
+
+	/*Pokemon evolve();*/
 };

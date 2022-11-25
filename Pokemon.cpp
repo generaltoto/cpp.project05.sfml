@@ -27,3 +27,46 @@ Pokemon::Pokemon(
 }
 
 Pokemon::~Pokemon() { }
+
+void Pokemon::initStats(int stats[6], int level) {
+	this->baseStats.insert({ HP,stats[0] });
+	this->baseStats.insert({ ATK,stats[1] });
+	this->baseStats.insert({ ATKSPE,stats[2] });
+	this->baseStats.insert({ DEF,stats[3] });
+	this->baseStats.insert({ DEFSPE,stats[4] });
+	this->baseStats.insert({ VIT,stats[5] });
+	this->levels.level = level;
+	updateCurrentStat();
+}
+
+void Pokemon::levelUp(int expEarn) {
+	this->levels.currentExp += expEarn;
+	if (this->levels.currentExp >= this->levels.ExpToNext) {
+		this->levels.level++;
+		this->levels.currentExp -= this->levels.ExpToNext;
+		this->levels.ExpToNext = this->levels.level ^ 3;
+		updateCurrentStat();
+	}
+	if (this->levels.level == this->levels.evolveLvl) {
+		/*evolve();*/
+	}
+}
+
+void Pokemon::updateCurrentStat() {
+	std::map<Stat, int>::iterator it;
+
+	for (it = this->currentStats.begin(); it != this->currentStats.end(); it++) {
+		if (it != this->currentStats.begin()) {
+			it->second = int(
+				((2 * this->baseStats[it->first]) * this->levels.level) / 100)
+				+ 5;
+		}
+	}
+	this->currentStats[HP] = int
+	((2 * this->baseStats[HP] * this->levels.level) / 100)
+		+ this->levels.level + 10;
+}
+
+//Pokemon Pokemon::evolve() {
+//	
+//}

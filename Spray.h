@@ -1,9 +1,9 @@
 #pragma once
-# include "Pokemon.h"
+# include "Pokemon.h"  
 
 class Spray : public TexturedElement {
 private:
-	int heal;
+	int heal = 50;
 
 public:
 	Spray();
@@ -12,4 +12,3 @@ public:
 	void healPokemon(Pokemon* p);
 
 };
-
