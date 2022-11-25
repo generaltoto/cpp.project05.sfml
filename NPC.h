@@ -1,10 +1,9 @@
 # pragma once
-# include "TexturedElement.h"
-# include "Pokemon.h"
+# include "Player.h"
 
-class NPC : protected TexturedElement {
+class NPC : public TexturedElement {
 private:
-	Pokemon team[6];
+	Pokemon* team[6];
 	std::string dialogs[10];
 
 public:

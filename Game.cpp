@@ -8,9 +8,14 @@ void Game::startGame() {
 }
 
 void Game::runGame() {
+    Player sacha;
+    int frameCount = 0;
     sf::Event e{};
+    
     while (mainWindow->getWindow()->isOpen())
     {
+       mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
+
         while (mainWindow->getWindow()->pollEvent(e))
         {
             switch (e.type) {
@@ -21,8 +26,9 @@ void Game::runGame() {
                 break;
             }
         }
-
-        mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
+        frameCount++;
+        sacha.updatePlayer(e.key.code, &frameCount);
+        sacha.displayEntity(mainWindow->getWindow());
 
         mainWindow->render();
 

@@ -21,22 +21,30 @@ TexturedElement::~TexturedElement() { }
 
 sf::Sprite TexturedElement::getSprite() { return this->sprite; }
 
-void TexturedElement::displayEntity(sf::RenderWindow* window) 
-{ 
-	if (!this->asset.loadFromFile(this->path))
-		std::cout << "Error loading file " << this->path << std::endl;
-	else sprite.setTexture(this->asset);
-	window->draw(this->sprite);
+int TexturedElement::getPos(char c) {
+	if (c == 'x') {
+		return this->posX;
+	}
+	else if (c == 'y') {
+		return this->posY;
+	}
+	return 0;
 }
 
-void TexturedElement::resizeSprite(float screenH, float screenW)
-{
-	float scaleFactorX = (screenW) / 1600;
-	float scaleFactorY = (screenH) / 900;
-	this->sprite.scale(scaleFactorX, scaleFactorY);
+void TexturedElement::displayEntity(sf::RenderWindow* window) { 
+	window->draw(this->sprite);
 }
 
 void TexturedElement::setPos(int x, int y) {
 	this->posX = x;
 	this->posY = y;
+	this->sprite.setPosition(float(x), float(y));
+}
+
+void TexturedElement::nextAnimation(int direction) {
+	this->animeCount++;
+	if (this->animeCount >= this->animePos.size())
+		this->animeCount = 0;
+
+	this->sprite.setTextureRect(animePos[direction][this->animeCount]);
 }

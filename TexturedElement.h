@@ -7,6 +7,8 @@
 
 class TexturedElement {
 protected:
+	size_t animeCount;
+	std::vector<std::vector<sf::IntRect>> animePos;
 	int posX, posY;
 	std::string name;
 	std::string path;
@@ -30,4 +32,6 @@ public:
 	void resizeSprite(float screenH, float screenW);
 
 	void setPos(int x, int y);
+
+	void nextAnimation(int direction);
 };
