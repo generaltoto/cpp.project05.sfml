@@ -11,11 +11,11 @@
 #include "db_perlin.hpp"
 #include "TileMap.h"
 #include <iostream>
+#include "MapGenerator.h"
 
 int main() {
-    int unsigned width = 1024 ;
-    int unsigned height =  512 ;
-    
+    int unsigned width = 1080 ;
+    int unsigned height =  720 ; 
 
     sf::RenderWindow window{
         sf::VideoMode { width, height },"Perlin Noise"
@@ -32,11 +32,26 @@ int main() {
     sf::Sprite output;
     output.setTexture(texture);
 
-    sf::Clock clock;
-    int count = 0;
-    float level[32][16] = {};
-    int level2[512] = {};
+    MapGenerator mapGenerator;
+    int seed1 = NULL;
+    findMap:
+    mapGenerator.GenerateSeed();
+    if (seed1 && seed1 == mapGenerator.GetSeed()) goto findMap;
+    mapGenerator.GenerateMap();
+    mapGenerator.NormalizeMap();
+    mapGenerator.SetEntryExitPoints();
+    //mapGenerator.PrintMap();
+    if (mapGenerator.IsPath())
+    {
+        std::cout << "there's a path" << std::endl;
+    }
+    else {
+        std::cout << "there's no path" << std::endl;
         
+        seed1 = mapGenerator.GetSeed();
+        goto findMap;
+    }
+      
 
     while (window.isOpen()) {
         sf::Event ev{};
@@ -45,29 +60,9 @@ int main() {
                 window.close();
             }
         }
-        auto const dt = clock.getElapsedTime().asSeconds();
-
-        for (auto y = 0; y < 16; ++y) {
-            for (auto x = 0; x < 32; ++x) {
-                
-                level[x][y] = (
-                    db::perlin(float(x) / 64.0f, float(y) / 64.0f, dt * 0.25f) * 1.0f +
-                    db::perlin(float(x) / 32.0f, float(y) / 32.0f, dt * 0.75f) * 0.5f
-                    ) / 0.25f;
-                if (level[x][y] <= 0) {
-                    level[x][y] = -level[x][y];
-                }
-                if (level[x][y] >= 3) level[x][y] = 3;
-                level2[count] = round(level[x][y]);
-                count++;
-            }
-        }
-        count = 0;
-
-        
 
         TileMap map;
-        if (!map.load("tileSet.png", sf::Vector2u(32, 32), level2, 32, 16))
+        if (!map.load("pixil-frame-0.png", sf::Vector2u(32, 32), mapGenerator.GetLevel2(), MAPWIDTH, MAPHEIGHT, 11.6)) //2.9 pour full 64 * 64
         return -1;
 
 
@@ -78,3 +73,4 @@ int main() {
         window.display();
     }
 }
+

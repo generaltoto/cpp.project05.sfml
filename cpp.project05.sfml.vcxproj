@@ -115,6 +115,8 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <StackReserveSize>2000000000</StackReserveSize>
+      <StackCommitSize>2000000000</StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,6 +140,7 @@
     <ClCompile Include="db_perlin.cpp" />
     <ClCompile Include="Demo.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="main.cpp" />
@@ -150,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="MapGenerator.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="db_perlin.hpp" />
     <ClInclude Include="Player.h" />
