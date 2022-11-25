@@ -17,12 +17,6 @@ void Game::runGame() {
             case sf::Event::Closed:
                 mainWindow->getWindow()->close();
                 break;
-            case sf::Event::KeyPressed:
-                if (e.key.code == sf::Keyboard::Escape)
-                    mainWindow->getWindow()->close();
-                if (e.key.code == sf::Keyboard::Up)
-
-                break;
             default:
                 break;
             }
