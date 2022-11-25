@@ -17,12 +17,12 @@ void MainWindow::initWindow() {
     );
 }
 
-void MainWindow::render(ViewType view, bool isPaused)
+void MainWindow::render()
 {
-    displayMenuView(view, isPaused);
+    displayMenuView();
 }
 
-void MainWindow::displayMenuView(ViewType view, bool isPaused)
+void MainWindow::displayMenuView()
 {
     TexturedElement background = TexturedElement(
         0, 0, "background", "assets/Menu.jpg"
@@ -30,38 +30,19 @@ void MainWindow::displayMenuView(ViewType view, bool isPaused)
     background.resizeSprite(this->vMode.height, this->vMode.width);
     background.displayEntity(this->window);
 
-    if (isPaused)
-    {
-        sf::Vector2f btnSize = { 600,300 };
-        drawButton(
-            btnSize,
-            {
-                (this->vMode.width / 2) + (btnSize.x / 2),
-                (this->vMode.height / 2) + (btnSize.y / 2)
-            },
-            "assets/pixelFont.ttf",
-            "Press ENTER to resume",
-            20,
-            { 0,0,0,255 },
-            { 127,127,127,127 }
-        );
-    }
-    else
-    {
-        sf::Vector2f btnSize = { 200,50 };
-        drawButton(
-            btnSize,
-            {
-                (this->vMode.width / 2.f) - (btnSize.x / 2.f),
-                (this->vMode.height / 2.f) - (btnSize.y / 2.f)
-            },
-            "assets/pixelFont.ttf",
-            "Press ENTER to play",
-            20,
-            { 0,0,0,255 },
-            { 127,127,127,127 }
-        );
-    }
+    sf::Vector2f btnSize = { 200,50 };
+    drawButton(
+        btnSize,
+        {
+            (this->vMode.width / 2.f) - (btnSize.x / 2.f),
+            (this->vMode.height / 2.f) - (btnSize.y / 2.f)
+        },
+        "assets/pixelFont.ttf",
+        "Press ENTER to play",
+        20,
+        { 0,0,0,255 },
+        { 127,127,127,127 }
+    );
 }
 
 void MainWindow::drawButton(

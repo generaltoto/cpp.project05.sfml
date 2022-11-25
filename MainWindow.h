@@ -27,11 +27,11 @@ public:
     void initWindow();
 
     /// Renders our mainWindow.
-    void render(ViewType view, bool isPaused);
+    void render();
 
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
-    void displayMenuView(ViewType view, bool isPaused);
+    void displayMenuView();
 
     void drawText(
         unsigned int x, unsigned int y,

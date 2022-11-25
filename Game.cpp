@@ -8,9 +8,6 @@ void Game::startGame() {
 }
 
 void Game::runGame() {
-    ViewType currentView;
-    ViewType lastView;
-    
     sf::Event e{};
     while (mainWindow->getWindow()->isOpen())
     {
@@ -20,13 +17,6 @@ void Game::runGame() {
             case sf::Event::Closed:
                 mainWindow->getWindow()->close();
                 break;
-            case sf::Event::KeyPressed:
-                if (e.key.code == sf::Keyboard::Enter)
-                    if (currentView != MENU) currentView = MENU;
-                    else currentView = lastView;
-                if (e.key.code == sf::Keyboard::Up)
-
-                break;
             default:
                 break;
             }
@@ -34,8 +24,7 @@ void Game::runGame() {
 
         mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
 
-        if (lastView != MENU) mainWindow->render(currentView, false);
-        else mainWindow->render(currentView, true);
+        mainWindow->render();
 
         mainWindow->getWindow()->display(); // indicates that the mainWindow is done rendering
     }

@@ -18,16 +18,3 @@ struct Capacity {
 struct Level {
 	int level, currentExp, ExpToNext; //ExpToNext = level^3
 };
-
-enum ViewType { MENU, PLAY, COMBAT };
-
-/*
-{
-	{ HP, 0 },
-	{ ATK, 0 },
-	{ ATKSPE, 0 },
-	{ DEF, 0 },
-	{ DEFSPE, 0 },
-	{ VIT, 0 }
-};
-*/
