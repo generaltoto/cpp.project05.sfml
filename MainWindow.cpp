@@ -19,12 +19,12 @@ void MainWindow::initWindow() {
 
 void MainWindow::render()
 {
-    displayMenuView();
+    // displayMenuView();
 }
 
 void MainWindow::displayMenuView()
 {
-    TexturedElement background = TexturedElement(
+    /*TexturedElement background = TexturedElement(
         0, 0, "background", "assets/Menu.jpg"
     );
     background.resizeSprite(this->vMode.height, this->vMode.width);
@@ -42,7 +42,7 @@ void MainWindow::displayMenuView()
         20,
         { 0,0,0,255 },
         { 127,127,127,127 }
-    );
+    );*/
 }
 
 void MainWindow::drawButton(
