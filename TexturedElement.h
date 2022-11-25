@@ -5,7 +5,7 @@
 class TexturedElement {
 protected:
 	size_t animeCount;
-	std::vector<sf::IntRect> animePos;
+	std::vector<std::vector<sf::IntRect>> animePos;
 	int posX, posY;
 	std::string name;
 	std::string path;
@@ -24,5 +24,5 @@ public:
 
 	void setPos(int x, int y);
 
-	void nextAnimation();
+	void nextAnimation(int direction);
 };

@@ -23,12 +23,13 @@ void TexturedElement::displayEntity(sf::RenderWindow* window) {
 void TexturedElement::setPos(int x, int y) {
 	this->posX = x;
 	this->posY = y;
+	this->sprite.setPosition(float(x), float(y));
 }
 
-void TexturedElement::nextAnimation() {
+void TexturedElement::nextAnimation(int direction) {
 	this->animeCount++;
 	if (this->animeCount >= this->animePos.size())
 		this->animeCount = 0;
 
-	this->sprite.setTextureRect(animePos[this->animeCount]);
+	this->sprite.setTextureRect(animePos[direction][this->animeCount]);
 }

@@ -5,6 +5,7 @@
 class Player : public TexturedElement {
 private:
 	Pokemon* team[6];
+	int xOnMap, yOnMap;
 	int bag[2];
 
 public:
@@ -19,5 +20,5 @@ public:
 
 	void removeItem(int bag, int sub);
 
-	void move(int x, int y);
+	void updatePlayer(sf::Keyboard::Key pressed, int* frameCount);
 };
