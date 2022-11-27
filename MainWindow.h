@@ -19,25 +19,35 @@ public:
     {
     private:
         MainWindow* contextWindow;
-
-    public:
-        int currentSelected;
-        bool pressed, theselect;
-
-        std::vector<const char*> options;
-        std::vector<sf::Vector2f> textCoords;
-        std::vector<sf::Text> texts;
-        std::vector<std::size_t> sizes;
-
-    protected:
         void setValues();
-        void NavigateMenu();
+        void NavigateMenu(ViewTypes* currentView);
         void drawAll();
 
     public:
+        /// Currrently selected text 
+        int currentSelected;
+
+        /// Allows to control if a key is already pressed to prevent 
+        /// actions from beeing run multiple times per frame
+        bool pressed;
+
+        /// All options that will be displayed in the menu
+        std::vector<const char*> options;
+        
+        /// Coordinates of texts
+        std::vector<sf::Vector2f> textCoords;
+
+        /// SFML managed texts
+        std::vector<sf::Text> texts;
+        
+        /// Font size for each text
+        std::vector<std::size_t> sizes;
+
         Menu(MainWindow* window);
         ~Menu();
-        void runMenu();
+
+        /// Checks the player's input and draws
+        void runMenu(ViewTypes* currentView);
     };
 
 private:
@@ -51,8 +61,10 @@ public:
     MainWindow();
     ~MainWindow();
 
+    /// Returns the window
     sf::RenderWindow* getWindow();
 
+    /// Return the used font
     sf::Font* getFont();
 
     void setMenu(Menu* menu);
@@ -65,7 +77,7 @@ public:
 
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
-    void displayMenuView();
+    void displayMenuView(ViewTypes* currentView);
 
     void drawText(
         unsigned int x, unsigned int y,

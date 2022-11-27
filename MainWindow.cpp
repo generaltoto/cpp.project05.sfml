@@ -30,11 +30,14 @@ void MainWindow::initWindow() {
 
 void MainWindow::render(ViewTypes* currentView)
 {
-    if (*currentView == MENU) displayMenuView();
+    if (*currentView == MENU) displayMenuView(currentView);
     else return;
 }
 
-void MainWindow::displayMenuView() { this->menu->runMenu(); }
+void MainWindow::displayMenuView(ViewTypes* currentView) 
+{ 
+    this->menu->runMenu(currentView);
+}
 
 void MainWindow::drawButton(
     sf::Vector2f dim,

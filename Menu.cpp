@@ -10,11 +10,11 @@ MainWindow::Menu::~Menu() {
 
 void MainWindow::Menu::setValues() {
     currentSelected = 0;
-    pressed = theselect = false;
+    pressed = false;
 
     options = { "Play", "Inventory", "Options", "Quit" };
     texts.resize(4);
-    textCoords = { {885,60},{915,286.5},{885,423},{900,555},{934.5,685.5} };
+    textCoords = { {885,60},{885,286.5},{885,423},{885,555} };
     sizes = { 36,36,36,36 };
 
     for (std::size_t i{}; i < texts.size(); ++i) {
@@ -27,34 +27,39 @@ void MainWindow::Menu::setValues() {
     texts[currentSelected].setOutlineThickness(10);
 }
 
-void MainWindow::Menu::NavigateMenu() {
+void MainWindow::Menu::NavigateMenu(ViewTypes* currentView) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressed) {
-        if (currentSelected < 4) {
+        pressed = true;
+        texts[currentSelected].setOutlineThickness(0);
+        if (currentSelected < texts.size()) 
             ++currentSelected;
-            pressed = true;
-            texts[currentSelected].setOutlineThickness(10);
-            texts[currentSelected - 1].setOutlineThickness(0);
-            pressed = false;
-            theselect = false;
-        }
+        else if (currentSelected == (texts.size() - 1))
+            currentSelected = 0;
+        texts[currentSelected].setOutlineThickness(10);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !pressed) {
-        if (currentSelected > 1) {
-            --currentSelected;
-            pressed = true;
-            texts[currentSelected].setOutlineThickness(10);
-            texts[currentSelected + 1].setOutlineThickness(0);
-            pressed = false;
-            theselect = false;
-        }
+        pressed = true;
+        texts[currentSelected].setOutlineThickness(0);
+        if (currentSelected > 1) --currentSelected;
+        else if (currentSelected == 0) currentSelected = 3;
+        texts[currentSelected].setOutlineThickness(10);
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) && !theselect) {
-        theselect = true;
-        if (currentSelected == 4) 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+        switch (currentSelected)
+        {
+        case 0:
+            *currentView = PLAY;
+            break;
+        case 3:
             this->contextWindow->getWindow()->close();
+            break;
+        default:
+            break;
+        }
     }
+    pressed = false;
 }
 
 void MainWindow::Menu::drawAll() {
@@ -63,7 +68,7 @@ void MainWindow::Menu::drawAll() {
     }
 }
 
-void MainWindow::Menu::runMenu() {
-    NavigateMenu();
+void MainWindow::Menu::runMenu(ViewTypes* currentView) {
+    NavigateMenu(currentView);
     drawAll();
 }
