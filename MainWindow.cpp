@@ -1,12 +1,19 @@
 #include "MainWindow.h"
 
 MainWindow::MainWindow() {
-    this->window = nullptr;
+    this->window = new sf::RenderWindow();
+    this->font = new sf::Font();
+
+    initWindow();
 }
 
 MainWindow::~MainWindow() {
     delete this->window;
+    delete this->font;
 }
+
+sf::RenderWindow* MainWindow::getWindow() { return this->window; }
+sf::Font* MainWindow::getFont() { return this->font; }
 
 void MainWindow::initWindow() {
     this->vMode = sf::VideoMode::getDesktopMode();
@@ -15,34 +22,20 @@ void MainWindow::initWindow() {
         "Strange Game",
         sf::Style::Titlebar | sf::Style::Close
     );
+    this->window->setPosition(sf::Vector2i(0, 0));
+    if (!this->font->loadFromFile("assets/pixelFont.ttf")) throw("ERROR::FONT_LOADING");
 }
 
-void MainWindow::render()
+void MainWindow::render(ViewTypes* currentView)
 {
-    // displayMenuView();
+    if (*currentView == MENU) displayMenuView();
+    else return;
 }
 
 void MainWindow::displayMenuView()
 {
-    /*TexturedElement background = TexturedElement(
-        0, 0, "background", "assets/Menu.jpg"
-    );
-    background.resizeSprite(this->vMode.height, this->vMode.width);
-    background.displayEntity(this->window);
-
-    sf::Vector2f btnSize = { 200,50 };
-    drawButton(
-        btnSize,
-        {
-            (this->vMode.width / 2.f) - (btnSize.x / 2.f),
-            (this->vMode.height / 2.f) - (btnSize.y / 2.f)
-        },
-        "assets/pixelFont.ttf",
-        "Press ENTER to play",
-        20,
-        { 0,0,0,255 },
-        { 127,127,127,127 }
-    );*/
+    MainWindow::Menu menu(this);
+    menu.runMenu();
 }
 
 void MainWindow::drawButton(
@@ -65,9 +58,5 @@ void MainWindow::drawButton(
         );
         button.display(this->window);
     }
-}
-
-sf::RenderWindow* MainWindow::getWindow() {
-    return this->window;
 }
 

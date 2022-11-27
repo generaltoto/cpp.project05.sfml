@@ -4,11 +4,13 @@ MainWindow* Game::mainWindow = nullptr;
 
 void Game::startGame() {
     mainWindow = new MainWindow();
-    mainWindow->initWindow();
 }
 
 void Game::runGame() {
     Player sacha;
+
+    ViewTypes currentView = MENU;
+
     int frameCount = 0;
     sf::Event e{};
     
@@ -27,10 +29,20 @@ void Game::runGame() {
             }
         }
         frameCount++;
-        sacha.updatePlayer(e.key.code, &frameCount);
-        sacha.displayEntity(mainWindow->getWindow());
-
-        mainWindow->render();
+        switch (currentView)
+        {
+        case MENU:
+            mainWindow->render(&currentView);
+            break;
+        case PLAY:
+            sacha.updatePlayer(&frameCount);
+            sacha.displayEntity(mainWindow->getWindow());
+            break;
+        case COMBAT:
+            break;
+        default:
+            break;
+        }
 
         mainWindow->getWindow()->display(); // indicates that the mainWindow is done rendering
     }
