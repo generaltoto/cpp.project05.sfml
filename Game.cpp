@@ -8,7 +8,8 @@ void Game::startGame() {
 
 void Game::runGame() {
     Player sacha;
-
+    MainWindow::Menu gameMenu(mainWindow);
+    mainWindow->setMenu(&gameMenu);
     ViewTypes currentView = MENU;
 
     int frameCount = 0;

@@ -15,6 +15,8 @@ MainWindow::~MainWindow() {
 sf::RenderWindow* MainWindow::getWindow() { return this->window; }
 sf::Font* MainWindow::getFont() { return this->font; }
 
+void MainWindow::setMenu(Menu* menu) { this->menu = menu; }
+
 void MainWindow::initWindow() {
     this->vMode = sf::VideoMode::getDesktopMode();
     this->window = new sf::RenderWindow(
@@ -32,11 +34,7 @@ void MainWindow::render(ViewTypes* currentView)
     else return;
 }
 
-void MainWindow::displayMenuView()
-{
-    MainWindow::Menu menu(this);
-    menu.runMenu();
-}
+void MainWindow::displayMenuView() { this->menu->runMenu(); }
 
 void MainWindow::drawButton(
     sf::Vector2f dim,

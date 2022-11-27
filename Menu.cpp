@@ -15,7 +15,7 @@ void MainWindow::Menu::setValues() {
     options = { "Play", "Inventory", "Options", "Quit" };
     texts.resize(4);
     textCoords = { {885,60},{915,286.5},{885,423},{900,555},{934.5,685.5} };
-    sizes = { 30,42,36,36,36 };
+    sizes = { 36,36,36,36 };
 
     for (std::size_t i{}; i < texts.size(); ++i) {
         texts[i].setFont(*this->contextWindow->getFont());
@@ -24,8 +24,7 @@ void MainWindow::Menu::setValues() {
         texts[i].setOutlineColor(sf::Color::Black);
         texts[i].setPosition(textCoords[i]);
     }
-    texts[1].setOutlineThickness(10);
-    currentSelected = 1;
+    texts[currentSelected].setOutlineThickness(10);
 }
 
 void MainWindow::Menu::NavigateMenu() {
