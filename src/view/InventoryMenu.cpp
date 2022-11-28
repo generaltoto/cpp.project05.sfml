@@ -2,7 +2,7 @@
 
 void MainWindow::InventoryMenu::setValues()
 {
-	this->currentSelected = 0;
+	this->currentSelected = 1;
 	this->healingPokemon = false;
 
 	if (!this->asset.loadFromFile(this->bgPath))
@@ -32,13 +32,13 @@ void MainWindow::InventoryMenu::setValues()
 		s.setFillColor({ 127,127,127,127 });
 		this->iZones.push_back(s);
 	}
+	iZones[currentSelected].setOutlineThickness(10);
 }
 
 MainWindow::InventoryMenu::InventoryMenu(MainWindow* w, Player* p)
 {
 	this->contextWindow = w;
 	this->contextPlayer = p;
-
 	setValues();
 }
 
@@ -49,8 +49,68 @@ MainWindow::InventoryMenu::~InventoryMenu()
 
 void MainWindow::InventoryMenu::navigate()
 {
+	if (healingPokemon) navigatePokemons();
+	else navigateItems();
 }
 
+void MainWindow::InventoryMenu::navigateItems()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		iZones[currentSelected].setOutlineThickness(0);
+		if (currentSelected < 2) ++currentSelected;
+		else currentSelected = 1;
+		iZones[currentSelected].setOutlineThickness(10);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		iZones[currentSelected].setOutlineThickness(0);
+		if (currentSelected > 1) --currentSelected;
+		else currentSelected = 2;
+		iZones[currentSelected].setOutlineThickness(10);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+		if (currentSelected == 1) healingType = HEAL;
+		else if (currentSelected == 0) healingType = RESET;
+		this->healingPokemon = true;
+		this->currentSelected = 0;
+		this->pZones[currentSelected].setOutlineThickness(10);
+	}
+}
+
+void MainWindow::InventoryMenu::navigatePokemons()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		pZones[currentSelected].setOutlineThickness(0);
+		if (currentSelected < 5) ++currentSelected;
+		else currentSelected = 0;
+		pZones[currentSelected].setOutlineThickness(10);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		pZones[currentSelected].setOutlineThickness(0);
+		if (currentSelected > 0) --currentSelected;
+		else currentSelected = 5;
+		pZones[currentSelected].setOutlineThickness(10);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	{
+		pZones[currentSelected].setOutlineThickness(0);
+		this->healingPokemon = false;
+		this->currentSelected = 1;
+		iZones[currentSelected].setOutlineThickness(0);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+	{
+	}
+}
+
+/// Converts an int into string
 extern std::string convertToString(int number)
 {
 	std::stringstream convert;

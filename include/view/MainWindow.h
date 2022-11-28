@@ -52,6 +52,7 @@ public:
 
         int currentSelected;
         bool healingPokemon;
+        SprayType healingType;
 
         std::vector<sf::Vector2f> pZoneCoords;
         sf::Vector2f pZoneSize;
@@ -63,6 +64,10 @@ public:
         std::vector<sf::RectangleShape> iZones;
 
         void setValues();
+
+        void navigateItems();
+
+        void navigatePokemons();
 
     public:
         InventoryMenu(MainWindow* window, Player* player);

@@ -54,9 +54,23 @@ void Game::runGame() {
 				mainWindow->getWindow()->close();
 				break;
 			case sf::Event::KeyPressed:
-				if (e.key.code == sf::Keyboard::Escape && currentView != MENU)
-					currentView = MENU;
-				else gameMenu.navigateMenu(&currentView);
+				switch (currentView)
+				{
+				case MENU:
+					gameMenu.navigateMenu(&currentView);
+					break;
+				case PLAY:
+					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
+					break;
+				case COMBAT:
+					break;
+				case INVENTORY:
+					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
+					invMenu.navigate();
+					break;
+				default:
+					break;
+				}
 				break;
 			default:
 				break;

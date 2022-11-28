@@ -7,6 +7,8 @@ MainWindow::MainWindow() {
     initWindow();
 }
 MainWindow::~MainWindow() {
+    this->font = nullptr;
+    this->window = nullptr;
     delete this->font, this->window;
 }
 
