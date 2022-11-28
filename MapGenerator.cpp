@@ -113,8 +113,8 @@ void MapGenerator::PrintMap2() {
 void MapGenerator::SetEntryExitPoints() {
     sf::Clock clock;
     srand(time(NULL));
-    entry_x = (rand() % MAPWIDTH - 1);
-    exit_x = (rand() % MAPWIDTH - 1);
+    entry_x = (rand() % MAPWIDTH);
+    exit_x = (rand() % MAPWIDTH);
 
     std::cout << "entry point = [" << entry_x << "][0]" << std::endl;
     std::cout << "exit point = [" << exit_x << "][" << MAPHEIGHT <<"]" << std::endl;
@@ -125,18 +125,12 @@ void MapGenerator::SetEntryExitPoints() {
     level2[exit_x] = 3;
     level2[MAPHEIGHT * (MAPWIDTH - 1) + entry_x] = 2;
 }
-// Method for checking boundaries
 bool MapGenerator::IsSafe(int i, int j)
 {
     if (i >= 0 && i < MAPWIDTH && j >= 0 && j < MAPHEIGHT)
         return true;
     return false;
 }
-// Returns true if there is a
-// path from a source (a
-// cell with value 3) to a
-// destination (a cell with
-// value 4)
 bool MapGenerator::IsaPath(int i, int j, bool visited[][MAPHEIGHT])
 {
     // Checking the boundaries, obstacle and
@@ -195,8 +189,6 @@ bool MapGenerator::IsaPath(int i, int j, bool visited[][MAPHEIGHT])
     // no path has been found
     return false;
 }
-// Method for finding and printing
-// whether the path exists or not
 bool MapGenerator::IsPath()
 {
 
