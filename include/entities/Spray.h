@@ -1,14 +1,16 @@
 #pragma once
-#include "Pokemon.h"  
+#include "TexturedElement.h"
+#include "Pokemon.h"
 
 class Spray : public TexturedElement {
 private:
 	int heal = 50;
+	SprayType type;
 
 public:
-	Spray();
+	Spray(SprayType);
 	~Spray();
 
-	void healPokemon(Pokemon* p);
+	void updatePokemon(Pokemon* p);
 
 };

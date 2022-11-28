@@ -1,9 +1,19 @@
 # include "include/entities/Spray.h"
 
-Spray::Spray() { }
+Spray::Spray(SprayType st) { this->type = st; }
 
 Spray::~Spray() { }
 
-void Spray::healPokemon(Pokemon* p) {
-	/*p->currentStats[HP] += this->heal;*/
+void Spray::updatePokemon(Pokemon* p) {
+	switch (this->type)
+	{
+	case HEAL:
+		p->currentStats[HP] += this->heal;
+		break;
+	case RESET:
+		p->pokemonStatus = OK;
+		break;
+	default:
+		break;
+	}
 }

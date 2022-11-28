@@ -6,17 +6,21 @@ class Player : public TexturedElement {
 private:
 	Pokemon* team[6];
 	int xOnMap, yOnMap;
-	int bag[2];
+	std::vector<int> bag;
 
 public:
 	Player();
 	~Player();
 
+	Pokemon* getTeam();
+
+	std::vector<int> getBag();
+
 	void addPokemon(Pokemon* p);
 
 	void removePokemon(int id);
 
-	void addItem(int bag, int added);
+	void addItems(int bag, int added);
 
 	void removeItem(int bag, int sub);
 
