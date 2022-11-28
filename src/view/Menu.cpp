@@ -47,6 +47,9 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
         case 0:
             *currentView = PLAY;
             break;
+        case 1:
+            *currentView = INVENTORY;
+            break;
         case 3:
             this->contextWindow->getWindow()->close();
             break;

@@ -5,15 +5,18 @@
 # include <SFML/Window.hpp>
 # include <SFML/System.hpp>
 
-enum Types { FIGHT, DRAKE, WATER, ELEC, FIRE, ICE, BUG, POISON, PSY, ROCK, GROUND, GHOST, FLY };
+enum Types { FIGHT, DRAKE, WATER, ELEC, FIRE, ICE, BUG, POISON, PSY, ROCK, GROUND, GHOST, FLY, NORMAL, PLANT };
 
 enum Stat { HP, ATK, ATKSPE, DEF, DEFSPE, VIT };
 
-enum Status { POISONED, SLEPT, BURNING, PARALYSED };
+enum Status { OK, POISONED, SLEPT, BURNING, PARALYSED };
 
-enum ViewTypes { MENU, PLAY, COMBAT };
+enum ViewTypes { MENU, PLAY, COMBAT, INVENTORY };
+
+enum SprayType { HEAL, RESET };
 
 struct Capacity {
+	std::string name;
 	int damage;
 	bool isPhysical;
 	Types type[1];

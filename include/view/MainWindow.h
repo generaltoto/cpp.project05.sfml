@@ -8,8 +8,9 @@
 #include <SFML/Audio.hpp>
 
 #include "include/entities/TexturedElement.h"
-#include "include/view/Button.h"
 #include "include/Structures.h"
+#include "include/entities/Player.h"
+#include <sstream>
 
 class MainWindow {
 
@@ -17,27 +18,18 @@ public:
     /// Menu to be dispalyed in the menu view.
     class Menu
     {
-    private:
+    protected:
         MainWindow* contextWindow;
-        void setValues();
-
-
-    public:
-        /// Currrently selected text 
         int currentSelected;
 
-        /// All options that will be displayed in the menu
         std::vector<const char*> options;
-        
-        /// Coordinates of texts
         std::vector<sf::Vector2f> textCoords;
-
-        /// SFML managed texts
         std::vector<sf::Text> texts;
-        
-        /// Font size for each text
         std::vector<std::size_t> sizes;
 
+        void setValues();
+
+    public:
         Menu(MainWindow* window);
         ~Menu();
 
@@ -45,6 +37,39 @@ public:
         void navigateMenu(ViewTypes* currentView);
 
         /// Draws the menu
+        void draw();
+    };
+
+    class InventoryMenu
+    {
+    protected:
+        MainWindow* contextWindow;
+        Player* contextPlayer;
+
+        const char* bgPath = "assets/inventoryBackground.png";
+        sf::Texture asset;
+        sf::Sprite bg;
+
+        int currentSelected;
+        bool healingPokemon;
+
+        std::vector<sf::Vector2f> pZoneCoords;
+        sf::Vector2f pZoneSize;
+        std::vector<sf::RectangleShape> pZones;
+
+        std::vector<sf::Vector2f> iZoneCoords;
+        sf::Vector2f iPokeballZoneSize;
+        sf::Vector2f iSprayZoneSize;
+        std::vector<sf::RectangleShape> iZones;
+
+        void setValues();
+
+    public:
+        InventoryMenu(MainWindow* window, Player* player);
+        ~InventoryMenu();
+
+        void navigate();
+
         void draw();
     };
 
@@ -79,17 +104,6 @@ public:
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
     void displayMenuView(ViewTypes* currentView);
-
-    /// Draws a button depending on the following arguments
-    void drawButton(
-        sf::Vector2f dim,
-        sf::Vector2f pos,
-        std::string fontPath,
-        std::string text,
-        int textSize,
-        sf::Color textCol,
-        sf::Color shapeCol
-    );
 };
 
 
