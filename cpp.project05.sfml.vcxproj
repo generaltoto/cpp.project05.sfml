@@ -115,6 +115,8 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies);sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib</AdditionalDependencies>
+      <StackReserveSize>200000000</StackReserveSize>
+      <StackCommitSize>200000000</StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -135,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="db_perlin.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
@@ -143,6 +146,7 @@
     <ClCompile Include="src\entities\Spray.cpp" />
     <ClCompile Include="src\entities\TexturedElement.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\map\MapGenerator.cpp" />
     <ClCompile Include="src\view\Button.cpp" />
     <ClCompile Include="src\view\MainWindow.cpp" />
     <ClCompile Include="src\view\Menu.cpp" />
@@ -162,6 +166,9 @@
     <ClInclude Include="include\entities\Spray.h" />
     <ClInclude Include="include\entities\TexturedElement.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\map\db_perlin.hpp" />
+    <ClInclude Include="include\map\MapGenerator.h" />
+    <ClInclude Include="include\map\TileMap.h" />
     <ClInclude Include="include\Structures.h" />
     <ClInclude Include="include\view\Button.h" />
     <ClInclude Include="include\view\MainWindow.h" />

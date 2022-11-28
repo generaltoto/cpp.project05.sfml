@@ -15,6 +15,8 @@ MainWindow::~MainWindow() {
 sf::RenderWindow* MainWindow::getWindow() { return this->window; }
 sf::Font* MainWindow::getFont() { return this->font; }
 
+sf::VideoMode* MainWindow::getVideoMode() { return &this->vMode; }
+
 void MainWindow::setMenu(Menu* menu) { this->menu = menu; }
 
 void MainWindow::initWindow() {

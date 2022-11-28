@@ -2,7 +2,11 @@
 # define CPP_SFML_GAME_H
 # include "include/view/MainWindow.h"
 # include "include/entities/Player.h"
+# include "include/map/TileMap.h"
+# include "include/map/MapGenerator.h"
 # include <iostream>
+
+
 /// Links all the inner members and the displayers
 class Game {
 

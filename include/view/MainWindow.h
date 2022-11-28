@@ -65,6 +65,9 @@ public:
     /// Return the used font
     sf::Font* getFont();
 
+    /// Returns the window's video mode
+    sf::VideoMode* getVideoMode();
+
     void setMenu(Menu* menu);
 
     /// Initiates the windows and its parameters
