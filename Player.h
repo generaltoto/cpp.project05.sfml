@@ -20,5 +20,5 @@ public:
 
 	void removeItem(int bag, int sub);
 
-	void updatePlayer(sf::Keyboard::Key pressed, int* frameCount);
+	void updatePlayer(int* frameCount);
 };

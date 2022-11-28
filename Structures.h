@@ -11,6 +11,8 @@ enum Stat { HP, ATK, ATKSPE, DEF, DEFSPE, VIT };
 
 enum Status { POISONED, SLEPT, BURNING, PARALYSED };
 
+enum ViewTypes { MENU, PLAY, COMBAT };
+
 struct Capacity {
 	int damage;
 	bool isPhysical;

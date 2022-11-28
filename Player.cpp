@@ -44,10 +44,11 @@ void Player::addItem(int bag, int added) { this->bag[bag] += added; }
 
 void Player::removeItem(int bag, int sub) { this->bag[bag] -= sub; }
 
-void Player::updatePlayer(sf::Keyboard::Key pressed, int* frameCount) {
+void Player::updatePlayer(int* frameCount) {
+	const int frameUpdater = 600;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		this->yOnMap += 1;
-		if (*frameCount % 150 == 0) {
+		if (*frameCount % frameUpdater == 0) {
 			nextAnimation(3);
 			*frameCount = 0;
 		}
@@ -55,7 +56,7 @@ void Player::updatePlayer(sf::Keyboard::Key pressed, int* frameCount) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		this->yOnMap -= 1;
-		if (*frameCount % 150 == 0) {
+		if (*frameCount % frameUpdater == 0) {
 			nextAnimation(0);
 			*frameCount = 0;
 		}
@@ -63,7 +64,7 @@ void Player::updatePlayer(sf::Keyboard::Key pressed, int* frameCount) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		this->xOnMap += 1;
-		if (*frameCount % 150 == 0) {
+		if (*frameCount % frameUpdater == 0) {
 			nextAnimation(2);
 			*frameCount = 0;
 		}
@@ -71,7 +72,7 @@ void Player::updatePlayer(sf::Keyboard::Key pressed, int* frameCount) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		this->xOnMap -= 1;
-		if (*frameCount % 150 == 0) {
+		if (*frameCount % frameUpdater == 0) {
 			nextAnimation(1);
 			*frameCount = 0;
 		}

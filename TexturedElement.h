@@ -1,5 +1,8 @@
 # pragma once
 # include <string>
+# include <iostream>
+# include <SFML/Graphics.hpp>
+# include <SFML/Audio.hpp>
 # include "Structures.h"
 
 class TexturedElement {
@@ -14,11 +17,15 @@ protected:
 
 public:
 	TexturedElement();
+	TexturedElement(
+		int x,
+		int y,
+		std::string name,
+		std::string path
+	);
 	~TexturedElement();
 
 	sf::Sprite getSprite();
-
-	int getPos(char c);
 
 	void displayEntity(sf::RenderWindow* window);
 
