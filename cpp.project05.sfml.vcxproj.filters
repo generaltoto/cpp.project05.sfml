@@ -60,14 +60,14 @@
     <ClCompile Include="Pokemon.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Downloads\sqlite-amalgamation-3400000\sqlite-amalgamation-3400000\sqlite3.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="db_perlin.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="Demo.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapGenerator.cpp">
+      <Filter>Source Files\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +100,12 @@
     </ClInclude>
     <ClInclude Include="db_perlin.hpp">
       <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MapGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

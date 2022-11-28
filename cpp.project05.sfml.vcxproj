@@ -71,9 +71,9 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\include;C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
     <ExecutablePath>$(ExecutablePath)</ExecutablePath>
-    <LibraryPath>C:\Users\rmateescu\Desktop\libnoisedll-1.0.0\bin;C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\lib;C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,8 +115,8 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <StackReserveSize>2000000000</StackReserveSize>
-      <StackCommitSize>2000000000</StackCommitSize>
+      <StackReserveSize>20000000</StackReserveSize>
+      <StackCommitSize>20000000</StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,7 +149,6 @@
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Spray.cpp" />
     <ClCompile Include="TexturedElement.cpp" />
-    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
@@ -167,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\pikachu.png" />
-    <Image Include="tileSet.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

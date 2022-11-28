@@ -6,17 +6,18 @@
  */
 
 #include <SFML/Graphics.hpp>
-
-#define DB_PERLIN_IMPL
 #include "db_perlin.hpp"
 #include "TileMap.h"
 #include <iostream>
 #include "MapGenerator.h"
+#define DB_PERLIN_IMPL
+
 
 int main() {
     int unsigned width = 1080 ;
     int unsigned height =  720 ; 
 
+    
     sf::RenderWindow window{
         sf::VideoMode { width, height },"Perlin Noise"
     };
@@ -39,6 +40,8 @@ int main() {
     if (seed1 && seed1 == mapGenerator.GetSeed()) goto findMap;
     mapGenerator.GenerateMap();
     mapGenerator.NormalizeMap();
+    mapGenerator.SetMountains();
+    mapGenerator.SetMapToLevel2();
     mapGenerator.SetEntryExitPoints();
     //mapGenerator.PrintMap();
     if (mapGenerator.IsPath())
@@ -62,7 +65,7 @@ int main() {
         }
 
         TileMap map;
-        if (!map.load("pixil-frame-0.png", sf::Vector2u(32, 32), mapGenerator.GetLevel2(), MAPWIDTH, MAPHEIGHT, 11.6)) //2.9 pour full 64 * 64
+        if (!map.load("pixil-frame-0.png", sf::Vector2u(32, 32), mapGenerator.GetLevel2(), MAPWIDTH, MAPHEIGHT, 2.9)) //2.9 pour 64 * 64   11.6 pour 256 * 256
         return -1;
 
 

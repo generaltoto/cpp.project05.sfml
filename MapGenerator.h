@@ -2,8 +2,8 @@
 #include "db_perlin.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#define MAPHEIGHT 256
-#define MAPWIDTH 256
+#define MAPHEIGHT 64
+#define MAPWIDTH 64
 
 
 class MapGenerator
@@ -20,8 +20,11 @@ public:
 	void GenerateMap();
 	void SetEntryExitPoints();
 	void NormalizeMap();
+	void SetMapToLevel2();
+	void SetMountains();
 
 	void PrintMap();
+	void PrintMap2();
 	bool IsPath();
 	bool IsSafe(int, int);
 	bool IsaPath(int i, int j, bool visited[][MAPWIDTH]);
