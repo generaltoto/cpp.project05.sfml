@@ -123,8 +123,8 @@ void MapGenerator::SetEntryExitPoints() {
     entry_x = (rand() % MAPWIDTH);
     exit_x = (rand() % MAPWIDTH);
 
-    std::cout << "entry point = [" << entry_x << "][0]" << std::endl;
-    std::cout << "exit point = [" << exit_x << "][" << MAPHEIGHT <<"]" << std::endl;
+    std::cout << "entry point = [" << entry_x << "][" << MAPHEIGHT << "]"<< std::endl;
+    std::cout << "exit point = [" << exit_x << "][0]" << std::endl;
 
     level[exit_x][0] = 3;
     level[entry_x][MAPHEIGHT-1] = 2;
@@ -218,6 +218,11 @@ int *MapGenerator::GetLevel2() {
     return this->level2;
 }
 
+float *MapGenerator::GetLevel() {
+    return *this->level;
+}
+
+
 void MapGenerator::GenerateSeed()
 {
     sf::Clock clock;
@@ -225,4 +230,14 @@ void MapGenerator::GenerateSeed()
     srand(time(NULL));
 
     seed = (rand() % 10000000 + 1);
+}
+
+int MapGenerator::GetEntry()
+{
+    return entry_x;
+}
+
+int MapGenerator::GetCellValue(int x, int y)
+{
+    return level[x][y];
 }

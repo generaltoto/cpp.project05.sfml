@@ -2,8 +2,8 @@
 #include "include/map/db_perlin.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#define MAPHEIGHT 64
-#define MAPWIDTH 64
+#define MAPHEIGHT 256
+#define MAPWIDTH 256
 #define DB_PERLIN_IMPL
 
 class MapGenerator
@@ -50,10 +50,20 @@ public:
 	MapGenerator(int winWidth, int winHeight);
 	~MapGenerator();
 	
-	/// Get the 2D array
+	/// Get the 1D array
 	int *GetLevel2();
+
+	/// Get the 2D array
+	float *GetLevel();
 
 	/// Generate the map's seed
 	void GenerateSeed();
+
+	/// Get entry_x
+	int GetEntry();
+
+	/// Get the value of target cell in level
+	int GetCellValue(int x, int y);
+
 };
 
