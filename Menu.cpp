@@ -10,7 +10,6 @@ MainWindow::Menu::~Menu() {
 
 void MainWindow::Menu::setValues() {
     currentSelected = 0;
-    pressed = false;
 
     options = { "Play", "Inventory", "Options", "Quit" };
     texts.resize(4);
@@ -27,22 +26,18 @@ void MainWindow::Menu::setValues() {
     texts[currentSelected].setOutlineThickness(10);
 }
 
-void MainWindow::Menu::NavigateMenu(ViewTypes* currentView) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && !pressed) {
-        pressed = true;
+void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         texts[currentSelected].setOutlineThickness(0);
-        if (currentSelected < texts.size()) 
-            ++currentSelected;
-        else if (currentSelected == (texts.size() - 1))
-            currentSelected = 0;
+        if (currentSelected < 3) ++currentSelected;
+        else currentSelected = 0;
         texts[currentSelected].setOutlineThickness(10);
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && !pressed) {
-        pressed = true;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         texts[currentSelected].setOutlineThickness(0);
-        if (currentSelected > 1) --currentSelected;
-        else if (currentSelected == 0) currentSelected = 3;
+        if (currentSelected > 0) --currentSelected;
+        else currentSelected = 3;
         texts[currentSelected].setOutlineThickness(10);
     }
 
@@ -59,16 +54,10 @@ void MainWindow::Menu::NavigateMenu(ViewTypes* currentView) {
             break;
         }
     }
-    pressed = false;
 }
 
-void MainWindow::Menu::drawAll() {
+void MainWindow::Menu::draw() {
     for (auto t : texts) {
         this->contextWindow->getWindow()->draw(t);
     }
-}
-
-void MainWindow::Menu::runMenu(ViewTypes* currentView) {
-    NavigateMenu(currentView);
-    drawAll();
 }

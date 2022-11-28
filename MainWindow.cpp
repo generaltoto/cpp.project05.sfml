@@ -36,7 +36,7 @@ void MainWindow::render(ViewTypes* currentView)
 
 void MainWindow::displayMenuView(ViewTypes* currentView) 
 { 
-    this->menu->runMenu(currentView);
+   
 }
 
 void MainWindow::drawButton(

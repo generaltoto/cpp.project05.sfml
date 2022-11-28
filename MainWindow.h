@@ -20,16 +20,11 @@ public:
     private:
         MainWindow* contextWindow;
         void setValues();
-        void NavigateMenu(ViewTypes* currentView);
-        void drawAll();
+
 
     public:
         /// Currrently selected text 
         int currentSelected;
-
-        /// Allows to control if a key is already pressed to prevent 
-        /// actions from beeing run multiple times per frame
-        bool pressed;
 
         /// All options that will be displayed in the menu
         std::vector<const char*> options;
@@ -46,8 +41,11 @@ public:
         Menu(MainWindow* window);
         ~Menu();
 
-        /// Checks the player's input and draws
-        void runMenu(ViewTypes* currentView);
+        /// Navigates through the menu depending on the input 
+        void navigateMenu(ViewTypes* currentView);
+
+        /// Draws the menu
+        void draw();
     };
 
 private:
@@ -78,13 +76,6 @@ public:
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
     void displayMenuView(ViewTypes* currentView);
-
-    void drawText(
-        unsigned int x, unsigned int y,
-        std::string fontPath, 
-        std::string text, 
-        sf::Color textColor
-    );
 
     /// Draws a button depending on the following arguments
     void drawButton(

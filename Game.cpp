@@ -25,6 +25,11 @@ void Game::runGame() {
             case sf::Event::Closed:
                 mainWindow->getWindow()->close();
                 break;
+            case sf::Event::KeyPressed:
+                if (e.key.code == sf::Keyboard::Escape && currentView != MENU)
+                    currentView = MENU;
+                else gameMenu.navigateMenu(&currentView);
+                break;
             default:
                 break;
             }
@@ -33,7 +38,7 @@ void Game::runGame() {
         switch (currentView)
         {
         case MENU:
-            mainWindow->render(&currentView);
+            gameMenu.draw();
             break;
         case PLAY:
             sacha.updatePlayer(&frameCount);
