@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "include/Game.h"
 
 MainWindow* Game::mainWindow = nullptr;
 

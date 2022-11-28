@@ -3,7 +3,7 @@
 # include <iostream>
 # include <SFML/Graphics.hpp>
 # include <SFML/Audio.hpp>
-# include "Structures.h"
+# include "include/Structures.h"
 
 class TexturedElement {
 protected:

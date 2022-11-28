@@ -1,4 +1,4 @@
-# include "Player.h"
+#include "include/entities/Player.h"
 
 Player::Player() { 
 	for (int i = 0; i < 6; i++) {

@@ -1,4 +1,4 @@
-# include "NPC.h"
+#include "include/entities/NPC.h"
 
 NPC::NPC() { }
 

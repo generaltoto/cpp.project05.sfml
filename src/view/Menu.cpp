@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "include/view/MainWindow.h"
 
 MainWindow::Menu::Menu(MainWindow* window) {
     this->contextWindow = window;

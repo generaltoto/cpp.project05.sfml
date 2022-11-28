@@ -1,4 +1,4 @@
-# include "Pokeball.h"
+#include "include/entities/Pokeball.h"
 
 Pokeball::Pokeball() { }
 

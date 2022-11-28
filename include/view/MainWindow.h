@@ -7,9 +7,9 @@
 #include <SFML/System.hpp>
 #include <SFML/Audio.hpp>
 
-#include "TexturedElement.h"
-#include "Button.h"
-#include "Structures.h"
+#include "include/entities/TexturedElement.h"
+#include "include/view/Button.h"
+#include "include/Structures.h"
 
 class MainWindow {
 

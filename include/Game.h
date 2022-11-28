@@ -1,7 +1,7 @@
 # ifndef CPP_SFML_GAME_H
 # define CPP_SFML_GAME_H
-# include "MainWindow.h"
-# include "Player.h"
+# include "include/view/MainWindow.h"
+# include "include/entities/Player.h"
 # include <iostream>
 /// Links all the inner members and the displayers
 class Game {

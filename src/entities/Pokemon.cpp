@@ -1,4 +1,4 @@
-# include "Pokemon.h"
+#include "include/entities/Pokemon.h"
 
 Pokemon::Pokemon(
 	int x,

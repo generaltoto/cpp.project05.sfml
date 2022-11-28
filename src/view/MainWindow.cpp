@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "include/view/MainWindow.h"
 
 MainWindow::MainWindow() {
     this->window = new sf::RenderWindow();
