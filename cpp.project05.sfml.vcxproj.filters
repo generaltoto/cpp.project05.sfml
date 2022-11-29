@@ -1,168 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\map">
-      <UniqueIdentifier>{927d3ea8-8431-47b2-9fcb-1c875ed132fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\view">
-      <UniqueIdentifier>{98ff6d25-18f3-4da6-bac2-9c21210d85ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\view">
-      <UniqueIdentifier>{100450cd-8f10-4ee3-8bb1-73251728e0c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\map">
-      <UniqueIdentifier>{3255696d-9850-4930-aac8-e70d54310f3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\entities">
-      <UniqueIdentifier>{edf8f245-219f-449f-84d9-fb892fbfcc3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\entities">
-      <UniqueIdentifier>{fc34c272-3ab4-4613-9fe5-8bc75757aae0}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="db_perlin.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\entities\NPC.cpp" />
+    <ClCompile Include="src\entities\Player.cpp" />
+    <ClCompile Include="src\entities\Pokeball.cpp" />
+    <ClCompile Include="src\entities\Pokemon.cpp" />
+    <ClCompile Include="src\entities\Spray.cpp" />
+    <ClCompile Include="src\entities\TexturedElement.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\map\MapGenerator.cpp" />
+    <ClCompile Include="src\view\Button.cpp" />
+    <ClCompile Include="src\view\InventoryMenu.cpp" />
+    <ClCompile Include="src\view\MainWindow.cpp" />
+    <ClCompile Include="src\view\Menu.cpp" />
+    <ClCompile Include="JsonParser.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="db_perlin.cpp">
-      <Filter>Source Files\map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\map\MapGenerator.cpp">
-      <Filter>Source Files\map</Filter>
-    <ClCompile Include="src\entities\Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Pokeball.cpp">
-      <Filter>Source Files</Filter>
-    <ClCompile Include="src\entities\TexturedElement.cpp">
-      <Filter>Source Files\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Pokemon.cpp">
-      <Filter>Source Files</Filter>
-    <ClCompile Include="src\entities\Spray.cpp">
-      <Filter>Source Files\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Pokemon.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\NPC.cpp">
-      <Filter>Source Files\entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\Button.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\MainWindow.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\Menu.cpp">
-      <Filter>Source Files\view</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\MainWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\InventoryMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="include\entities\NPC.h" />
+    <ClInclude Include="include\entities\Player.h" />
+    <ClInclude Include="include\entities\Pokeball.h" />
+    <ClInclude Include="include\entities\Pokemon.h" />
+    <ClInclude Include="include\entities\Spray.h" />
+    <ClInclude Include="include\entities\TexturedElement.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\map\db_perlin.hpp" />
+    <ClInclude Include="include\map\MapGenerator.h" />
+    <ClInclude Include="include\map\TileMap.h" />
+    <ClInclude Include="include\Structures.h" />
+    <ClInclude Include="include\view\Button.h" />
+    <ClInclude Include="include\view\MainWindow.h" />
+    <ClInclude Include="JsonParser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Game.h">
-    <ClInclude Include="include\entities\NPC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Pokeball.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Pokemon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Spray.h">
-    <ClInclude Include="include\Structures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\TexturedElement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TexturedElement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pokeball.h">
-      <Filter>Header Files\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="include\map\db_perlin.hpp">
-      <Filter>Header Files\map</Filter>
-    <ClInclude Include="include\map\MapGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\map\TileMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Structures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\view\MainWindow.h">
-      <Filter>Header Files\view</Filter>
-    </ClInclude>
-    <ClInclude Include="include\view\Button.h">
-      <Filter>Header Files\view</Filter>
-    </ClInclude>
+    <Image Include="assets\inventoryBackground.png" />
+    <Image Include="assets\items.png" />
+    <Image Include="assets\Menu.jpg" />
+    <Image Include="assets\pikachu.png" />
+    <Image Include="assets\pixil-frame-0.png" />
+    <Image Include="assets\pixil-frame-1.png" />
+    <Image Include="assets\pokemon.png" />
+    <Image Include="assets\sacha.png" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\pikachu.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\Menu.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\inventoryBackground.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\pixil-frame-0.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\pixil-frame-1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\pokemon.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\sacha.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\items.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="assets\pixelFont.ttf">
-      <Filter>Resource Files</Filter>
-    </Font>
+    <Font Include="assets\pixelFont.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />

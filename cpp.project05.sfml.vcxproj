@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="db_perlin.cpp" />
+    <ClCompile Include="JsonParser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="include\Structures.h" />
     <ClInclude Include="include\view\Button.h" />
     <ClInclude Include="include\view\MainWindow.h" />
+    <ClInclude Include="JsonParser.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
