@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="db_perlin.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
@@ -15,7 +14,8 @@
     <ClCompile Include="src\view\InventoryMenu.cpp" />
     <ClCompile Include="src\view\MainWindow.cpp" />
     <ClCompile Include="src\view\Menu.cpp" />
-    <ClCompile Include="JsonParser.cpp" />
+    <ClCompile Include="src\map\db_perlin.cpp" />
+    <ClCompile Include="src\data\DataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\entities\NPC.h" />
@@ -31,7 +31,8 @@
     <ClInclude Include="include\Structures.h" />
     <ClInclude Include="include\view\Button.h" />
     <ClInclude Include="include\view\MainWindow.h" />
-    <ClInclude Include="JsonParser.h" />
+    <ClInclude Include="include\data\json.hpp" />
+    <ClInclude Include="include\data\DataManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\inventoryBackground.png" />
@@ -42,6 +43,7 @@
     <Image Include="assets\pixil-frame-1.png" />
     <Image Include="assets\pokemon.png" />
     <Image Include="assets\sacha.png" />
+    <Image Include="assets\menuBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\pixelFont.ttf" />
@@ -50,5 +52,7 @@
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="README.md" />
+    <None Include="include\data\moves.json" />
+    <None Include="include\data\pokedex.json" />
   </ItemGroup>
 </Project>
