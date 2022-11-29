@@ -3,17 +3,17 @@
 using namespace std;
 using json = nlohmann::json;
 
-inline json DataManager::getMove(int id) { return DataManager::getAllPokemons()[id - 1]; }
+json DataManager::getMove(int id) { return DataManager::getAllPokemons()[id - 1]; }
 
-inline json DataManager::getPokemon(int id) { return DataManager::getAllPokemons()[id - 1]; }
+json DataManager::getPokemon(int id) { return DataManager::getAllPokemons()[id - 1]; }
 
-inline json DataManager::getAllMoves()
+json DataManager::getAllMoves()
 {
 	ifstream file("include/data/moves.json");
 	return json::parse(file);
 }
 
-inline json DataManager::getAllPokemons()
+json DataManager::getAllPokemons()
 {
 	ifstream file("include/data/pokedex.json");
 	return json::parse(file);

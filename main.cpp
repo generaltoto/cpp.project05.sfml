@@ -1,21 +1,11 @@
-//#include "include/Game.h"
-#include "include/data/DataManager.h"
-#include <iostream>
-
-using json = nlohmann::json;
+#include "include/Game.h"
 
 
-//int main() {
-//    Game::startGame();
-//
-//    Game::runGame();
-//
-//    return 0;
-//}
+int main() {
+    Game::startGame();
 
-int main()
-{
+    Game::runGame();
 
-    DataManager::getPokemon(1);
     return 0;
 }
+
