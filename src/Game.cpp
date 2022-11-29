@@ -99,7 +99,3 @@ void Game::runGame() {
 		mainWindow->getWindow()->display(); // indicates that the mainWindow is done rendering
 	}
 }
-
-void Game::endGame() {
-	delete mainWindow;
-}

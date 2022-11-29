@@ -1,9 +1,7 @@
 #include "include/entities/Player.h"
 
 Player::Player() { 
-	for (int i = 0; i < 6; i++) {
-		this->team[i] = nullptr;
-	}
+	for (auto& i : this->team) i = nullptr;
 	this->bag.resize(3);
 	sf::VideoMode* size = new sf::VideoMode();
 	this->xOnMap = 10;

@@ -19,9 +19,6 @@ public:
 
     /// Handles the main loop of the game.
     static void runGame();
-
-    /// Closes everything at the end.
-    static void endGame();
 };
 
 

@@ -7,9 +7,8 @@ MainWindow::MainWindow() {
     initWindow();
 }
 MainWindow::~MainWindow() {
-    this->font = nullptr;
-    this->window = nullptr;
-    delete this->font, this->window;
+    delete this->font;
+    delete this->window;
 }
 
 sf::RenderWindow* MainWindow::getWindow() { return this->window; }
