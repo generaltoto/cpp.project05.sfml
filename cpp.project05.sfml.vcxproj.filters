@@ -13,52 +13,70 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Items">
+    <Filter Include="Header Files\map">
+      <UniqueIdentifier>{927d3ea8-8431-47b2-9fcb-1c875ed132fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view">
       <UniqueIdentifier>{98ff6d25-18f3-4da6-bac2-9c21210d85ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Entities">
-      <UniqueIdentifier>{fc34c272-3ab4-4613-9fe5-8bc75757aae0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Items">
+    <Filter Include="Source Files\view">
       <UniqueIdentifier>{100450cd-8f10-4ee3-8bb1-73251728e0c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entities">
+    <Filter Include="Source Files\map">
+      <UniqueIdentifier>{3255696d-9850-4930-aac8-e70d54310f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\entities">
       <UniqueIdentifier>{edf8f245-219f-449f-84d9-fb892fbfcc3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\entities">
+      <UniqueIdentifier>{fc34c272-3ab4-4613-9fe5-8bc75757aae0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="db_perlin.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\map</Filter>
     </ClCompile>
-    <ClCompile Include="src\entities\NPC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include="src\map\MapGenerator.cpp">
+      <Filter>Source Files\map</Filter>
     <ClCompile Include="src\entities\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\Pokeball.cpp">
       <Filter>Source Files</Filter>
+    <ClCompile Include="src\entities\TexturedElement.cpp">
+      <Filter>Source Files\entities</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\Pokemon.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\entities\Spray.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\entities\TexturedElement.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="src\map\MapGenerator.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Pokemon.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\NPC.cpp">
+      <Filter>Source Files\entities</Filter>
     </ClCompile>
     <ClCompile Include="src\view\Button.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\MainWindow.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\Menu.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
     <ClCompile Include="src\view\MainWindow.cpp">
       <Filter>Source Files</Filter>
@@ -71,6 +89,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Game.h">
     <ClInclude Include="include\entities\NPC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -84,17 +103,20 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\entities\Spray.h">
+    <ClInclude Include="include\Structures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\entities\TexturedElement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\Game.h">
+    <ClInclude Include="TexturedElement.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pokeball.h">
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
     <ClInclude Include="include\map\db_perlin.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+      <Filter>Header Files\map</Filter>
     <ClInclude Include="include\map\MapGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -104,11 +126,11 @@
     <ClInclude Include="include\Structures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\view\Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\view\MainWindow.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="include\view\Button.h">
+      <Filter>Header Files\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

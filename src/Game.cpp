@@ -35,6 +35,20 @@ void Game::runGame() {
 	MapGenerator mapGen(
 		mainWindow->getVideoMode()->width, mainWindow->getVideoMode()->height
 	);
+    MainWindow::Menu gameMenu(mainWindow);
+    mainWindow->setMenu(&gameMenu);
+    ViewTypes currentView = MENU;
+   
+
+    TileMap map;
+    MapGenerator* mapGen = new MapGenerator(
+        mainWindow->getVideoMode()->width, mainWindow->getVideoMode()->height
+    );
+    sf::View view;
+    view.setCenter(sf::Vector2f((32 * mapGen->GetEntry()) / 0.6f, 32 * (MAPHEIGHT - 1) / 0.6f));
+    view.setSize(sf::Vector2f(mainWindow->getVideoMode()->width/2, mainWindow->getVideoMode()->height/2));
+
+    sacha.SetMapPosition(mapGen->GetEntry(), MAPHEIGHT-1);
 
 	//2.9 pour 64 * 64   11.6 pour 256 * 256
 	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))

@@ -1,11 +1,12 @@
 #include "include/entities/Player.h"
+#include "include/map/MapGenerator.h"
 
 Player::Player() { 
 	for (auto& i : this->team) i = nullptr;
 	this->bag.resize(3);
 	sf::VideoMode* size = new sf::VideoMode();
-	this->xOnMap = 10;
-	this->yOnMap = 10;
+	this->xOnMap = 0;
+	this->yOnMap = 0;
 	this->name = "Petit Louis";
 	this->path = "assets/sacha.png";
 	this->animeCount = 0;
@@ -19,9 +20,6 @@ Player::Player() {
 		this->sprite.setTextureRect(this->animePos[0][this->animeCount]);
 	}
 	this->sprite.setScale(0.6f, 0.6f);
-	this->setPos(
-		(((size->getDesktopMode().width) / 2) - 55), 
-		(((size->getDesktopMode().height) / 2) - 65));
 	delete size;
 }
 
@@ -47,35 +45,57 @@ void Player::addItems(int bag, int added) { this->bag[bag] += added; }
 
 void Player::removeItem(int bag, int sub) { this->bag[bag] -= sub; }
 
-void Player::updatePlayer(int* frameCount) {
-	const int frameUpdater = 600;
+void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
+	
+	int tileValue = 0;
+	const int frameUpdater = 300;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		this->yOnMap += 1;
+		tileValue = level[(MAPHEIGHT * (yOnMap-1)) + xOnMap];
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap - 1))
+			{
+				view->move(0, -32 / 0.6f);
+				yOnMap--;
+			}
 			nextAnimation(3);
 			*frameCount = 0;
 		}
 		return;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		this->yOnMap -= 1;
+		tileValue = level[(MAPHEIGHT * (yOnMap+1)) + xOnMap];
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap + 1))
+			{
+				view->move(0, 32 / 0.6f);
+				yOnMap++;
+			}
 			nextAnimation(0);
 			*frameCount = 0;
 		}
 		return;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		this->xOnMap += 1;
+		tileValue = level[(MAPHEIGHT * yOnMap) + xOnMap+1];
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap + 1, yOnMap))
+			{
+				view->move(32 / 0.6f, 0);
+				xOnMap++;
+			}
 			nextAnimation(2);
 			*frameCount = 0;
 		}
 		return;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		this->xOnMap -= 1;
+		tileValue = level[(MAPHEIGHT * yOnMap) + xOnMap-1];
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap - 1, yOnMap))
+			{
+				view->move(-32 / 0.6f, 0);
+				xOnMap--;
+			}
 			nextAnimation(1);
 			*frameCount = 0;
 		}
@@ -83,3 +103,34 @@ void Player::updatePlayer(int* frameCount) {
 	}
 	this->animeCount = 0;
 }
+
+void Player::SetMapPosition(int x, int y)
+{
+	xOnMap = x;
+	yOnMap = y;
+}
+
+int Player::GetMapPositionx()
+{
+	return xOnMap;
+}
+
+int Player::GetMapPositiony()
+{
+	return yOnMap;
+}
+
+bool Player::OutOfBoundaries(int x, int y)
+{
+	if (x >= MAPWIDTH || x < 0)
+	{
+		return true;
+	}
+	else if (y > MAPHEIGHT-1 || y < 0)
+	{
+		return true;
+	}
+	else return false;
+}
+
+

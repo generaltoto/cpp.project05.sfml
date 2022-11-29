@@ -117,6 +117,18 @@ public:
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
     void displayMenuView(ViewTypes* currentView);
+
+    /// Draws a button depending on the following arguments
+    void drawButton(
+        sf::Vector2f dim,
+        sf::Vector2f pos,
+        std::string fontPath,
+        std::string text,
+        int textSize,
+        sf::Color textCol,
+        sf::Color shapeCol
+    );
+
 };
 
 
