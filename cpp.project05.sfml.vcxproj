@@ -186,8 +186,15 @@
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="assets\audio\main_music.ogg" />
-    <None Include="assets\audio\menu_sound_effect.ogg" />
+    <None Include="assets\audio\music_battle.ogg" />
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\audio\atk_effect.wav" />
+    <Media Include="assets\audio\heal_effect.wav" />
+    <Media Include="assets\audio\menu_sound_effect.wav" />
+    <Media Include="assets\audio\start_battle.wav" />
+    <Media Include="assets\audio\win_battle.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

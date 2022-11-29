@@ -12,9 +12,12 @@ public:
 
 	std::map<SoundEffect, sf::SoundBuffer> getSoundList();
 
-	sf::SoundBuffer getSound(SoundEffect needed);
+	void playASound(SoundEffect needed);
+
+	void setBuffer(sf::SoundBuffer buff);
 
 	void play();
 
 	void setVolume(float vol);
+
 };

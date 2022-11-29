@@ -167,11 +167,28 @@
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="README.md" />
-    <None Include="assets\audio\menu_sound_effect.ogg">
-      <Filter>Resource Files\audio</Filter>
-    </None>
     <None Include="assets\audio\main_music.ogg">
       <Filter>Resource Files\audio</Filter>
     </None>
+    <None Include="assets\audio\music_battle.ogg">
+      <Filter>Resource Files\audio</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\audio\atk_effect.wav">
+      <Filter>Resource Files\audio</Filter>
+    </Media>
+    <Media Include="assets\audio\heal_effect.wav">
+      <Filter>Resource Files\audio</Filter>
+    </Media>
+    <Media Include="assets\audio\menu_sound_effect.wav">
+      <Filter>Resource Files\audio</Filter>
+    </Media>
+    <Media Include="assets\audio\start_battle.wav">
+      <Filter>Resource Files\audio</Filter>
+    </Media>
+    <Media Include="assets\audio\win_battle.wav">
+      <Filter>Resource Files\audio</Filter>
+    </Media>
   </ItemGroup>
 </Project>
