@@ -17,18 +17,18 @@ public:
     /// Instantiation of our mainWindow
     static MainWindow* mainWindow;
 
-    static const int nbPokemons;
+    /// List of all pokemons
     static std::vector<Pokemon> pokemons;
 
-    static const int nbMoves;
-    static std::vector<Capacity> moves;
+    /// List of all capacities
+    static std::vector<Capacity> capacities;
 
     static void createPokemons(
         int x,
         int y,
         std::string name,
         std::string path,
-        //std::string type[2],
+        std::vector<std::string> types,
         std::string caption,
         int level,
         std::vector<int> stats

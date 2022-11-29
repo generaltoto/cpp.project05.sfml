@@ -7,7 +7,7 @@ Pokemon::Pokemon(
 	int y,
 	std::string name,
 	std::string path,
-	std::string type[2],
+	std::vector<std::string> types,
 	std::string caption,
 	int level,
 	std::vector<int> stats
@@ -16,7 +16,10 @@ Pokemon::Pokemon(
 	this->posY = y;
 	this->name = name;
 	this->path = path;
-	for (int i = 0; i < 2; i++) {
+	this->type.resize(2);
+	for (int i = 0; i < 2; i++) 
+	{
+		std::cout << "Type N" << i << type[i] << std::endl;
 		this->type[i] = type[i];
 	}
 	this->caption = caption;

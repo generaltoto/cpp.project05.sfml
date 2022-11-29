@@ -1,14 +1,14 @@
 #include "include/Game.h"
 
 MainWindow* Game::mainWindow = nullptr;
-const int Game::nbPokemons = 500;
-const int Game::nbMoves = 619;
 std::vector<Pokemon> Game::pokemons = {};
-std::vector<Capacity> Game::moves = {};
+std::vector<Capacity> Game::capacities = {};
 
-void Game::createPokemons(int x, int y, std::string name, std::string path, std::string caption, int level, std::vector<int> stats)
+void Game::createPokemons(
+	int x, int y, std::string name, std::string path, std::vector<std::string> types,
+	std::string caption, int level, std::vector<int> stats
+)
 {
-	std::string types[2] = { "Plant", "Poison" };
 	Pokemon p = Pokemon(
 		x, y, name, path, types, caption, level, stats
 	);
@@ -18,19 +18,25 @@ void Game::createPokemons(int x, int y, std::string name, std::string path, std:
 void Game::createCapacity(std::string name, int damage, std::string attackType, std::string type, int accuracy)
 {
 	Capacity c = { name, damage, attackType, type, accuracy };
-	Game::moves.push_back(c);
+	Game::capacities.push_back(c);
 }
 
 void Game::startGame() {
 	mainWindow = new MainWindow();
 
-	for (auto& pokemons : DataManager::getAllPokemons())
+	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
 	{
+		std::vector<std::string> types;
+		if (sizeof(pokemons["type"][1] <= 0))
+			types = { pokemons["type"][0] };
+		else 
+			types = { pokemons["type"][0], pokemons["type"][1] };
+
 		Game::createPokemons(
 			0, 0,
 			pokemons["name"]["english"],
 			pokemons["image"]["sprite"],
-			//types,
+			types,
 			pokemons["description"],
 			1,
 			{
@@ -44,7 +50,7 @@ void Game::startGame() {
 		);
 	}
 
-	for (auto& moves : DataManager::getAllMoves())
+	for (auto& moves : DataManager::getAll("include/data/moves.json"))
 	{
 		Game::createCapacity(
 			moves["ename"],
@@ -67,7 +73,7 @@ void Game::runGame() {
 	Capacity c3 = { "Tornade", 60, "physical", "FLY", 100 };
 
 	Capacity cap[4] = { c0, c1, c2, c3 };
-	std::string ty[2] = { "PLANT", "FLY" };
+	std::vector<std::string> ty = { "PLANT", "FLY" };
 	Pokemon pokemon(
 		0, 0, "bulbizarre", "assets/pokemon.png", ty, "aaaaa", 1, {45,49,49,65,65,45}
 	);

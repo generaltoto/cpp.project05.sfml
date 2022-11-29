@@ -3,7 +3,7 @@
 
 class Pokemon : public TexturedElement {
 private:
-	std::string type[2];
+	std::vector<std::string> type;
 	Capacity capacities[4];
 	std::string caption;
 	struct Level levels;
@@ -21,7 +21,7 @@ public:
 		int y,
 		std::string name,
 		std::string path,
-		std::string type[2],
+		std::vector<std::string> types,
 		std::string caption,
 		int level,
 		std::vector<int>
