@@ -4,6 +4,7 @@
 # include "include/entities/Player.h"
 # include "include/map/TileMap.h"
 # include "include/map/MapGenerator.h"
+# include "include/audio/Music.h"
 # include <iostream>
 
 

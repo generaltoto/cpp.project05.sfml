@@ -22,6 +22,10 @@ void Game::runGame() {
     if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen->GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
         throw("ERROR::MAP_LOADING");
 
+    Music music = { "assets/main_music.ogg" };
+    music.play();
+    music.setVolume(75.f);
+
     int frameCount = 0;
     sf::Event e{};
     

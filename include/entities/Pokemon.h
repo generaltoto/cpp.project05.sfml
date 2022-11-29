@@ -20,12 +20,12 @@ public:
 		std::string path,
 		Types type[2],
 		Capacity capacities[4],
-		std::string caption,
-		int level
+		/*std::string caption,*/
+		int level,
+		int stats[6],
+		sf::IntRect pokeImg
 	);
 	~Pokemon();
-
-	void initStats(int stats[6], int level);
 
 	void levelUp(int expEarn);
 

@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Users\tdelorme\source\repos\cpp.project05.sfml</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tdelorme\source\repos\cpp.project05.sfml;D:\Documents\G.Tech\GTech 2\Projet 5 - SFML</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,8 +137,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="db_perlin.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\audio\Music.cpp" />
     <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\entities\Pokeball.cpp" />
@@ -146,6 +146,7 @@
     <ClCompile Include="src\entities\Spray.cpp" />
     <ClCompile Include="src\entities\TexturedElement.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\map\db_perlin.cpp" />
     <ClCompile Include="src\map\MapGenerator.cpp" />
     <ClCompile Include="src\view\Button.cpp" />
     <ClCompile Include="src\view\MainWindow.cpp" />
@@ -159,6 +160,8 @@
     <Font Include="assets\pixelFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="include\audio\Music.h" />
     <ClInclude Include="include\entities\NPC.h" />
     <ClInclude Include="include\entities\Player.h" />
     <ClInclude Include="include\entities\Pokeball.h" />
