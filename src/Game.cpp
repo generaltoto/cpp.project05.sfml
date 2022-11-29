@@ -29,26 +29,18 @@ void Game::runGame() {
 
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
 
-	ViewTypes currentView = MENU;
-
 	TileMap map;
 	MapGenerator mapGen(
 		mainWindow->getVideoMode()->width, mainWindow->getVideoMode()->height
 	);
-    MainWindow::Menu gameMenu(mainWindow);
-    mainWindow->setMenu(&gameMenu);
+
     ViewTypes currentView = MENU;
-   
 
-    TileMap map;
-    MapGenerator* mapGen = new MapGenerator(
-        mainWindow->getVideoMode()->width, mainWindow->getVideoMode()->height
-    );
-    sf::View view;
-    view.setCenter(sf::Vector2f((32 * mapGen->GetEntry()) / 0.6f, 32 * (MAPHEIGHT - 1) / 0.6f));
-    view.setSize(sf::Vector2f(mainWindow->getVideoMode()->width/2, mainWindow->getVideoMode()->height/2));
+    sf::View camera;
+    camera.setCenter(sf::Vector2f((32 * mapGen.GetEntry()) / 0.6f, 32 * (MAPHEIGHT - 1) / 0.6f));
+    camera.setSize(sf::Vector2f(mainWindow->getVideoMode()->width/2, mainWindow->getVideoMode()->height/2));
 
-    sacha.SetMapPosition(mapGen->GetEntry(), MAPHEIGHT-1);
+	player.SetMapPosition(mapGen.GetEntry(), MAPHEIGHT-1);
 
 	//2.9 pour 64 * 64   11.6 pour 256 * 256
 	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
@@ -74,7 +66,14 @@ void Game::runGame() {
 					gameMenu.navigateMenu(&currentView);
 					break;
 				case PLAY:
-					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
+					if (e.key.code == sf::Keyboard::Escape)
+					{
+						mainWindow->getWindow()->setView(
+							mainWindow->getWindow()->getDefaultView()
+						);
+						currentView = MENU;
+					}
+					std::cout << "here" << std::endl;
 					break;
 				case COMBAT:
 					break;
@@ -97,10 +96,11 @@ void Game::runGame() {
 			gameMenu.draw();
 			break;
 		case PLAY:
+			player.updatePlayer(&frameCount, &camera, mapGen.GetLevel2());
+			mainWindow->getWindow()->setView(camera);
 			mainWindow->getWindow()->draw(map);
-			player.updatePlayer(&frameCount);
+			player.setPos(camera.getCenter().x - 4, camera.getCenter().y - 33);
 			player.displayEntity(mainWindow->getWindow());
-			break;
 		case COMBAT:
 			break;
 		case INVENTORY:
