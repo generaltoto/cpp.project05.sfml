@@ -22,10 +22,18 @@ public:
         MainWindow* contextWindow;
         int currentSelected;
 
+        const char* bgPath = "assets/menuBackground.jpg";
+        sf::Texture bgAsset;
+        sf::Sprite bg;
+
         std::vector<const char*> options;
         std::vector<sf::Vector2f> textCoords;
         std::vector<sf::Text> texts;
         std::vector<std::size_t> sizes;
+
+        std::vector<sf::Vector2f> zoneCoords;
+        sf::Vector2f zoneSize;
+        std::vector<sf::RectangleShape> zones;
 
         void setValues();
 
@@ -47,7 +55,7 @@ public:
         Player* contextPlayer;
 
         const char* bgPath = "assets/inventoryBackground.png";
-        sf::Texture asset;
+        sf::Texture bgAsset;
         sf::Sprite bg;
 
         int currentSelected;

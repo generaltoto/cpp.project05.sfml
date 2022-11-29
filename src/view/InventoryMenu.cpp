@@ -5,9 +5,9 @@ void MainWindow::InventoryMenu::setValues()
 	this->currentSelected = 1;
 	this->healingPokemon = false;
 
-	if (!this->asset.loadFromFile(this->bgPath))
+	if (!this->bgAsset.loadFromFile(this->bgPath))
 		throw("ERROR::INVENTORY_BACKGROUND_LOADING");
-	else this->bg.setTexture(this->asset);
+	else this->bg.setTexture(this->bgAsset);
 
 	this->pZoneCoords = { {60, 100}, {60, 250}, {60, 400}, {60, 550}, {60, 700}, {60, 850} };
 	this->pZoneSize = { 800, 125 };
