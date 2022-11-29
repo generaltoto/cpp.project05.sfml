@@ -30,66 +30,84 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="db_perlin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainWindow.cpp">
+    <ClCompile Include="src\entities\NPC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TexturedElement.cpp">
+    <ClCompile Include="src\entities\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pokeball.cpp">
-      <Filter>Source Files\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Spray.cpp">
-      <Filter>Source Files\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Pokemon.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
+    <ClCompile Include="src\entities\Pokeball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="src\entities\Pokemon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\Spray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\TexturedElement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\map\MapGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\InventoryMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="include\entities\NPC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainWindow.h">
+    <ClInclude Include="include\entities\Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Structures.h">
+    <ClInclude Include="include\entities\Pokeball.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TexturedElement.h">
+    <ClInclude Include="include\entities\Pokemon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pokeball.h">
-      <Filter>Header Files\Items</Filter>
+    <ClInclude Include="include\entities\Spray.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spray.h">
-      <Filter>Header Files\Items</Filter>
+    <ClInclude Include="include\entities\TexturedElement.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="include\Game.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="include\map\db_perlin.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pokemon.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="include\map\MapGenerator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="include\map\TileMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Structures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\view\Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\view\MainWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -100,10 +118,33 @@
     <Image Include="assets\Menu.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\inventoryBackground.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\pixil-frame-0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\pixil-frame-1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\pokemon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\sacha.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\items.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\pixelFont.ttf">
       <Filter>Resource Files</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include="README.md" />
   </ItemGroup>
 </Project>

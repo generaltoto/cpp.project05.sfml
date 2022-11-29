@@ -1,15 +1,14 @@
 #include "include/view/MainWindow.h"
 
 MainWindow::MainWindow() {
-    this->window = new sf::RenderWindow();
+    this->window = nullptr;
     this->font = new sf::Font();
 
     initWindow();
 }
-
 MainWindow::~MainWindow() {
-    delete this->window;
     delete this->font;
+    delete this->window;
 }
 
 sf::RenderWindow* MainWindow::getWindow() { return this->window; }
@@ -40,26 +39,3 @@ void MainWindow::displayMenuView(ViewTypes* currentView)
 { 
    
 }
-
-void MainWindow::drawButton(
-    sf::Vector2f dim,
-    sf::Vector2f pos,
-    std::string fontPath,
-    std::string text,
-    int textSize,
-    sf::Color textCol,
-    sf::Color shapeCol
-)
-{
-    sf::Font font;
-    if (!font.loadFromFile(fontPath))
-        std::cout << "Couldn't load font " << fontPath << std::endl;
-    else
-    {
-        Button button = Button(
-            pos, dim, &font, text, textSize, textCol, shapeCol
-        );
-        button.display(this->window);
-    }
-}
-

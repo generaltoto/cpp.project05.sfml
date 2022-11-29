@@ -11,6 +11,21 @@ MainWindow::Menu::~Menu() {
 void MainWindow::Menu::setValues() {
     currentSelected = 0;
 
+    if (!this->bgAsset.loadFromFile(this->bgPath))
+        throw("ERROR::INVENTORY_BACKGROUND_LOADING");
+    else this->bg.setTexture(this->bgAsset);
+
+    this->zoneCoords = { {710, 50}, {710, 308}, {710, 566}, {710, 824} };
+    this->zoneSize = { 500, 208 };
+    for (int i = 0; i < 4; i++)
+    {
+        sf::RectangleShape s;
+        s.setPosition(this->zoneCoords[i]);
+        s.setSize(this->zoneSize);
+        s.setFillColor({ 127,127,127,200 });
+        this->zones.push_back(s);
+    }
+
     options = { "Play", "Inventory", "Options", "Quit" };
     texts.resize(4);
     textCoords = { {885,60},{885,286.5},{885,423},{885,555} };
@@ -21,7 +36,10 @@ void MainWindow::Menu::setValues() {
         texts[i].setString(options[i]);
         texts[i].setCharacterSize(sizes[i]);
         texts[i].setOutlineColor(sf::Color::Black);
-        texts[i].setPosition(textCoords[i]);
+        texts[i].setPosition(
+            this->zoneCoords[i].x + this->zoneSize.x * 0.25,
+            this->zoneCoords[i].y + this->zoneSize.y * 0.37
+        );
     }
     texts[currentSelected].setOutlineThickness(10);
 }
@@ -47,6 +65,9 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
         case 0:
             *currentView = PLAY;
             break;
+        case 1:
+            *currentView = INVENTORY;
+            break;
         case 3:
             this->contextWindow->getWindow()->close();
             break;
@@ -57,7 +78,7 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
 }
 
 void MainWindow::Menu::draw() {
-    for (auto t : texts) {
-        this->contextWindow->getWindow()->draw(t);
-    }
+    this->contextWindow->getWindow()->draw(this->bg);
+    for (int i = 0; i < 4; i++) this->contextWindow->getWindow()->draw(zones[i]);
+    for (auto t : texts) this->contextWindow->getWindow()->draw(t);
 }

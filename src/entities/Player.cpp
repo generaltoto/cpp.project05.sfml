@@ -1,9 +1,8 @@
 #include "include/entities/Player.h"
 
 Player::Player() { 
-	for (int i = 0; i < 6; i++) {
-		this->team[i] = NULL;
-	}
+	for (auto& i : this->team) i = nullptr;
+	this->bag.resize(3);
 	sf::VideoMode* size = new sf::VideoMode();
 	this->xOnMap = 10;
 	this->yOnMap = 10;
@@ -28,6 +27,10 @@ Player::Player() {
 
 Player::~Player() { }
 
+Pokemon* Player::getTeam() { return *this->team; }
+
+std::vector<int> Player::getBag() { return this->bag; }
+
 void Player::addPokemon(Pokemon* p) {
 	for (int i = 0; i < 6; i++) {
 		if (this->team[i] != NULL) {
@@ -40,7 +43,7 @@ void Player::removePokemon(int id) {
 
 }
 
-void Player::addItem(int bag, int added) { this->bag[bag] += added; }
+void Player::addItems(int bag, int added) { this->bag[bag] += added; }
 
 void Player::removeItem(int bag, int sub) { this->bag[bag] -= sub; }
 

@@ -13,6 +13,8 @@ public:
 	std::map<Stat, int> baseStats;
 	std::map<Stat, int> currentStats;
 
+	Status pokemonStatus;
+
 	Pokemon(
 		int x,
 		int y,
