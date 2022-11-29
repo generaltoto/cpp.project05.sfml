@@ -21,9 +21,6 @@ Player::Player() {
 		this->sprite.setTextureRect(this->animePos[0][this->animeCount]);
 	}
 	this->sprite.setScale(0.6f, 0.6f);
-	this->setPos(
-		(((size->getDesktopMode().width) / 2) - 55), 
-		(((size->getDesktopMode().height) / 2) - 65));
 	delete size;
 }
 
@@ -48,15 +45,15 @@ void Player::removeItem(int bag, int sub) { this->bag[bag] -= sub; }
 void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
 	
 	int tileValue = 0;
-	const int frameUpdater = 600;
+	const int frameUpdater = 300;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		tileValue = level[(MAPHEIGHT * (yOnMap-1)) + xOnMap];
-		if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap - 1))
-		{
-			view->move(0, -32 / 0.6f);
-			yOnMap--;
-		}
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap - 1))
+			{
+				view->move(0, -32 / 0.6f);
+				yOnMap--;
+			}
 			nextAnimation(3);
 			*frameCount = 0;
 		}
@@ -64,12 +61,12 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		tileValue = level[(MAPHEIGHT * (yOnMap+1)) + xOnMap];
-		if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap + 1))
-		{
-			view->move(0, 32 / 0.6f);
-			yOnMap++;
-		}
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap + 1))
+			{
+				view->move(0, 32 / 0.6f);
+				yOnMap++;
+			}
 			nextAnimation(0);
 			*frameCount = 0;
 		}
@@ -77,12 +74,12 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		tileValue = level[(MAPHEIGHT * yOnMap) + xOnMap+1];
-		if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap + 1, yOnMap))
-		{
-			view->move(32 / 0.6f, 0);
-			xOnMap++;
-		}
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap + 1, yOnMap))
+			{
+				view->move(32 / 0.6f, 0);
+				xOnMap++;
+			}
 			nextAnimation(2);
 			*frameCount = 0;
 		}
@@ -90,12 +87,12 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		tileValue = level[(MAPHEIGHT * yOnMap) + xOnMap-1];
-		if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap - 1, yOnMap))
-		{
-			view->move(-32 / 0.6f, 0);
-			xOnMap--;
-		}
 		if (*frameCount % frameUpdater == 0) {
+			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap - 1, yOnMap))
+			{
+				view->move(-32 / 0.6f, 0);
+				xOnMap--;
+			}
 			nextAnimation(1);
 			*frameCount = 0;
 		}

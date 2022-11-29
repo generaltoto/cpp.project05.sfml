@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\matee\source\repos\cpp.project05.sfml;C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\lib;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\rmateescu\source\repos\cpp.project05.sfml;C:\Users\matee\source\repos\cpp.project05.sfml;C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\lib;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
