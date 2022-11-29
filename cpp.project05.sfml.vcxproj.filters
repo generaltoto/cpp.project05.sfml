@@ -37,6 +37,9 @@
     <Filter Include="Source Files\Audio">
       <UniqueIdentifier>{6d298491-42bf-415d-8b47-5a58925594fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\audio">
+      <UniqueIdentifier>{1cd573d4-bc70-4e35-853a-4e0bb191c0b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -79,6 +82,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\audio\Music.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\Sound.cpp">
       <Filter>Source Files\Audio</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,12 +134,27 @@
     <ClInclude Include="include\audio\Music.h">
       <Filter>Header Files\Audio</Filter>
     </ClInclude>
+    <ClInclude Include="include\audio\Sound.h">
+      <Filter>Header Files\Audio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\pikachu.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\Menu.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\pixil-frame-0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\pixil-frame-1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\pokemons.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\sacha.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -146,5 +167,11 @@
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
     <None Include="README.md" />
+    <None Include="assets\audio\menu_sound_effect.ogg">
+      <Filter>Resource Files\audio</Filter>
+    </None>
+    <None Include="assets\audio\main_music.ogg">
+      <Filter>Resource Files\audio</Filter>
+    </None>
   </ItemGroup>
 </Project>

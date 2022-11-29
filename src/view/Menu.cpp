@@ -26,12 +26,14 @@ void MainWindow::Menu::setValues() {
     texts[currentSelected].setOutlineThickness(10);
 }
 
-void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
+void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound soundEffect) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         texts[currentSelected].setOutlineThickness(0);
         if (currentSelected < 3) ++currentSelected;
         else currentSelected = 0;
         texts[currentSelected].setOutlineThickness(10);
+        soundEffect.getSound(MENUEFFECT);
+        soundEffect.play();
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -39,6 +41,8 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
         if (currentSelected > 0) --currentSelected;
         else currentSelected = 3;
         texts[currentSelected].setOutlineThickness(10);
+        soundEffect.getSound(MENUEFFECT);
+        soundEffect.play();
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
@@ -46,6 +50,8 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
         {
         case 0:
             *currentView = PLAY;
+            soundEffect.getSound(MENUEFFECT);
+            soundEffect.play();
             break;
         case 3:
             this->contextWindow->getWindow()->close();

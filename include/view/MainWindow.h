@@ -10,6 +10,7 @@
 #include "include/entities/TexturedElement.h"
 #include "include/view/Button.h"
 #include "include/Structures.h"
+#include "include/audio/Sound.h"
 
 class MainWindow {
 
@@ -42,7 +43,7 @@ public:
         ~Menu();
 
         /// Navigates through the menu depending on the input 
-        void navigateMenu(ViewTypes* currentView);
+        void navigateMenu(ViewTypes* currentView, Sound soundEffect);
 
         /// Draws the menu
         void draw();

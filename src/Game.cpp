@@ -22,9 +22,10 @@ void Game::runGame() {
     if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen->GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
         throw("ERROR::MAP_LOADING");
 
-    Music music = { "assets/main_music.ogg" };
+    Music music = { "assets/audio/main_music.ogg" };
     music.play();
     music.setVolume(75.f);
+    Sound soundEffect;
 
     int frameCount = 0;
     sf::Event e{};
@@ -42,7 +43,7 @@ void Game::runGame() {
             case sf::Event::KeyPressed:
                 if (e.key.code == sf::Keyboard::Escape && currentView != MENU)
                     currentView = MENU;
-                else gameMenu.navigateMenu(&currentView);
+                else gameMenu.navigateMenu(&currentView, soundEffect);
                 break;
             default:
                 break;

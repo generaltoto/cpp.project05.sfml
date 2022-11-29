@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\audio\Music.cpp" />
+    <ClCompile Include="src\audio\Sound.cpp" />
     <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\entities\Pokeball.cpp" />
@@ -155,6 +156,10 @@
   <ItemGroup>
     <Image Include="assets\Menu.jpg" />
     <Image Include="assets\pikachu.png" />
+    <Image Include="assets\pixil-frame-0.png" />
+    <Image Include="assets\pixil-frame-1.png" />
+    <Image Include="assets\pokemons.png" />
+    <Image Include="assets\sacha.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\pixelFont.ttf" />
@@ -162,6 +167,7 @@
   <ItemGroup>
     <ClInclude Include="Database.h" />
     <ClInclude Include="include\audio\Music.h" />
+    <ClInclude Include="include\audio\Sound.h" />
     <ClInclude Include="include\entities\NPC.h" />
     <ClInclude Include="include\entities\Player.h" />
     <ClInclude Include="include\entities\Pokeball.h" />
@@ -179,6 +185,8 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include="assets\audio\main_music.ogg" />
+    <None Include="assets\audio\menu_sound_effect.ogg" />
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

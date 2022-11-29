@@ -13,6 +13,8 @@ enum Status { NOT, POISONED, SLEPT, BURNING, PARALYSED, FROZEN };
 
 enum ViewTypes { MENU, PLAY, COMBAT };
 
+enum SoundEffect { MENUEFFECT, ATKEFFECT, HEALEFFECT, STARTBATTLE, WINCOMBAT, LOSTCOMBAT };
+
 struct Capacity {
 	std::string name;
 	int damage;

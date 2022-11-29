@@ -64,7 +64,7 @@ void Pokemon::updateCurrentStat() {
 
 	for (it = this->currentStats.begin(); it != this->currentStats.end(); it++) {
 		if (it != this->currentStats.begin()) {
-			it->second = int(
+			this->currentStats[it->first] = int(
 				((2 * this->baseStats[it->first]) * this->levels.level) / 100)
 				+ 5;
 		}
