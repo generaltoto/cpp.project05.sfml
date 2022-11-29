@@ -126,7 +126,7 @@
         "ename": "Guillotine",
         "id": 12,
         "jname": "ハサミギロチン",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -142,13 +142,13 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "剑舞",
         "ename": "Swords Dance",
         "id": 14,
         "jname": "つるぎのまい",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 75,
         "type": "Normal"
@@ -193,7 +193,7 @@
         "ename": "Whirlwind",
         "id": 18,
         "jname": "ふきとばし",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -303,7 +303,7 @@
         "ename": "Sand Attack",
         "id": 28,
         "jname": "すなかけ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Ground"
     },
@@ -347,7 +347,7 @@
         "ename": "Horn Drill",
         "id": 32,
         "jname": "つのドリル",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -424,7 +424,7 @@
         "ename": "Tail Whip",
         "id": 39,
         "jname": "しっぽをふる",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -468,7 +468,7 @@
         "ename": "Leer",
         "id": 43,
         "jname": "にらみつける",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -490,18 +490,18 @@
         "ename": "Growl",
         "id": 45,
         "jname": "なきごえ",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "吼叫",
         "ename": "Roar",
         "id": 46,
         "jname": "ほえる",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 5,
         "type": "Normal"
@@ -513,7 +513,7 @@
         "ename": "Sing",
         "id": 47,
         "jname": "うたう",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
@@ -524,7 +524,7 @@
         "ename": "Supersonic",
         "id": 48,
         "jname": "ちょうおんぱ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -535,7 +535,7 @@
         "ename": "Sonic Boom",
         "id": 49,
         "jname": "ソニックブーム",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -546,7 +546,7 @@
         "ename": "Disable",
         "id": 50,
         "jname": "かなしばり",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -585,13 +585,13 @@
         "type": "Fire"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "白雾",
         "ename": "Mist",
         "id": 54,
         "jname": "しろいきり",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Ice"
     },
@@ -737,7 +737,7 @@
         "ename": "Low Kick",
         "id": 67,
         "jname": "けたぐり",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Fighting"
     },
@@ -748,7 +748,7 @@
         "ename": "Counter",
         "id": 68,
         "jname": "カウンター",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Fighting"
     },
@@ -759,7 +759,7 @@
         "ename": "Seismic Toss",
         "id": 69,
         "jname": "ちきゅうなげ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Fighting"
     },
@@ -803,18 +803,18 @@
         "ename": "Leech Seed",
         "id": 73,
         "jname": "やどりぎのタネ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "生长",
         "ename": "Growth",
         "id": 74,
         "jname": "せいちょう",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
@@ -848,7 +848,7 @@
         "ename": "Poison Powder",
         "id": 77,
         "jname": "どくのこな",
-        "power": null,
+        "power": 0,
         "pp": 35,
         "type": "Poison"
     },
@@ -859,7 +859,7 @@
         "ename": "Stun Spore",
         "id": 78,
         "jname": "しびれごな",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Grass"
     },
@@ -870,7 +870,7 @@
         "ename": "Sleep Powder",
         "id": 79,
         "jname": "ねむりごな",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Grass"
     },
@@ -892,7 +892,7 @@
         "ename": "String Shot",
         "id": 81,
         "jname": "いとをはく",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Bug"
     },
@@ -903,7 +903,7 @@
         "ename": "Dragon Rage",
         "id": 82,
         "jname": "りゅうのいかり",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Dragon"
     },
@@ -948,7 +948,7 @@
         "ename": "Thunder Wave",
         "id": 86,
         "jname": "でんじは",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 73,
         "type": "Electric"
@@ -995,7 +995,7 @@
         "ename": "Fissure",
         "id": 90,
         "jname": "じわれ",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Ground"
     },
@@ -1018,7 +1018,7 @@
         "ename": "Toxic",
         "id": 92,
         "jname": "どくどく",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 6,
         "type": "Poison"
@@ -1053,29 +1053,29 @@
         "ename": "Hypnosis",
         "id": 95,
         "jname": "さいみんじゅつ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "瑜伽姿势",
         "ename": "Meditate",
         "id": 96,
         "jname": "ヨガのポーズ",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "高速移动",
         "ename": "Agility",
         "id": 97,
         "jname": "こうそくいどう",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Psychic"
     },
@@ -1102,13 +1102,13 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "瞬间移动",
         "ename": "Teleport",
         "id": 100,
         "jname": "テレポート",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Psychic"
     },
@@ -1119,18 +1119,18 @@
         "ename": "Night Shade",
         "id": 101,
         "jname": "ナイトヘッド",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Ghost"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "模仿",
         "ename": "Mimic",
         "id": 102,
         "jname": "ものまね",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -1141,52 +1141,52 @@
         "ename": "Screech",
         "id": 103,
         "jname": "いやなおと",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "影子分身",
         "ename": "Double Team",
         "id": 104,
         "jname": "かげぶんしん",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 32,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "自我复原",
         "ename": "Recover",
         "id": 105,
         "jname": "じこさいせい",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "硬梆梆",
         "ename": "Harden",
         "id": 106,
         "jname": "かたくなる",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "缩小",
         "ename": "Minimize",
         "id": 107,
         "jname": "ちいさくなる",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -1197,7 +1197,7 @@
         "ename": "Smokescreen",
         "id": 108,
         "jname": "えんまく",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -1208,119 +1208,119 @@
         "ename": "Confuse Ray",
         "id": 109,
         "jname": "あやしいひかり",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Ghost"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "缩壳",
         "ename": "Withdraw",
         "id": 110,
         "jname": "からにこもる",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Water"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "防卫卷",
         "ename": "Defense Curl",
         "id": 111,
         "jname": "まるくなる",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "障碍",
         "ename": "Barrier",
         "id": 112,
         "jname": "バリアー",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "光墙",
         "ename": "Light Screen",
         "id": 113,
         "jname": "ひかりのかべ",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "tm": 16,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "黑雾",
         "ename": "Haze",
         "id": 114,
         "jname": "くろいきり",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Ice"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "减半反射",
         "ename": "Reflect",
         "id": 115,
         "jname": "リフレクター",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 33,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "集气",
         "ename": "Focus Energy",
         "id": 116,
         "jname": "きあいだめ",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "忍忍",
         "ename": "Bide",
         "id": 117,
         "jname": "がまん",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "挥指功",
         "ename": "Metronome",
         "id": 118,
         "jname": "ゆびをふる",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "学舌术",
         "ename": "Mirror Move",
         "id": 119,
         "jname": "オウムがえし",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Flying"
     },
@@ -1425,7 +1425,7 @@
         "type": "Water"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "高速星星",
         "ename": "Swift",
@@ -1469,13 +1469,13 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "瞬间失忆",
         "ename": "Amnesia",
         "id": 133,
         "jname": "ドわすれ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Psychic"
     },
@@ -1486,18 +1486,18 @@
         "ename": "Kinesis",
         "id": 134,
         "jname": "スプーンまげ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "生蛋",
         "ename": "Soft-Boiled",
         "id": 135,
         "jname": "タマゴうみ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -1519,7 +1519,7 @@
         "ename": "Glare",
         "id": 137,
         "jname": "へびにらみ",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -1542,7 +1542,7 @@
         "ename": "Poison Gas",
         "id": 139,
         "jname": "どくガス",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Poison"
     },
@@ -1575,7 +1575,7 @@
         "ename": "Lovely Kiss",
         "id": 142,
         "jname": "あくまのキッス",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -1591,13 +1591,13 @@
         "type": "Flying"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "变身",
         "ename": "Transform",
         "id": 144,
         "jname": "へんしん",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -1630,7 +1630,7 @@
         "ename": "Spore",
         "id": 147,
         "jname": "キノコのほうし",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Grass"
     },
@@ -1641,7 +1641,7 @@
         "ename": "Flash",
         "id": 148,
         "jname": "フラッシュ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 70,
         "type": "Normal"
@@ -1653,29 +1653,29 @@
         "ename": "Psywave",
         "id": 149,
         "jname": "サイコウェーブ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "水溅跃",
         "ename": "Splash",
         "id": 150,
         "jname": "はねる",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "溶化",
         "ename": "Acid Armor",
         "id": 151,
         "jname": "とける",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Poison"
     },
@@ -1725,13 +1725,13 @@
         "type": "Ground"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "睡觉",
         "ename": "Rest",
         "id": 156,
         "jname": "ねむる",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 44,
         "type": "Psychic"
@@ -1760,24 +1760,24 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "棱角",
         "ename": "Sharpen",
         "id": 159,
         "jname": "かくばる",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "变性",
         "ename": "Conversion",
         "id": 160,
         "jname": "テクスチャー",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -1799,7 +1799,7 @@
         "ename": "Super Fang",
         "id": 162,
         "jname": "いかりのまえば",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -1815,36 +1815,36 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "替身",
         "ename": "Substitute",
         "id": 164,
         "jname": "みがわり",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 90,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "挣扎",
         "ename": "Struggle",
         "id": 165,
         "jname": "わるあがき",
         "power": 50,
-        "pp": null,
+        "pp": 0,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "写生",
         "ename": "Sketch",
         "id": 166,
         "jname": "スケッチ",
-        "power": null,
+        "power": 0,
         "pp": 1,
         "type": "Normal"
     },
@@ -1872,24 +1872,24 @@
         "type": "Dark"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "蛛丝",
         "ename": "Spider Web",
         "id": 169,
         "jname": "クモのす",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Bug"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "心眼",
         "ename": "Mind Reader",
         "id": 170,
         "jname": "こころのめ",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -1900,7 +1900,7 @@
         "ename": "Nightmare",
         "id": 171,
         "jname": "あくむ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Ghost"
     },
@@ -1927,14 +1927,14 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "咒语",
         "ename": "Curse",
         "id": 174,
         "jname": "のろい",
-        "power": null,
-        "pp": null,
+        "power": 0,
+        "pp": 0,
         "type": "Ghost"
     },
     {
@@ -1944,18 +1944,18 @@
         "ename": "Flail",
         "id": 175,
         "jname": "じたばた",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "变性II",
         "ename": "Conversion 2",
         "id": 176,
         "jname": "テクスチャー２",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -1977,7 +1977,7 @@
         "ename": "Cotton Spore",
         "id": 178,
         "jname": "わたほうし",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Grass"
     },
@@ -1988,7 +1988,7 @@
         "ename": "Reversal",
         "id": 179,
         "jname": "きしかいせい",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Fighting"
     },
@@ -1999,7 +1999,7 @@
         "ename": "Spite",
         "id": 180,
         "jname": "うらみ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Ghost"
     },
@@ -2015,13 +2015,13 @@
         "type": "Ice"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "守住",
         "ename": "Protect",
         "id": 182,
         "jname": "まもる",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 17,
         "type": "Normal"
@@ -2044,12 +2044,12 @@
         "ename": "Scary Face",
         "id": 184,
         "jname": "こわいかお",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "虚晃一招",
         "ename": "Feint Attack",
@@ -2066,18 +2066,18 @@
         "ename": "Sweet Kiss",
         "id": 186,
         "jname": "てんしのキッス",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "肚子大鼓",
         "ename": "Belly Drum",
         "id": 187,
         "jname": "はらだいこ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -2116,13 +2116,13 @@
         "type": "Water"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "满地星",
         "ename": "Spikes",
         "id": 191,
         "jname": "まきびし",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Ground"
     },
@@ -2138,35 +2138,35 @@
         "type": "Electric"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "看破",
         "ename": "Foresight",
         "id": 193,
         "jname": "みやぶる",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "同命",
         "ename": "Destiny Bond",
         "id": 194,
         "jname": "みちづれ",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Ghost"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "灭亡之歌",
         "ename": "Perish Song",
         "id": 195,
         "jname": "ほろびのうた",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -2182,13 +2182,13 @@
         "type": "Ice"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "先决",
         "ename": "Detect",
         "id": 197,
         "jname": "みきり",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Fighting"
     },
@@ -2204,13 +2204,13 @@
         "type": "Ground"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "锁定",
         "ename": "Lock-On",
         "id": 199,
         "jname": "ロックオン",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -2226,13 +2226,13 @@
         "type": "Dragon"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "沙雹",
         "ename": "Sandstorm",
         "id": 201,
         "jname": "すなあらし",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 37,
         "type": "Rock"
@@ -2249,13 +2249,13 @@
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "忍耐",
         "ename": "Endure",
         "id": 203,
         "jname": "こらえる",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -2266,7 +2266,7 @@
         "ename": "Charm",
         "id": 204,
         "jname": "あまえる",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Fairy"
     },
@@ -2300,19 +2300,19 @@
         "ename": "Swagger",
         "id": 207,
         "jname": "いばる",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 87,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "饮奶",
         "ename": "Milk Drink",
         "id": 208,
         "jname": "ミルクのみ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -2351,13 +2351,13 @@
         "type": "Steel"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "黑色眼光",
         "ename": "Mean Look",
         "id": 212,
         "jname": "くろいまなざし",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -2368,31 +2368,31 @@
         "ename": "Attract",
         "id": 213,
         "jname": "メロメロ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 45,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "梦话",
         "ename": "Sleep Talk",
         "id": 214,
         "jname": "ねごと",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 88,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "治愈铃声",
         "ename": "Heal Bell",
         "id": 215,
         "jname": "いやしのすず",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -2403,7 +2403,7 @@
         "ename": "Return",
         "id": 216,
         "jname": "おんがえし",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 27,
         "type": "Normal"
@@ -2415,7 +2415,7 @@
         "ename": "Present",
         "id": 217,
         "jname": "プレゼント",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
@@ -2426,31 +2426,31 @@
         "ename": "Frustration",
         "id": 218,
         "jname": "やつあたり",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 21,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "神秘护身",
         "ename": "Safeguard",
         "id": 219,
         "jname": "しんぴのまもり",
-        "power": null,
+        "power": 0,
         "pp": 25,
         "tm": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "分享痛楚",
         "ename": "Pain Split",
         "id": 220,
         "jname": "いたみわけ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -2472,7 +2472,7 @@
         "ename": "Magnitude",
         "id": 222,
         "jname": "マグニチュード",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Ground"
     },
@@ -2510,13 +2510,13 @@
         "type": "Dragon"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "接棒",
         "ename": "Baton Pass",
         "id": 226,
         "jname": "バトンタッチ",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
@@ -2527,7 +2527,7 @@
         "ename": "Encore",
         "id": 227,
         "jname": "アンコール",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -2560,7 +2560,7 @@
         "ename": "Sweet Scent",
         "id": 230,
         "jname": "あまいかおり",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -2587,7 +2587,7 @@
         "type": "Steel"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "一招制敌",
         "ename": "Vital Throw",
@@ -2598,35 +2598,35 @@
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "晨光",
         "ename": "Morning Sun",
         "id": 234,
         "jname": "あさのひざし",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "光学合成",
         "ename": "Synthesis",
         "id": 235,
         "jname": "こうごうせい",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "月光",
         "ename": "Moonlight",
         "id": 236,
         "jname": "つきのひかり",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Fairy"
     },
@@ -2665,25 +2665,25 @@
         "type": "Dragon"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "乞雨",
         "ename": "Rain Dance",
         "id": 240,
         "jname": "あまごい",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "tm": 18,
         "type": "Water"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "大晴天",
         "ename": "Sunny Day",
         "id": 241,
         "jname": "にほんばれ",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "tm": 11,
         "type": "Fire"
@@ -2706,18 +2706,18 @@
         "ename": "Mirror Coat",
         "id": 243,
         "jname": "ミラーコート",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "自我暗示",
         "ename": "Psych Up",
         "id": 244,
         "jname": "じこあんじ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 77,
         "type": "Normal"
@@ -2797,7 +2797,7 @@
         "ename": "Beat Up",
         "id": 251,
         "jname": "ふくろだたき",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Dark"
     },
@@ -2824,13 +2824,13 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "储存",
         "ename": "Stockpile",
         "id": 254,
         "jname": "たくわえる",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -2841,18 +2841,18 @@
         "ename": "Spit Up",
         "id": 255,
         "jname": "はきだす",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "吞下",
         "ename": "Swallow",
         "id": 256,
         "jname": "のみこむ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -2868,13 +2868,13 @@
         "type": "Fire"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "冰雹",
         "ename": "Hail",
         "id": 258,
         "jname": "あられ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 7,
         "type": "Ice"
@@ -2886,7 +2886,7 @@
         "ename": "Torment",
         "id": 259,
         "jname": "いちゃもん",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 41,
         "type": "Dark"
@@ -2898,7 +2898,7 @@
         "ename": "Flatter",
         "id": 260,
         "jname": "おだてる",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Dark"
     },
@@ -2909,7 +2909,7 @@
         "ename": "Will-O-Wisp",
         "id": 261,
         "jname": "おにび",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 61,
         "type": "Fire"
@@ -2921,7 +2921,7 @@
         "ename": "Memento",
         "id": 262,
         "jname": "おきみやげ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Dark"
     },
@@ -2960,36 +2960,36 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "跟我来",
         "ename": "Follow Me",
         "id": 266,
         "jname": "このゆびとまれ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "自然能力",
         "ename": "Nature Power",
         "id": 267,
         "jname": "しぜんのちから",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 96,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "充电",
         "ename": "Charge",
         "id": 268,
         "jname": "じゅうでん",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Electric"
     },
@@ -3000,19 +3000,19 @@
         "ename": "Taunt",
         "id": 269,
         "jname": "ちょうはつ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 12,
         "type": "Dark"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "帮助",
         "ename": "Helping Hand",
         "id": 270,
         "jname": "てだすけ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -3023,51 +3023,51 @@
         "ename": "Trick",
         "id": 271,
         "jname": "トリック",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "角色扮演",
         "ename": "Role Play",
         "id": 272,
         "jname": "なりきり",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "祈求",
         "ename": "Wish",
         "id": 273,
         "jname": "ねがいごと",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "协助",
         "ename": "Assist",
         "id": 274,
         "jname": "ねこのて",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "根深蒂固",
         "ename": "Ingrain",
         "id": 275,
         "jname": "ねをはる",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Grass"
     },
@@ -3083,24 +3083,24 @@
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "魔术外衣",
         "ename": "Magic Coat",
         "id": 277,
         "jname": "マジックコート",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "回收",
         "ename": "Recycle",
         "id": 278,
         "jname": "リサイクル",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -3128,13 +3128,13 @@
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "哈欠",
         "ename": "Yawn",
         "id": 281,
         "jname": "あくび",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -3156,7 +3156,7 @@
         "ename": "Endeavor",
         "id": 283,
         "jname": "がむしゃら",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -3172,57 +3172,57 @@
         "type": "Fire"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "交换绝招",
         "ename": "Skill Swap",
         "id": 285,
         "jname": "スキルスワップ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "封印",
         "ename": "Imprison",
         "id": 286,
         "jname": "ふういん",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "清新",
         "ename": "Refresh",
         "id": 287,
         "jname": "リフレッシュ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "怨恨",
         "ename": "Grudge",
         "id": 288,
         "jname": "おんねん",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Ghost"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "抢夺",
         "ename": "Snatch",
         "id": 289,
         "jname": "よこどり",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Dark"
     },
@@ -3260,24 +3260,24 @@
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "保护色",
         "ename": "Camouflage",
         "id": 293,
         "jname": "ほごしょく",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "萤火",
         "ename": "Tail Glow",
         "id": 294,
         "jname": "ほたるび",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Bug"
     },
@@ -3310,7 +3310,7 @@
         "ename": "Feather Dance",
         "id": 297,
         "jname": "フェザーダンス",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Flying"
     },
@@ -3321,7 +3321,7 @@
         "ename": "Teeter Dance",
         "id": 298,
         "jname": "フラフラダンス",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
@@ -3337,13 +3337,13 @@
         "type": "Fire"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "玩泥巴",
         "ename": "Mud Sport",
         "id": 300,
         "jname": "どろあそび",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Ground"
     },
@@ -3370,13 +3370,13 @@
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "懒惰",
         "ename": "Slack Off",
         "id": 303,
         "jname": "なまける",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Normal"
     },
@@ -3469,13 +3469,13 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "芳香治疗",
         "ename": "Aromatherapy",
         "id": 312,
         "jname": "アロマセラピー",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Grass"
     },
@@ -3486,7 +3486,7 @@
         "ename": "Fake Tears",
         "id": 313,
         "jname": "うそなき",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Dark"
     },
@@ -3514,13 +3514,13 @@
         "type": "Fire"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "气味侦测",
         "ename": "Odor Sleuth",
         "id": 316,
         "jname": "かぎわける",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
@@ -3554,7 +3554,7 @@
         "ename": "Metal Sound",
         "id": 319,
         "jname": "きんぞくおん",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Steel"
     },
@@ -3565,7 +3565,7 @@
         "ename": "Grass Whistle",
         "id": 320,
         "jname": "くさぶえ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Grass"
     },
@@ -3576,18 +3576,18 @@
         "ename": "Tickle",
         "id": 321,
         "jname": "くすぐる",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "无限能量",
         "ename": "Cosmic Power",
         "id": 322,
         "jname": "コスモパワー",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Psychic"
     },
@@ -3614,7 +3614,7 @@
         "type": "Bug"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "影子拳",
         "ename": "Shadow Punch",
@@ -3664,7 +3664,7 @@
         "ename": "Sheer Cold",
         "id": 329,
         "jname": "ぜったいれいど",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Ice"
     },
@@ -3691,7 +3691,7 @@
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "回转攻",
         "ename": "Aerial Ace",
@@ -3714,35 +3714,35 @@
         "type": "Ice"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "铁壁",
         "ename": "Iron Defense",
         "id": 334,
         "jname": "てっぺき",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Steel"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "挡路",
         "ename": "Block",
         "id": 335,
         "jname": "とおせんぼう",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "长嚎",
         "ename": "Howl",
         "id": 336,
         "jname": "とおぼえ",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
@@ -3770,13 +3770,13 @@
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "健美",
         "ename": "Bulk Up",
         "id": 339,
         "jname": "ビルドアップ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 8,
         "type": "Fighting"
@@ -3837,7 +3837,7 @@
         "type": "Electric"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "魔法叶",
         "ename": "Magical Leaf",
@@ -3848,24 +3848,24 @@
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "水之游",
         "ename": "Water Sport",
         "id": 346,
         "jname": "みずあそび",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Water"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "冥想",
         "ename": "Calm Mind",
         "id": 347,
         "jname": "めいそう",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 4,
         "type": "Psychic"
@@ -3882,13 +3882,13 @@
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "龙之舞",
         "ename": "Dragon Dance",
         "id": 349,
         "jname": "りゅうのまい",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Dragon"
     },
@@ -3904,7 +3904,7 @@
         "type": "Rock"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "电击波",
         "ename": "Shock Wave",
@@ -3948,36 +3948,36 @@
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "歇息",
         "ename": "Roost",
         "id": 355,
         "jname": "はねやすめ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 19,
         "type": "Flying"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "重力",
         "ename": "Gravity",
         "id": 356,
         "jname": "じゅうりょく",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "奇迹眼",
         "ename": "Miracle Eye",
         "id": 357,
         "jname": "ミラクルアイ",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Psychic"
     },
@@ -4010,19 +4010,19 @@
         "ename": "Gyro Ball",
         "id": 360,
         "jname": "ジャイロボール",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "tm": 74,
         "type": "Steel"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "治愈愿望",
         "ename": "Healing Wish",
         "id": 361,
         "jname": "いやしのねがい",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
@@ -4044,7 +4044,7 @@
         "ename": "Natural Gift",
         "id": 363,
         "jname": "しぜんのめぐみ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
@@ -4071,24 +4071,24 @@
         "type": "Flying"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "顺风",
         "ename": "Tailwind",
         "id": 366,
         "jname": "おいかぜ",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Flying"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "点穴",
         "ename": "Acupressure",
         "id": 367,
         "jname": "つぼをつく",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -4099,7 +4099,7 @@
         "ename": "Metal Burst",
         "id": 368,
         "jname": "メタルバースト",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Steel"
     },
@@ -4156,7 +4156,7 @@
         "ename": "Embargo",
         "id": 373,
         "jname": "さしおさえ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 63,
         "type": "Dark"
@@ -4168,7 +4168,7 @@
         "ename": "Fling",
         "id": 374,
         "jname": "なげつける",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "tm": 56,
         "type": "Dark"
@@ -4180,18 +4180,18 @@
         "ename": "Psycho Shift",
         "id": 375,
         "jname": "サイコシフト",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "王牌",
         "ename": "Trump Card",
         "id": 376,
         "jname": "きりふだ",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -4202,7 +4202,7 @@
         "ename": "Heal Block",
         "id": 377,
         "jname": "かいふくふうじ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Psychic"
     },
@@ -4213,18 +4213,18 @@
         "ename": "Wring Out",
         "id": 378,
         "jname": "しぼりとる",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "能量骗术",
         "ename": "Power Trick",
         "id": 379,
         "jname": "パワートリック",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
@@ -4235,62 +4235,62 @@
         "ename": "Gastro Acid",
         "id": 380,
         "jname": "いえき",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Poison"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "幸运咒语",
         "ename": "Lucky Chant",
         "id": 381,
         "jname": "おまじない",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "先抢先赢",
         "ename": "Me First",
         "id": 382,
         "jname": "さきどり",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "仿造",
         "ename": "Copycat",
         "id": 383,
         "jname": "まねっこ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "力量交换",
         "ename": "Power Swap",
         "id": 384,
         "jname": "パワースワップ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "防御交换",
         "ename": "Guard Swap",
         "id": 385,
         "jname": "ガードスワップ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
@@ -4301,7 +4301,7 @@
         "ename": "Punishment",
         "id": 386,
         "jname": "おしおき",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Dark"
     },
@@ -4323,7 +4323,7 @@
         "ename": "Worry Seed",
         "id": 388,
         "jname": "なやみのタネ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Grass"
     },
@@ -4339,46 +4339,46 @@
         "type": "Dark"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "毒尖钉",
         "ename": "Toxic Spikes",
         "id": 390,
         "jname": "どくびし",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Poison"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "交换意志",
         "ename": "Heart Swap",
         "id": 391,
         "jname": "ハートスワップ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "水柱圈",
         "ename": "Aqua Ring",
         "id": 392,
         "jname": "アクアリング",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Water"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "电磁浮游",
         "ename": "Magnet Rise",
         "id": 393,
         "jname": "でんじふゆう",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Electric"
     },
@@ -4405,7 +4405,7 @@
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "波导弹",
         "ename": "Aura Sphere",
@@ -4416,13 +4416,13 @@
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "磨光岩石",
         "ename": "Rock Polish",
         "id": 397,
         "jname": "ロックカット",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 69,
         "type": "Rock"
@@ -4626,7 +4626,7 @@
         "ename": "Switcheroo",
         "id": 415,
         "jname": "すりかえ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Dark"
     },
@@ -4643,13 +4643,13 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "诡计",
         "ename": "Nasty Plot",
         "id": 417,
         "jname": "わるだくみ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Dark"
     },
@@ -4810,24 +4810,24 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "清除浓雾",
         "ename": "Defog",
         "id": 432,
         "jname": "きりばらい",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Flying"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "骗术空间",
         "ename": "Trick Room",
         "id": 433,
         "jname": "トリックルーム",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "tm": 92,
         "type": "Psychic"
@@ -4932,7 +4932,7 @@
         "type": "Steel"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "磁铁爆弹",
         "ename": "Magnet Bomb",
@@ -4961,18 +4961,18 @@
         "ename": "Captivate",
         "id": 445,
         "jname": "ゆうわく",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "隐形岩",
         "ename": "Stealth Rock",
         "id": 446,
         "jname": "ステルスロック",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Rock"
     },
@@ -4983,7 +4983,7 @@
         "ename": "Grass Knot",
         "id": 447,
         "jname": "くさむすび",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 86,
         "type": "Grass"
@@ -5067,24 +5067,24 @@
         "type": "Bug"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "防御指令",
         "ename": "Defend Order",
         "id": 455,
         "jname": "ぼうぎょしれい",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Bug"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "回复指令",
         "ename": "Heal Order",
         "id": 456,
         "jname": "かいふくしれい",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Bug"
     },
@@ -5133,13 +5133,13 @@
         "type": "Dragon"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "新月舞",
         "ename": "Lunar Dance",
         "id": 461,
         "jname": "みかづきのまい",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
@@ -5150,7 +5150,7 @@
         "ename": "Crush Grip",
         "id": 462,
         "jname": "にぎりつぶす",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Normal"
     },
@@ -5172,7 +5172,7 @@
         "ename": "Dark Void",
         "id": 464,
         "jname": "ダークホール",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Dark"
     },
@@ -5210,58 +5210,58 @@
         "type": "Ghost"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "磨爪子",
         "ename": "Hone Claws",
         "id": 468,
         "jname": "つめとぎ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 1,
         "type": "Dark"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "全体防御",
         "ename": "Wide Guard",
         "id": 469,
         "jname": "ワイドガード",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Rock"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "防御平分",
         "ename": "Guard Split",
         "id": 470,
         "jname": "ガードシェア",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "力量平分",
         "ename": "Power Split",
         "id": 471,
         "jname": "パワーシェア",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "奇妙空间",
         "ename": "Wonder Room",
         "id": 472,
         "jname": "ワンダールーム",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
@@ -5290,46 +5290,46 @@
         "type": "Poison"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "体重减轻",
         "ename": "Autotomize",
         "id": 475,
         "jname": "ボディパージ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Steel"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "愤怒之粉",
         "ename": "Rage Powder",
         "id": 476,
         "jname": "いかりのこな",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Bug"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "心灵传动术",
         "ename": "Telekinesis",
         "id": 477,
         "jname": "テレキネシス",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "魔法空间",
         "ename": "Magic Room",
         "id": 478,
         "jname": "マジックルーム",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
@@ -5380,13 +5380,13 @@
         "type": "Poison"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "蝶之舞",
         "ename": "Quiver Dance",
         "id": 483,
         "jname": "ちょうのまい",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Bug"
     },
@@ -5397,7 +5397,7 @@
         "ename": "Heavy Slam",
         "id": 484,
         "jname": "ヘビーボンバー",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Steel"
     },
@@ -5419,7 +5419,7 @@
         "ename": "Electro Ball",
         "id": 486,
         "jname": "エレキボール",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Electric"
     },
@@ -5430,7 +5430,7 @@
         "ename": "Soak",
         "id": 487,
         "jname": "みずびたし",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Water"
     },
@@ -5447,13 +5447,13 @@
         "type": "Fire"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "盘卷",
         "ename": "Coil",
         "id": 489,
         "jname": "とぐろをまく",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Poison"
     },
@@ -5498,7 +5498,7 @@
         "ename": "Simple Beam",
         "id": 493,
         "jname": "シンプルビーム",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
@@ -5509,18 +5509,18 @@
         "ename": "Entrainment",
         "id": 494,
         "jname": "なかまづくり",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "你先请",
         "ename": "After You",
         "id": 495,
         "jname": "おさきにどうぞ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
@@ -5560,7 +5560,7 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "清除迷雾",
         "ename": "Clear Smog",
@@ -5582,24 +5582,24 @@
         "type": "Psychic"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "先制防御",
         "ename": "Quick Guard",
         "id": 501,
         "jname": "ファストガード",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "位置交换",
         "ename": "Ally Switch",
         "id": 502,
         "jname": "サイドチェンジ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Psychic"
     },
@@ -5616,24 +5616,24 @@
         "type": "Water"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "破壳",
         "ename": "Shell Smash",
         "id": 504,
         "jname": "からをやぶる",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "治愈波动",
         "ename": "Heal Pulse",
         "id": 505,
         "jname": "いやしのはどう",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Psychic"
     },
@@ -5661,13 +5661,13 @@
         "type": "Flying"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "交换齿轮",
         "ename": "Shift Gear",
         "id": 508,
         "jname": "ギアチェンジ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Steel"
     },
@@ -5701,7 +5701,7 @@
         "ename": "Quash",
         "id": 511,
         "jname": "さきおくり",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "tm": 60,
         "type": "Dark"
@@ -5719,13 +5719,13 @@
         "type": "Flying"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "镜子系",
         "ename": "Reflect Type",
         "id": 513,
         "jname": "ミラータイプ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
@@ -5748,18 +5748,18 @@
         "ename": "Final Gambit",
         "id": 515,
         "jname": "いのちがけ",
-        "power": null,
+        "power": 0,
         "pp": 5,
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "礼物传递",
         "ename": "Bestow",
         "id": 516,
         "jname": "ギフトパス",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Normal"
     },
@@ -5868,13 +5868,13 @@
         "type": "Dragon"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "自我激励",
         "ename": "Work Up",
         "id": 526,
         "jname": "ふるいたてる",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -5974,7 +5974,7 @@
         "ename": "Heat Crash",
         "id": 535,
         "jname": "ヒートスタンプ",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Fire"
     },
@@ -6001,13 +6001,13 @@
         "type": "Bug"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "棉花防御",
         "ename": "Cotton Guard",
         "id": 538,
         "jname": "コットンガード",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Grass"
     },
@@ -6255,13 +6255,13 @@
         "type": "Fighting"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "垫返",
         "ename": "Mat Block",
         "id": 561,
         "jname": "たたみがえし",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Fighting"
     },
@@ -6277,24 +6277,24 @@
         "type": "Poison"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "耕地",
         "ename": "Rototiller",
         "id": 563,
         "jname": "たがやす",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Ground"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "physic",
         "cname": "粘网",
         "ename": "Sticky Web",
         "id": 564,
         "jname": "ねばねばネット",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Bug"
     },
@@ -6327,7 +6327,7 @@
         "ename": "Trick-or-Treat",
         "id": 567,
         "jname": "ハロウィン",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Ghost"
     },
@@ -6338,7 +6338,7 @@
         "ename": "Noble Roar",
         "id": 568,
         "jname": "おたけび",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
@@ -6349,7 +6349,7 @@
         "ename": "Ion Deluge",
         "id": 569,
         "jname": "プラズマシャワー",
-        "power": null,
+        "power": 0,
         "pp": 25,
         "type": "Electric"
     },
@@ -6371,7 +6371,7 @@
         "ename": "Forest's Curse",
         "id": 571,
         "jname": "もりののろい",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Grass"
     },
@@ -6398,7 +6398,7 @@
         "type": "Ice"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "魅惑之音",
         "ename": "Disarming Voice",
@@ -6415,7 +6415,7 @@
         "ename": "Parting Shot",
         "id": 575,
         "jname": "すてゼリフ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Dark"
     },
@@ -6426,7 +6426,7 @@
         "ename": "Topsy-Turvy",
         "id": 576,
         "jname": "ひっくりかえす",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Dark"
     },
@@ -6442,57 +6442,57 @@
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "狡猾防御",
         "ename": "Crafty Shield",
         "id": 578,
         "jname": "トリックガード",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "鲜花防御",
         "ename": "Flower Shield",
         "id": 579,
         "jname": "フラワーガード",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "草原场地",
         "ename": "Grassy Terrain",
         "id": 580,
         "jname": "グラスフィールド",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Grass"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "薄雾场地",
         "ename": "Misty Terrain",
         "id": 581,
         "jname": "ミストフィールド",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "送电",
         "ename": "Electrify",
         "id": 582,
         "jname": "そうでん",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Electric"
     },
@@ -6541,46 +6541,46 @@
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "妖精之锁",
         "ename": "Fairy Lock",
         "id": 587,
         "jname": "フェアリーロック",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "王者之盾",
         "ename": "King's Shield",
         "id": 588,
         "jname": "キングシールド",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Steel"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "做朋友",
         "ename": "Play Nice",
         "id": 589,
         "jname": "なかよくする",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "私话",
         "ename": "Confide",
         "id": 590,
         "jname": "ないしょばなし",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "tm": 100,
         "type": "Normal"
@@ -6608,13 +6608,13 @@
         "type": "Fire"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "刺针防御",
         "ename": "Spiky Shield",
         "id": 596,
         "jname": "ニードルガード",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Grass"
     },
@@ -6625,7 +6625,7 @@
         "ename": "Aromatic Mist",
         "id": 597,
         "jname": "アロマミスト",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Fairy"
     },
@@ -6636,7 +6636,7 @@
         "ename": "Eerie Impulse",
         "id": 598,
         "jname": "かいでんぱ",
-        "power": null,
+        "power": 0,
         "pp": 15,
         "type": "Electric"
     },
@@ -6647,7 +6647,7 @@
         "ename": "Venom Drench",
         "id": 599,
         "jname": "ベノムトラップ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Poison"
     },
@@ -6658,51 +6658,51 @@
         "ename": "Powder",
         "id": 600,
         "jname": "ふんじん",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Bug"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "大地控制",
         "ename": "Geomancy",
         "id": 601,
         "jname": "ジオコントロール",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "磁场操作",
         "ename": "Magnetic Flux",
         "id": 602,
         "jname": "じばそうさ",
-        "power": null,
+        "power": 0,
         "pp": 20,
         "type": "Electric"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "快乐时间",
         "ename": "Happy Hour",
         "id": 603,
         "jname": "ハッピータイム",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Normal"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "电气场地",
         "ename": "Electric Terrain",
         "id": 604,
         "jname": "エレキフィールド",
-        "power": null,
+        "power": 0,
         "pp": 10,
         "type": "Electric"
     },
@@ -6719,13 +6719,13 @@
         "type": "Fairy"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "status",
         "cname": "庆祝",
         "ename": "Celebration",
         "id": 606,
         "jname": "おいわい",
-        "power": null,
+        "power": 0,
         "pp": 40,
         "type": "Normal"
     },
@@ -6736,7 +6736,7 @@
         "ename": "Baby-Doll Eyes",
         "id": 608,
         "jname": "つぶらなひとみ",
-        "power": null,
+        "power": 0,
         "pp": 30,
         "type": "Fairy"
     },
@@ -6810,7 +6810,7 @@
         "type": "Rock"
     },
     {
-        "accuracy": null,
+        "accuracy": 0,
         "category": "special",
         "cname": "",
         "ename": "Hyperspace Hole",
