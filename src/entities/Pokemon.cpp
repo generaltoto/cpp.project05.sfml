@@ -57,13 +57,19 @@ void Pokemon::levelUp(int expEarn) {
 }
 
 void Pokemon::updateCurrentStat() {
+	
+	this->currentStats.insert({ HP,0 });
+	this->currentStats.insert({ ATK,0 });
+	this->currentStats.insert({ ATKSPE,0 });
+	this->currentStats.insert({ DEF,0 });
+	this->currentStats.insert({ DEFSPE,0 });
+	this->currentStats.insert({ VIT,0 });
 	std::map<Stat, int>::iterator it;
-
-	for (it = this->currentStats.begin(); it != this->currentStats.end(); it++) {
+	for (it = currentStats.begin(); it != currentStats.end(); it++) {
 		if (it != this->currentStats.begin()) {
-			this->currentStats[it->first] = int(
-				((2 * this->baseStats[it->first]) * this->levels.level) / 100)
-				+ 5;
+			this->currentStats[it->first] =
+				(((2 * this->baseStats[it->first]) 
+					* this->levels.level) / 100) + 5;
 		}
 	}
 	this->currentStats[HP] = int

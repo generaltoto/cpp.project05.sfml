@@ -100,9 +100,9 @@ void Game::runGame() {
 
 	Music music = { "assets/audio/main_music.ogg" };
 	music.play();
-	music.setVolume(60.f);
+	music.setVolume(5.f);
 	Sound soundEffect;
-	soundEffect.setVolume(75.f);
+	soundEffect.setVolume(5.f);
 
 	int frameCount = 0;
 	sf::Event e{};

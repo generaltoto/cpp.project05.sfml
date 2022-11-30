@@ -6,6 +6,7 @@
 # include "include/map/MapGenerator.h"
 # include "data/DataManager.h"
 # include "include/audio/Music.h"
+# include "include/entities/Pokemon.h"
 # include <iostream>
 
 using json = nlohmann::json;

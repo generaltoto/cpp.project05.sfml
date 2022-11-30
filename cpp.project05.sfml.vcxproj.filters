@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-<<<<<<< HEAD
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\audio\Music.cpp" />
+    <ClCompile Include="src\audio\Sound.cpp" />
     <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\entities\Pokeball.cpp" />
@@ -10,15 +11,17 @@
     <ClCompile Include="src\entities\Spray.cpp" />
     <ClCompile Include="src\entities\TexturedElement.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\map\db_perlin.cpp" />
     <ClCompile Include="src\map\MapGenerator.cpp" />
+    <ClCompile Include="src\data\DataManager.cpp" />
     <ClCompile Include="src\view\Button.cpp" />
     <ClCompile Include="src\view\InventoryMenu.cpp" />
     <ClCompile Include="src\view\MainWindow.cpp" />
     <ClCompile Include="src\view\Menu.cpp" />
-    <ClCompile Include="src\map\db_perlin.cpp" />
-    <ClCompile Include="src\data\DataManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\audio\Music.h" />
+    <ClInclude Include="include\audio\Sound.h" />
     <ClInclude Include="include\entities\NPC.h" />
     <ClInclude Include="include\entities\Player.h" />
     <ClInclude Include="include\entities\Pokeball.h" />
@@ -26,220 +29,44 @@
     <ClInclude Include="include\entities\Spray.h" />
     <ClInclude Include="include\entities\TexturedElement.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\data\DataManager.h" />
+    <ClInclude Include="include\data\json.hpp" />
     <ClInclude Include="include\map\db_perlin.hpp" />
     <ClInclude Include="include\map\MapGenerator.h" />
     <ClInclude Include="include\map\TileMap.h" />
     <ClInclude Include="include\Structures.h" />
     <ClInclude Include="include\view\Button.h" />
     <ClInclude Include="include\view\MainWindow.h" />
-    <ClInclude Include="include\data\json.hpp" />
-    <ClInclude Include="include\data\DataManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\audio\atk_effect.wav" />
+    <Media Include="assets\audio\heal_effect.wav" />
+    <Media Include="assets\audio\menu_sound_effect.wav" />
+    <Media Include="assets\audio\start_battle.wav" />
+    <Media Include="assets\audio\win_battle.wav" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\inventoryBackground.png" />
     <Image Include="assets\items.png" />
     <Image Include="assets\Menu.jpg" />
+    <Image Include="assets\menuBackground.jpg" />
     <Image Include="assets\pikachu.png" />
     <Image Include="assets\pixil-frame-0.png" />
     <Image Include="assets\pixil-frame-1.png" />
     <Image Include="assets\pokemon.png" />
+    <Image Include="assets\pokemons.png" />
     <Image Include="assets\sacha.png" />
-    <Image Include="assets\menuBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\pixelFont.ttf" />
-=======
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\Entities">
-      <UniqueIdentifier>{fc34c272-3ab4-4613-9fe5-8bc75757aae0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entities">
-      <UniqueIdentifier>{edf8f245-219f-449f-84d9-fb892fbfcc3d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\View">
-      <UniqueIdentifier>{98ff6d25-18f3-4da6-bac2-9c21210d85ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Map">
-      <UniqueIdentifier>{33fbfff7-204f-4cc5-91b0-e26289881847}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\View">
-      <UniqueIdentifier>{100450cd-8f10-4ee3-8bb1-73251728e0c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Map">
-      <UniqueIdentifier>{8172e20b-4f85-43b4-a2c1-7b78d9aba51e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Audio">
-      <UniqueIdentifier>{f61c53c7-7a72-4388-a3aa-f91a1e2a824e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Audio">
-      <UniqueIdentifier>{6d298491-42bf-415d-8b47-5a58925594fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\audio">
-      <UniqueIdentifier>{1cd573d4-bc70-4e35-853a-4e0bb191c0b4}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\NPC.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Player.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Pokeball.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Pokemon.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\Spray.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\entities\TexturedElement.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\Button.cpp">
-      <Filter>Source Files\View</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\MainWindow.cpp">
-      <Filter>Source Files\View</Filter>
-    </ClCompile>
-    <ClCompile Include="src\view\Menu.cpp">
-      <Filter>Source Files\View</Filter>
-    </ClCompile>
-    <ClCompile Include="src\map\MapGenerator.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="src\map\db_perlin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\audio\Music.cpp">
-      <Filter>Source Files\Audio</Filter>
-    </ClCompile>
-    <ClCompile Include="src\audio\Sound.cpp">
-      <Filter>Source Files\Audio</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Structures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\NPC.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Player.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Pokeball.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Pokemon.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\Spray.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\entities\TexturedElement.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\view\Button.h">
-      <Filter>Header Files\View</Filter>
-    </ClInclude>
-    <ClInclude Include="include\view\MainWindow.h">
-      <Filter>Header Files\View</Filter>
-    </ClInclude>
-    <ClInclude Include="include\map\db_perlin.hpp">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="include\map\MapGenerator.h">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="include\map\TileMap.h">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
-    <ClInclude Include="Database.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="include\audio\Music.h">
-      <Filter>Header Files\Audio</Filter>
-    </ClInclude>
-    <ClInclude Include="include\audio\Sound.h">
-      <Filter>Header Files\Audio</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\pikachu.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\Menu.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\pixil-frame-0.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\pixil-frame-1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\pokemons.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\sacha.png">
-      <Filter>Resource Files</Filter>
-    </Image>
->>>>>>> feature/audio
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
-    <None Include="README.md" />
     <None Include="include\data\moves.json" />
     <None Include="include\data\pokedex.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".gitattributes" />
-    <None Include=".gitignore" />
+    <None Include="assets\audio\main_music.ogg" />
+    <None Include="assets\audio\music_battle.ogg" />
     <None Include="README.md" />
-    <None Include="assets\audio\main_music.ogg">
-      <Filter>Resource Files\audio</Filter>
-    </None>
-    <None Include="assets\audio\music_battle.ogg">
-      <Filter>Resource Files\audio</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="assets\audio\atk_effect.wav">
-      <Filter>Resource Files\audio</Filter>
-    </Media>
-    <Media Include="assets\audio\heal_effect.wav">
-      <Filter>Resource Files\audio</Filter>
-    </Media>
-    <Media Include="assets\audio\menu_sound_effect.wav">
-      <Filter>Resource Files\audio</Filter>
-    </Media>
-    <Media Include="assets\audio\start_battle.wav">
-      <Filter>Resource Files\audio</Filter>
-    </Media>
-    <Media Include="assets\audio\win_battle.wav">
-      <Filter>Resource Files\audio</Filter>
-    </Media>
   </ItemGroup>
 </Project>
