@@ -11,7 +11,7 @@ Pokemon::Pokemon(
 	std::string caption,
 	int level,
 	std::vector<int> stats
-) {
+) : TexturedElement(x, y, name, path) {
 	this->posX = x;
 	this->posY = y;
 	this->name = name;
@@ -26,9 +26,18 @@ Pokemon::Pokemon(
 	this->levels.ExpToNext = level ^ 3;
 	this->levels.currentExp = 0;
 	initStats(stats, level);
+	this->currentHealth = this->currentStats[HP];
 }
 
-Pokemon::~Pokemon() = default;
+std::vector<int> Pokemon::getHealthAndMax()
+{
+	return std::vector<int>{ this->currentHealth, this->currentStats[HP] };
+}
+
+Level& Pokemon::getLevel()
+{
+	return this->levels;
+}
 
 void Pokemon::initStats(std::vector<int> stats, int level) {
 	this->baseStats.insert({ HP,stats[0] });
@@ -38,9 +47,6 @@ void Pokemon::initStats(std::vector<int> stats, int level) {
 	this->baseStats.insert({ DEFSPE,stats[4] });
 	this->baseStats.insert({ VIT,stats[5] });
 	updateCurrentStat();
-
-	if (!this->asset.loadFromFile(path)) throw("ERROR::LOADING_POKEMON_SPRITE");
-	this->sprite.setTexture(this->asset);
 }
 
 void Pokemon::levelUp(int expEarn) {
@@ -50,6 +56,7 @@ void Pokemon::levelUp(int expEarn) {
 		this->levels.currentExp -= this->levels.ExpToNext;
 		this->levels.ExpToNext = this->levels.level ^ 3;
 		updateCurrentStat();
+		this->currentHealth += 1 + ((2 * this->baseStats[HP]) / 100);
 	}
 	if (this->levels.level == this->levels.evolveLvl) {
 		/*evolve();*/
@@ -66,8 +73,7 @@ void Pokemon::updateCurrentStat() {
 				+ 5;
 		}
 	}
-	this->currentStats[HP] = int
-	((2 * this->baseStats[HP] * this->levels.level) / 100)
+	this->currentStats[HP] = int((2 * this->baseStats[HP] * this->levels.level) / 100)
 		+ this->levels.level + 10;
 }
 

@@ -11,7 +11,7 @@ void MapGenerator::GenerateMap() {
             level[x][y] = (
                 db::perlin(float(x) / 64.0f, float(y) / 64.0f, seed * 0.25f) * 1.0f +
                 db::perlin(float(x) / 32.0f, float(y) / 32.0f, seed * 0.75f) * 0.5f
-                ) / 0.2f; 
+                ) / 1.f; 
         }
     }
 }

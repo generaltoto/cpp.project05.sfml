@@ -32,7 +32,7 @@ void MainWindow::Menu::setValues() {
     sizes = { 36,36,36,36 };
 
     for (std::size_t i{}; i < texts.size(); ++i) {
-        texts[i].setFont(*this->contextWindow->getFont());
+        texts[i].setFont(this->contextWindow->getFont());
         texts[i].setString(options[i]);
         texts[i].setCharacterSize(sizes[i]);
         texts[i].setOutlineColor(sf::Color::Black);

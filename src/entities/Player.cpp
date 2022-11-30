@@ -1,36 +1,34 @@
 #include "include/entities/Player.h"
-#include "include/map/MapGenerator.h"
 
-Player::Player() { 
-	this->team.resize(0);
+Player::Player(int x, int y, std::string name, std::string path) : TexturedElement(x, y, name, path) { 
+	this->nbPokemons = 0;
 	this->bag.resize(3);
-	sf::VideoMode* size = new sf::VideoMode();
-	this->xOnMap = 0;
-	this->yOnMap = 0;
-	this->name = "Petit Louis";
-	this->path = "assets/sacha.png";
+	this->xOnMap = x;
+	this->yOnMap = x;
+	this->name = name;
+	this->path = path;
 	this->animeCount = 0;
 	this->animePos = std::vector<std::vector<sf::IntRect>>(ANIME_SACHA_RECT);
 	if (animePos.size() <= 0) throw("C K C");
-	if (!this->asset.loadFromFile("assets/sacha.png")) {
-		throw("C K C");
-	}
-	else {
-		this->sprite.setTexture(this->asset);
-		this->sprite.setTextureRect(this->animePos[0][this->animeCount]);
-	}
+	else this->sprite.setTextureRect(this->animePos[0][this->animeCount]);
 	this->sprite.setScale(0.6f, 0.6f);
-	delete size;
 }
 
-Player::~Player() { }
+int& Player::getNbPokemon()
+{
+	return this->nbPokemons;
+}
 
-std::vector<Pokemon> Player::getTeam() { return this->team; }
+Pokemon* Player::getTeam() { return this->team; }
 
 std::vector<int> Player::getBag() { return this->bag; }
 
 void Player::addPokemon(Pokemon p) {
-	if (this->team.size() < 6) this->team.push_back(p);
+	if (this->nbPokemons < 6)
+	{
+		team[nbPokemons] = p;
+		++this->nbPokemons;
+	}
 }
 
 void Player::removePokemon(int id) {

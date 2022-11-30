@@ -110,24 +110,64 @@ void MainWindow::InventoryMenu::navigatePokemons()
 	}
 }
 
-/// Converts an int into string
-extern std::string convertToString(int number)
-{
-	std::stringstream convert;
-	convert << number;
-	auto str = convert.str();
-	return convert.str().c_str();
-}
-
 void MainWindow::InventoryMenu::draw()
 {
 	this->contextWindow->getWindow()->draw(this->bg);
-	for (int i = 0; i < 6; i++) this->contextWindow->getWindow()->draw(pZones[i]);
-	for (int i = 0; i < 3; i++) this->contextWindow->getWindow()->draw(iZones[i]);
-	const int assetSize = 24;
+	for (auto& pZonesShape : pZones) this->contextWindow->getWindow()->draw(pZonesShape);
+	const int pokemonAssetSz = 40;
+	for (int i = 0; i < this->contextPlayer->getNbPokemon(); i++)
+	{
+		// drawing pokemon image
+		this->contextPlayer->getTeam()[i].getSprite().setScale(3.f, 3.f);
+		this->contextPlayer->getTeam()[i].getSprite().setPosition(
+			this->pZoneCoords[i].x + this->pZoneSize.x * 0.05,
+			this->pZoneCoords[i].y + this->pZoneSize.y * 0.1
+		);
+		this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[i].getSprite());
+
+		sf::Text txt;
+		txt.setFont(this->contextWindow->getFont());
+
+		// drawing pokemon name 
+		txt.setString(this->contextPlayer->getTeam()[i].getName());
+		txt.setCharacterSize(30);
+		txt.setOutlineColor(sf::Color::Black);
+		txt.setOutlineThickness(5);
+		txt.setPosition(
+			this->contextPlayer->getTeam()[i].getSprite().getPosition().x + pokemonAssetSz + 100,
+			this->contextPlayer->getTeam()[i].getSprite().getPosition().y + 20
+		);
+		this->contextWindow->getWindow()->draw(txt);
+
+		txt.setOutlineThickness(0);
+		txt.setCharacterSize(20);
+
+		//drawing pokemon level
+		txt.setString("Level :    " + std::to_string(this->contextPlayer->getTeam()[i].getLevel().level));
+		txt.setPosition(
+			this->contextPlayer->getTeam()[i].getSprite().getPosition().x + pokemonAssetSz + 100,
+			this->contextPlayer->getTeam()[i].getSprite().getPosition().y + 75
+		);
+		this->contextWindow->getWindow()->draw(txt);
+
+		//drawing pokemon hp
+		txt.setString("HP :    " + 
+			std::to_string(this->contextPlayer->getTeam()[i].getHealthAndMax()[0]) + 
+			"  /  " + 
+			std::to_string(this->contextPlayer->getTeam()[i].getHealthAndMax()[1])
+		);
+		txt.setPosition(
+			this->contextPlayer->getTeam()[i].getSprite().getPosition().x + pokemonAssetSz + 300,
+			this->contextPlayer->getTeam()[i].getSprite().getPosition().y + 75
+		);
+		this->contextWindow->getWindow()->draw(txt);
+	}
+
+	for (auto& iZonesShape : iZones) this->contextWindow->getWindow()->draw(iZonesShape);
+	const int itemAssetSz = 24;
 	for (int i = 0; i < this->contextPlayer->getBag().size(); i++)
 	{
-		sf::IntRect spSize = { assetSize * i, 0, assetSize, assetSize };
+		sf::IntRect spSize = { itemAssetSz * i, 0, itemAssetSz, itemAssetSz };
 		sf::Texture t;
 		sf::Sprite sp;
 		if (t.loadFromFile("assets/items.png"))
@@ -148,12 +188,12 @@ void MainWindow::InventoryMenu::draw()
 			this->contextWindow->getWindow()->draw(sp);
 
 			sf::Text txt;
-			txt.setFont(*this->contextWindow->getFont());
-			txt.setString("x" + convertToString(this->contextPlayer->getBag()[i]));
+			txt.setFont(this->contextWindow->getFont());
+			txt.setString("x" + std::to_string(this->contextPlayer->getBag()[i]));
 			txt.setCharacterSize(55);
 			txt.setOutlineColor(sf::Color::Black);
 			txt.setPosition(
-				sp.getPosition().x + assetSize + 100, sp.getPosition().y + 20
+				sp.getPosition().x + itemAssetSz + 100, sp.getPosition().y + 20
 			);
 			this->contextWindow->getWindow()->draw(txt);
 		}
