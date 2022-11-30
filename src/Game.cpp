@@ -83,8 +83,15 @@ void Game::runGame() {
 	player.addItems(1, 69);
 	player.addItems(2, 15);
 
+	Music music = { "assets/audio/main_music.ogg" };
+	music.setVolume(50);
+	music.play();
+	Sound soundEffect;
+	soundEffect.setVolume(50);
+
 	MainWindow::Menu gameMenu(mainWindow);
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
+	MainWindow::SettingsMenu settMenu(mainWindow, &soundEffect, &music);
 	mainWindow->setMenu(&gameMenu, &invMenu);
 
 	TileMap map;
@@ -103,12 +110,6 @@ void Game::runGame() {
 	//2.9 pour 64 * 64   11.6 pour 256 * 256
 	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
 		throw("ERROR::MAP_LOADING");
-
-	Music music = { "assets/audio/main_music.ogg" };
-	music.play();
-	music.setVolume(5.f);
-	Sound soundEffect;
-	soundEffect.setVolume(5.f);
 
 	int frameCount = 0;
 	sf::Event e{};
@@ -144,6 +145,9 @@ void Game::runGame() {
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
 					invMenu.navigate();
 					break;
+				case SETTINGS:
+					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
+					settMenu.navigateSettings(&currentView, &soundEffect, &music);
 				default:
 					break;
 				}
@@ -168,6 +172,9 @@ void Game::runGame() {
 			break;
 		case INVENTORY:
 			invMenu.draw();
+			break;
+		case SETTINGS:
+			settMenu.draw();
 			break;
 		default:
 			break;

@@ -7,7 +7,7 @@
 
 enum Stat { HP, ATK, ATKSPE, DEF, DEFSPE, VIT };
 
-enum ViewTypes { MENU, PLAY, COMBAT, INVENTORY };
+enum ViewTypes { MENU, PLAY, COMBAT, INVENTORY, SETTINGS };
 
 enum SprayType { HEAL, RESET };
 
