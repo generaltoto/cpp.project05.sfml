@@ -12,6 +12,7 @@
 #include "include/entities/Player.h"
 #include <sstream>
 #include "include/audio/Sound.h"
+#include "include/audio/Music.h"
 
 class MainWindow {
 
@@ -28,7 +29,6 @@ public:
         sf::Sprite bg;
 
         std::vector<const char*> options;
-        std::vector<sf::Vector2f> textCoords;
         std::vector<sf::Text> texts;
         std::vector<std::size_t> sizes;
 
@@ -87,27 +87,63 @@ public:
         void draw();
     };
 
+    class SettingsMenu {
+    protected:
+       MainWindow* contextWindow;
+       int currentSelected;
+
+       const char* bgPath = "assets/inventoryBackground.png";
+       sf::Texture bgAsset;
+       sf::Sprite bg;
+
+       std::vector<const char*> options;
+       std::vector<sf::Vector2f> textCoords;
+       std::vector<sf::Text> texts;
+       std::vector<std::size_t> sizes;
+
+       std::vector<sf::Text> volText;
+       std::vector<sf::Vector2f> volTextCoords;
+       std::vector<std::size_t> volSizes;
+
+
+       void setValues(Sound* soundEffect, Music* music);
+
+    public:
+       SettingsMenu(MainWindow* window, Sound* soundEffect, Music* music);
+       ~SettingsMenu();
+
+       /// Allows you to navigate in the settings.
+       void navigateSettings(ViewTypes* currentView, Sound* soundEffect, Music* music);
+
+       /// Updates the values of volumes to display.
+       void updateDrawVol(Sound* soundEffect, Music* music);
+
+       /// Displays the settings.
+       void draw();
+    };
+
 private:
     sf::RenderWindow* window;
     sf::VideoMode vMode;
-    sf::Font* font;
+    sf::Font font;
 
     Menu* menu;
+    InventoryMenu* invMenu;
 
 public:
-    MainWindow();
+    MainWindow(sf::Font);
     ~MainWindow();
 
     /// Returns the window
     sf::RenderWindow* getWindow();
 
     /// Return the used font
-    sf::Font* getFont();
+    sf::Font &getFont();
 
     /// Returns the window's video mode
     sf::VideoMode* getVideoMode();
 
-    void setMenu(Menu* menu);
+    void setMenu(Menu* menu, InventoryMenu* invMenu);
 
     /// Initiates the windows and its parameters
     void initWindow();
