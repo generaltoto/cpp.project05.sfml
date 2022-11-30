@@ -1,18 +1,22 @@
 # pragma once
 # include "TexturedElement.h"
 # include "Pokemon.h"
+# include "include/map/MapGenerator.h"
+
 
 class Player : public TexturedElement {
 private:
-	std::vector<Pokemon> team;
+	int nbPokemons;
+	Pokemon team[6];
 	int xOnMap, yOnMap;
 	std::vector<int> bag;
 
 public:
-	Player();
-	~Player();
+	Player(int, int, std::string name, std::string path);
 
-	std::vector<Pokemon> getTeam();
+	int& getNbPokemon();
+
+	Pokemon* getTeam();
 
 	std::vector<int> getBag();
 

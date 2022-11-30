@@ -7,11 +7,11 @@ private:
 	Capacity capacities[4];
 	std::string caption;
 	struct Level levels;
-	//Audio;
 
 public:
 	std::map<Stat, int> baseStats;
 	std::map<Stat, int> currentStats;
+	int currentHealth;
 
 	Pokemon();
 	Pokemon(
@@ -24,9 +24,13 @@ public:
 		int level,
 		std::vector<int>
 	);
-	~Pokemon();
+
+	std::vector<int> getHealthAndMax();
+
+	Level& getLevel();
 
 	void initStats(std::vector<int>, int level);
+
 	void levelUp(int expEarn);
 
 	void updateCurrentStat();

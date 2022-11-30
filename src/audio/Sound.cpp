@@ -67,4 +67,15 @@ void Sound::setBuffer(sf::SoundBuffer buff) { this->sound.setBuffer(buff);  }
 
 void Sound::play() { this->sound.play(); }
 
-void Sound::setVolume(float vol) { this->sound.setVolume(vol); }
+float Sound::getVolume() { return this->sound.getVolume(); }
+
+void Sound::setVolume(float vol) {
+	if (vol >= 0 && vol <= 100) {
+		this->sound.setVolume(float(vol));
+		return;
+	}
+	if (vol <= 0) {
+		this->sound.setVolume(0.f);
+		return;
+	}
+}

@@ -19,12 +19,13 @@ public:
     static MainWindow* mainWindow;
 
     /// List of all pokemons
-    static std::vector<Pokemon> pokemons;
+    static Pokemon pokemons[809];
 
     /// List of all capacities
-    static std::vector<Capacity> capacities;
+    static Capacity capacities[619];
 
     static void createPokemons(
+        int index,
         int x,
         int y,
         std::string name,
@@ -36,6 +37,7 @@ public:
     );
 
     static void createCapacity(
+        int index,
         std::string name,
         int damage,
         std::string attackType,

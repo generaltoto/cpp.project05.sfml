@@ -1,28 +1,27 @@
 #include "include/Game.h"
 
 MainWindow* Game::mainWindow = nullptr;
-std::vector<Pokemon> Game::pokemons = {};
-std::vector<Capacity> Game::capacities = {};
+Pokemon Game::pokemons[809] = {};
+Capacity Game::capacities[619] = {};
 
 void Game::createPokemons(
-	int x, int y, std::string name, std::string path, std::vector<std::string> types,
+	int index, int x, int y, std::string name, std::string path, std::vector<std::string> types,
 	std::string caption, int level, std::vector<int> stats
 )
 {
-	Pokemon p = Pokemon(
-		x, y, name, path, types, caption, level, stats
-	);
-	Game::pokemons.push_back(p);
+	Game::pokemons[index] = { x, y, name, path, types, caption, level, stats };
 }
 
-void Game::createCapacity(std::string name, int damage, std::string attackType, std::string type, int accuracy)
+void Game::createCapacity(int index, std::string name, int damage, std::string attackType, std::string type, int accuracy)
 {
-	Capacity c = { name, damage, attackType, type, accuracy };
-	Game::capacities.push_back(c);
+	Game::capacities[index] = { name, damage, attackType, type, accuracy };
 }
 
 void Game::startGame() {
-	mainWindow = new MainWindow();
+	sf::Font* font = new sf::Font();
+	mainWindow = new MainWindow(*font);
+	int pokemonIndex = 0;
+	int capacityIndex = 0;
 
 	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
 	{
@@ -34,6 +33,7 @@ void Game::startGame() {
 		types.resize(t.size());
 
 		Game::createPokemons(
+			pokemonIndex,
 			0, 0,
 			pokemons["name"]["english"],
 			pokemons["image"]["sprite"],
@@ -49,37 +49,50 @@ void Game::startGame() {
 				pokemons["base"]["Speed"]
 			}
 		);
+		++pokemonIndex;
 	}
 
 	for (auto& moves : DataManager::getAll("include/data/moves.json"))
 	{
 		Game::createCapacity(
+			capacityIndex,
 			moves["ename"],
 			moves["power"],
 			moves["category"],
 			moves["type"],
 			moves["accuracy"]
 		);
+		++capacityIndex;
 	}
 
 	std::cout << "LOADED::POKEMON_AND_MOVES" << std::endl;
 }
 
 void Game::runGame() {
-	Player player;
+	Player player = Player(0, 0, "Sacha", "assets/sacha.png");
 
 	srand(time(NULL));
-	Pokemon p = Game::pokemons[rand() % 808];
-	player.addPokemon(p);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
 
 	player.addItems(0, 10);
 	player.addItems(1, 69);
 	player.addItems(2, 15);
 
-	MainWindow::Menu gameMenu(mainWindow);
-	mainWindow->setMenu(&gameMenu);
+	Music music = { "assets/audio/main_music.ogg" };
+	music.setVolume(50);
+	music.play();
+	Sound soundEffect;
+	soundEffect.setVolume(50);
 
+	MainWindow::Menu gameMenu(mainWindow);
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
+	MainWindow::SettingsMenu settMenu(mainWindow, &soundEffect, &music);
+	mainWindow->setMenu(&gameMenu, &invMenu);
 
 	TileMap map;
 	MapGenerator mapGen(
@@ -97,12 +110,6 @@ void Game::runGame() {
 	//2.9 pour 64 * 64   11.6 pour 256 * 256
 	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
 		throw("ERROR::MAP_LOADING");
-
-	Music music = { "assets/audio/main_music.ogg" };
-	music.play();
-	music.setVolume(60.f);
-	Sound soundEffect;
-	soundEffect.setVolume(75.f);
 
 	int frameCount = 0;
 	sf::Event e{};
@@ -138,6 +145,9 @@ void Game::runGame() {
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
 					invMenu.navigate();
 					break;
+				case SETTINGS:
+					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
+					settMenu.navigateSettings(&currentView, &soundEffect, &music);
 				default:
 					break;
 				}
@@ -162,6 +172,9 @@ void Game::runGame() {
 			break;
 		case INVENTORY:
 			invMenu.draw();
+			break;
+		case SETTINGS:
+			settMenu.draw();
 			break;
 		default:
 			break;

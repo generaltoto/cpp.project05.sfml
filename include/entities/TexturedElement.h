@@ -11,20 +11,23 @@ protected:
 	int posX, posY;
 	std::string name;
 	std::string path;
-	sf::Texture asset;
+	sf::Texture *asset;
 	sf::Sprite sprite;
 
 public:
+
 	TexturedElement();
+
 	TexturedElement(
 		int x,
 		int y,
 		std::string name,
 		std::string path
 	);
-	~TexturedElement();
 
-	sf::Sprite getSprite();
+	sf::Sprite &getSprite();
+
+	std::string &getName();
 
 	void displayEntity(sf::RenderWindow* window);
 
