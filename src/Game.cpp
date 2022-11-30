@@ -153,12 +153,17 @@ void Game::runGame() {
 			gameMenu.draw();
 			break;
 		case PLAY:
-			player.updatePlayer(&frameCount, &camera, mapGen.GetLevel2());
+			player.updatePlayer(&frameCount, &camera, mapGen.GetLevel2(), &currentView);
 			mainWindow->getWindow()->setView(camera);
 			mainWindow->getWindow()->draw(map);
 			player.setPos(camera.getCenter().x - 4, camera.getCenter().y - 33);
 			player.displayEntity(mainWindow->getWindow());
 		case COMBAT:
+			if (player.isFighting)
+			{
+				mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
+				player.isFighting = false;
+			}
 			break;
 		case INVENTORY:
 			invMenu.draw();

@@ -7,8 +7,10 @@ private:
 	std::vector<Pokemon> team;
 	int xOnMap, yOnMap;
 	std::vector<int> bag;
+	int tileValue = 0;
 
 public:
+	bool isFighting = false;
 	Player();
 	~Player();
 
@@ -24,7 +26,7 @@ public:
 
 	void removeItem(int bag, int sub);
 
-	void updatePlayer(int* frameCount, sf::View* view, const int* level);
+	void updatePlayer(int* frameCount, sf::View* view, const int* level, ViewTypes* viewType);
 
 	void SetMapPosition(int x, int y);
 
@@ -33,4 +35,6 @@ public:
 	int GetMapPositiony();
 
 	bool OutOfBoundaries(int x, int y);
+
+	bool CombatTrigger();
 };

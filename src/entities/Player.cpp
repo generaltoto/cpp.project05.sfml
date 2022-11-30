@@ -41,15 +41,16 @@ void Player::addItems(int bag, int added) { this->bag[bag] += added; }
 
 void Player::removeItem(int bag, int sub) { this->bag[bag] -= sub; }
 
-void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
+void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, ViewTypes *viewType) {
 	
-	int tileValue = 0;
+
 	const int frameUpdater = 300;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		tileValue = level[(MAPHEIGHT * (yOnMap-1)) + xOnMap];
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap - 1))
 			{
+				if (CombatTrigger()) *viewType = MENU;
 				view->move(0, -32 / 0.6f);
 				yOnMap--;
 			}
@@ -63,6 +64,8 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap + 1))
 			{
+				if (CombatTrigger()) *viewType = MENU;
+
 				view->move(0, 32 / 0.6f);
 				yOnMap++;
 			}
@@ -76,6 +79,7 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap + 1, yOnMap))
 			{
+				if (CombatTrigger()) *viewType = MENU;
 				view->move(32 / 0.6f, 0);
 				xOnMap++;
 			}
@@ -89,6 +93,7 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level) {
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap - 1, yOnMap))
 			{
+				if (CombatTrigger()) *viewType = MENU;
 				view->move(-32 / 0.6f, 0);
 				xOnMap--;
 			}
@@ -127,6 +132,30 @@ bool Player::OutOfBoundaries(int x, int y)
 		return true;
 	}
 	else return false;
+}
+
+bool Player::CombatTrigger()
+{
+	srand(time(NULL));
+	int random = (rand() % 100);
+	if (tileValue == 1 || tileValue == 14)
+	{
+		if (random <= 8) 
+		{
+			isFighting = true;
+			return true;
+		}
+		else
+		{
+			return false;
+			isFighting = false;
+		}
+	}
+	else
+	{
+		return false;
+		isFighting = false;
+	}
 }
 
 
