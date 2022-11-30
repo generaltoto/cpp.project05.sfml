@@ -47,47 +47,52 @@ MainWindow::InventoryMenu::~InventoryMenu()
 	delete this->contextWindow, this->contextPlayer;
 }
 
-void MainWindow::InventoryMenu::navigate()
+void MainWindow::InventoryMenu::navigate(Sound* soundEffect, Player* p, ViewTypes* currentView)
 {
-	if (healingPokemon) navigatePokemons();
-	else navigateItems();
+	if (healingPokemon) navigatePokemons(soundEffect, p);
+	else navigateItems(soundEffect, currentView);
 }
 
-void MainWindow::InventoryMenu::navigateItems()
+void MainWindow::InventoryMenu::navigateItems(Sound* soundEffect, ViewTypes* currentView)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-	{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		iZones[currentSelected].setOutlineThickness(0);
 		if (currentSelected < 2) ++currentSelected;
 		else currentSelected = 1;
 		iZones[currentSelected].setOutlineThickness(10);
+		soundEffect->playASound(MENUEFFECT);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-	{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		iZones[currentSelected].setOutlineThickness(0);
 		if (currentSelected > 1) --currentSelected;
 		else currentSelected = 2;
 		iZones[currentSelected].setOutlineThickness(10);
+		soundEffect->playASound(MENUEFFECT);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-	{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 		if (currentSelected == 1) healingType = HEAL;
 		else if (currentSelected == 0) healingType = RESET;
 		this->healingPokemon = true;
 		this->currentSelected = 0;
 		this->pZones[currentSelected].setOutlineThickness(10);
+		soundEffect->playASound(MENUEFFECT);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		*currentView = MENU;
+		soundEffect->playASound(MENUEFFECT);
 	}
 }
 
-void MainWindow::InventoryMenu::navigatePokemons()
+void MainWindow::InventoryMenu::navigatePokemons(Sound* soundEffect, Player* p)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		pZones[currentSelected].setOutlineThickness(0);
 		if (currentSelected < 5) ++currentSelected;
 		else currentSelected = 0;
 		pZones[currentSelected].setOutlineThickness(10);
+		soundEffect->playASound(MENUEFFECT);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -95,18 +100,21 @@ void MainWindow::InventoryMenu::navigatePokemons()
 		if (currentSelected > 0) --currentSelected;
 		else currentSelected = 5;
 		pZones[currentSelected].setOutlineThickness(10);
+		soundEffect->playASound(MENUEFFECT);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-	{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		healingPokemon == false;
 		pZones[currentSelected].setOutlineThickness(0);
 		this->healingPokemon = false;
 		this->currentSelected = 1;
 		iZones[currentSelected].setOutlineThickness(0);
+		soundEffect->playASound(MENUEFFECT);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-	{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		p->healPokemon(healingType, p->getTeam()[currentSelected]);
+		soundEffect->playASound(HEALEFFECT);
 	}
 }
 

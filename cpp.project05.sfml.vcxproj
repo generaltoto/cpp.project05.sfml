@@ -146,7 +146,6 @@
     <ClInclude Include="include\entities\Player.h" />
     <ClInclude Include="include\entities\Pokeball.h" />
     <ClInclude Include="include\entities\Pokemon.h" />
-    <ClInclude Include="include\entities\Spray.h" />
     <ClInclude Include="include\entities\TexturedElement.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\map\db_perlin.hpp" />
@@ -1090,7 +1089,6 @@
     <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\entities\Pokeball.cpp" />
     <ClCompile Include="src\entities\Pokemon.cpp" />
-    <ClCompile Include="src\entities\Spray.cpp" />
     <ClCompile Include="src\entities\TexturedElement.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\map\db_perlin.cpp" />

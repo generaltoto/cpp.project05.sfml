@@ -107,6 +107,11 @@ void MainWindow::SettingsMenu::navigateSettings(ViewTypes* currentView, Sound* s
          break;
       }
    }
+
+   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+      *currentView = MENU;
+      soundEffect->playASound(MENUEFFECT);
+   }
 }
 
 void MainWindow::SettingsMenu::draw() {

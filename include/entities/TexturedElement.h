@@ -25,13 +25,18 @@ public:
 		std::string path
 	);
 
+	/// Returns the sprite of the texture.
 	sf::Sprite &getSprite();
 
+	/// Returns the name of the texture.
 	std::string &getName();
 
+	/// Displays the entity.
 	void displayEntity(sf::RenderWindow* window);
 
+	/// Sets the position of the element on the screen.
 	void setPos(int x, int y);
 
+	/// Animates the element depending on a given direction.
 	void nextAnimation(int direction);
 };

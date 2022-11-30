@@ -12,9 +12,9 @@ void Game::createPokemons(
 	Game::pokemons[index] = { x, y, name, path, types, caption, level, stats };
 }
 
-void Game::createCapacity(int index, std::string name, int damage, std::string attackType, std::string type, int accuracy)
+void Game::createCapacity(int index, std::string name, int damage, std::string attackType, std::string type, int accuracy, int pp)
 {
-	Game::capacities[index] = { name, damage, attackType, type, accuracy };
+	Game::capacities[index] = { name, damage, attackType, type, accuracy, pp, pp };
 }
 
 void Game::startGame() {
@@ -60,7 +60,8 @@ void Game::startGame() {
 			moves["power"],
 			moves["category"],
 			moves["type"],
-			moves["accuracy"]
+			moves["accuracy"],
+			moves["pp"]
 		);
 		++capacityIndex;
 	}
@@ -142,11 +143,9 @@ void Game::runGame() {
 				case COMBAT:
 					break;
 				case INVENTORY:
-					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
-					invMenu.navigate();
+					invMenu.navigate(&soundEffect, &player, &currentView);
 					break;
 				case SETTINGS:
-					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
 					settMenu.navigateSettings(&currentView, &soundEffect, &music);
 				default:
 					break;
