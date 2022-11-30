@@ -18,6 +18,8 @@ public:
 
 	void play();
 
+	float getVolume();
+
 	void setVolume(float vol);
 
 };

@@ -16,6 +16,8 @@ public:
 
 	void stop();
 
+	float getVolume();
+
 	void setVolume(float vol);
 
 };

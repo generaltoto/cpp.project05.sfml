@@ -9,7 +9,7 @@ MainWindow::Menu::~Menu() {
 }
 
 void MainWindow::Menu::setValues() {
-    currentSelected = 0;
+    this->currentSelected = 0;
 
     if (!this->bgAsset.loadFromFile(this->bgPath))
         throw("ERROR::INVENTORY_BACKGROUND_LOADING");
@@ -45,7 +45,7 @@ void MainWindow::Menu::setValues() {
 }
 
 void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound* soundEffect) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && *currentView == MENU) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         texts[currentSelected].setOutlineThickness(0);
         if (currentSelected < 3) ++currentSelected;
         else currentSelected = 0;
@@ -53,7 +53,7 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound* soundEffect) 
         soundEffect->playASound(MENUEFFECT);
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && *currentView == MENU) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         texts[currentSelected].setOutlineThickness(0);
         if (currentSelected > 0) --currentSelected;
         else currentSelected = 3;
@@ -71,6 +71,9 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound* soundEffect) 
         case 1:
             *currentView = INVENTORY;
             break;
+        case 2:
+           *currentView = SETTINGS;
+           break;
         case 3:
             this->contextWindow->getWindow()->close();
             break;

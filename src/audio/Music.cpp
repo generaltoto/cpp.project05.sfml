@@ -14,4 +14,6 @@ void Music::pause() { this->music.pause(); }
 
 void Music::stop() { this->music.stop(); }
 
+float Music::getVolume() { return music.getVolume(); }
+
 void Music::setVolume(float vol) { this->music.setVolume(vol); }

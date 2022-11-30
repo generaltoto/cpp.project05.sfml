@@ -12,6 +12,7 @@
 #include "include/entities/Player.h"
 #include <sstream>
 #include "include/audio/Sound.h"
+#include "include/audio/Music.h"
 
 class MainWindow {
 
@@ -85,6 +86,36 @@ public:
         void navigate();
 
         void draw();
+    };
+
+    class SettingsMenu {
+    protected:
+       MainWindow* contextWindow;
+       int currentSelected;
+
+       const char* bgPath = "assets/inventoryBackground.png";
+       sf::Texture bgAsset;
+       sf::Sprite bg;
+
+       std::vector<const char*> options;
+       std::vector<sf::Vector2f> textCoords;
+       std::vector<sf::Text> texts;
+       std::vector<std::size_t> sizes;
+
+       std::vector<sf::Vector2f> zoneCoords;
+       sf::Vector2f zoneSize;
+
+       void setValues();
+
+    public:
+       SettingsMenu(MainWindow* window);
+       ~SettingsMenu();
+
+       void navigateSettings(ViewTypes* currentView, Sound* soundEffect, Music* music);
+
+       void updateDrawVol(Sound* soundEffect, Music* music);
+
+       void draw();
     };
 
 private:
