@@ -26,11 +26,12 @@ void Game::startGame() {
 
 	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
 	{
+		auto t = pokemons["type"];
 		std::vector<std::string> types;
-		if (sizeof(pokemons["type"][1] <= 0))
-			types = { pokemons["type"][0] };
-		else 
-			types = { pokemons["type"][0], pokemons["type"][1] };
+
+		if (t.size() < 2) types = { t[0] };
+		else types = { t[0], t[1] };
+		types.resize(t.size());
 
 		Game::createPokemons(
 			0, 0,
@@ -67,17 +68,9 @@ void Game::startGame() {
 void Game::runGame() {
 	Player player;
 
-	Capacity c0 = { "Charge", 40, "physical", "NORMAL", 100 };
-	Capacity c1 = { "Cru-Ailes", 60, "physical", "FLY", 100 };
-	Capacity c2 = { "Picpic", 35, "physical", "FLY", 100 };
-	Capacity c3 = { "Tornade", 60, "physical", "FLY", 100 };
-
-	Capacity cap[4] = { c0, c1, c2, c3 };
-	std::vector<std::string> ty = { "PLANT", "FLY" };
-	Pokemon pokemon(
-		0, 0, "bulbizarre", "assets/pokemon.png", ty, "aaaaa", 1, {45,49,49,65,65,45}
-	);
-	for (int i = 0; i < 6; i++) { player.addPokemon(&pokemon); }
+	srand(time(NULL));
+	Pokemon p = Game::pokemons[rand() % 808];
+	for (int i = 0; i < 6; i++) { player.addPokemon(p); }
 
 
 	player.addItems(0, 10);

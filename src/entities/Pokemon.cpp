@@ -16,11 +16,10 @@ Pokemon::Pokemon(
 	this->posY = y;
 	this->name = name;
 	this->path = path;
-	this->type.resize(2);
-	for (int i = 0; i < 2; i++) 
+	this->type.resize(types.size());
+	for (int i = 0; i < types.size(); i++) 
 	{
-		std::cout << "Type N" << i << type[i] << std::endl;
-		this->type[i] = type[i];
+		this->type[i] = types[i];
 	}
 	this->caption = caption;
 	this->levels.level = level;

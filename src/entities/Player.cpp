@@ -2,7 +2,7 @@
 #include "include/map/MapGenerator.h"
 
 Player::Player() { 
-	for (auto& i : this->team) i = nullptr;
+	this->team.resize(0);
 	this->bag.resize(3);
 	sf::VideoMode* size = new sf::VideoMode();
 	this->xOnMap = 0;
@@ -25,16 +25,12 @@ Player::Player() {
 
 Player::~Player() { }
 
-Pokemon* Player::getTeam() { return *this->team; }
+std::vector<Pokemon> Player::getTeam() { return this->team; }
 
 std::vector<int> Player::getBag() { return this->bag; }
 
-void Player::addPokemon(Pokemon* p) {
-	for (int i = 0; i < 6; i++) {
-		if (this->team[i] != NULL) {
-			this->team[i] = p;
-		}
-	}
+void Player::addPokemon(Pokemon p) {
+	if (this->team.size() < 6) this->team.push_back(p);
 }
 
 void Player::removePokemon(int id) {
