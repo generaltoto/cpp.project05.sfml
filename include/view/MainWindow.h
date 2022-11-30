@@ -29,7 +29,6 @@ public:
         sf::Sprite bg;
 
         std::vector<const char*> options;
-        std::vector<sf::Vector2f> textCoords;
         std::vector<sf::Text> texts;
         std::vector<std::size_t> sizes;
 
@@ -102,19 +101,24 @@ public:
        std::vector<sf::Text> texts;
        std::vector<std::size_t> sizes;
 
-       std::vector<sf::Vector2f> zoneCoords;
-       sf::Vector2f zoneSize;
+       std::vector<sf::Text> volText;
+       std::vector<sf::Vector2f> volTextCoords;
+       std::vector<std::size_t> volSizes;
 
-       void setValues();
+
+       void setValues(Sound* soundEffect, Music* music);
 
     public:
-       SettingsMenu(MainWindow* window);
+       SettingsMenu(MainWindow* window, Sound* soundEffect, Music* music);
        ~SettingsMenu();
 
+       /// Allows you to navigate in the settings.
        void navigateSettings(ViewTypes* currentView, Sound* soundEffect, Music* music);
 
+       /// Updates the values of volumes to display.
        void updateDrawVol(Sound* soundEffect, Music* music);
 
+       /// Displays the settings.
        void draw();
     };
 

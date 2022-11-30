@@ -69,4 +69,13 @@ void Sound::play() { this->sound.play(); }
 
 float Sound::getVolume() { return this->sound.getVolume(); }
 
-void Sound::setVolume(float vol) { if(vol >= 0 && vol <= 100) this->sound.setVolume(vol); }
+void Sound::setVolume(float vol) {
+	if (vol >= 0 && vol <= 100) {
+		this->sound.setVolume(float(vol));
+		return;
+	}
+	if (vol <= 0) {
+		this->sound.setVolume(0.f);
+		return;
+	}
+}

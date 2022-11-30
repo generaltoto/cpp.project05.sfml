@@ -77,16 +77,16 @@ void Game::runGame() {
 	player.addItems(2, 15);
 
 	Music music = { "assets/audio/main_music.ogg" };
-	music.setVolume(50.f);
+	music.setVolume(50);
 	music.play();
 	Sound soundEffect;
-	soundEffect.setVolume(50.f);
+	soundEffect.setVolume(50);
 
 	MainWindow::Menu gameMenu(mainWindow);
 	mainWindow->setMenu(&gameMenu);
 
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
-	MainWindow::SettingsMenu settMenu(mainWindow);
+	MainWindow::SettingsMenu settMenu(mainWindow, &soundEffect, &music);
 
 	TileMap map;
 	MapGenerator mapGen(
@@ -104,8 +104,6 @@ void Game::runGame() {
 	//2.9 pour 64 * 64   11.6 pour 256 * 256
 	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
 		throw("ERROR::MAP_LOADING");
-
-
 
 	int frameCount = 0;
 	sf::Event e{};

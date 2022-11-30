@@ -28,7 +28,6 @@ void MainWindow::Menu::setValues() {
 
     options = { "Play", "Inventory", "Options", "Quit" };
     texts.resize(4);
-    textCoords = { {885,60},{885,286.5},{885,423},{885,555} };
     sizes = { 36,36,36,36 };
 
     for (std::size_t i{}; i < texts.size(); ++i) {
