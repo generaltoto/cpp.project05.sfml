@@ -3,6 +3,26 @@
 MainWindow* Game::mainWindow = nullptr;
 Pokemon Game::pokemons[809] = {};
 Capacity Game::capacities[619] = {};
+bool Game::loadedCommbatEnemies = false;
+
+std::vector<Pokemon>& Game::loadEnemyTeam(bool isWild)
+{
+	std::vector<Pokemon> enemies;
+	if (isWild)
+	{
+		srand(time(NULL));
+		enemies.push_back(Game::pokemons[rand() % 808]);
+	}
+	else
+	{
+		srand(time(NULL));
+		for (int i = 0; i < rand() % 5 + 2; i++)
+		{
+			enemies.push_back(Game::pokemons[rand() % 808]);
+		}
+	}
+	return enemies;
+}
 
 void Game::createPokemons(
 	int index, int x, int y, std::string name, std::string path, std::vector<std::string> types,
@@ -140,6 +160,7 @@ void Game::runGame() {
 					}
 					break;
 				case COMBAT:
+					CombatManager::runCombat(Game::loadEnemyTeam(true));
 					break;
 				case INVENTORY:
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
@@ -173,6 +194,7 @@ void Game::runGame() {
 			{
 				mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
 				player.isFighting = false;
+				CombatManager::drawCombat();
 			}
 			break;
 		case INVENTORY:

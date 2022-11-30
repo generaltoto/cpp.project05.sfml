@@ -7,7 +7,7 @@
 class Player : public TexturedElement {
 private:
 	int nbPokemons;
-	Pokemon team[6];
+	std::vector<Pokemon> team;
 	int xOnMap, yOnMap;
 	std::vector<int> bag;
 	int tileValue = 0;
@@ -19,7 +19,7 @@ public:
 
 	int& getNbPokemon();
 
-	Pokemon* getTeam();
+	std::vector<Pokemon> getTeam();
 
 	std::vector<int> getBag();
 

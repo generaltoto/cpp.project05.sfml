@@ -137,6 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\CombatManager.h" />
     <ClInclude Include="include\audio\Music.h" />
     <ClInclude Include="include\audio\Sound.h" />
     <ClInclude Include="include\data\DataManager.h" />
@@ -163,6 +164,7 @@
     <Media Include="assets\audio\win_battle.wav" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\combat.png" />
     <Image Include="assets\images\pokedex\sprites\001.png" />
     <Image Include="assets\images\pokedex\sprites\002.png" />
     <Image Include="assets\images\pokedex\sprites\003.png" />
@@ -1081,6 +1083,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CombatManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\audio\Music.cpp" />
     <ClCompile Include="src\audio\Sound.cpp" />

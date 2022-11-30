@@ -7,6 +7,7 @@
 # include "data/DataManager.h"
 # include "include/audio/Music.h"
 # include "include/entities/Pokemon.h"
+# include "include/CombatManager.h"
 # include <iostream>
 
 using json = nlohmann::json;
@@ -25,6 +26,14 @@ public:
     /// List of all capacities
     static Capacity capacities[619];
 
+    /// Stores if the combat enemies were load,
+    /// prevents an infinite load of enemy team in combat
+    static bool loadedCommbatEnemies;
+
+    /// Loads a random enemy team depending on the encouter type
+    static std::vector<Pokemon>& loadEnemyTeam(bool);
+
+    /// Creates a pokemon from Json
     static void createPokemons(
         int index,
         int x,
@@ -37,6 +46,7 @@ public:
         std::vector<int> stats
     );
 
+    /// Creates a capacity from Json
     static void createCapacity(
         int index,
         std::string name,

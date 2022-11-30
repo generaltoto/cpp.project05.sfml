@@ -9,7 +9,7 @@ Player::Player(int x, int y, std::string name, std::string path) : TexturedEleme
 	this->path = path;
 	this->animeCount = 0;
 	this->animePos = std::vector<std::vector<sf::IntRect>>(ANIME_SACHA_RECT);
-	if (animePos.size() <= 0) throw("C K C");
+	if (animePos.size() <= 0) throw("ERROR::LOADING_PLAYER_SPRITE");
 	else this->sprite.setTextureRect(this->animePos[0][this->animeCount]);
 	this->sprite.setScale(0.6f, 0.6f);
 }
@@ -19,7 +19,7 @@ int& Player::getNbPokemon()
 	return this->nbPokemons;
 }
 
-Pokemon* Player::getTeam() { return this->team; }
+std::vector<Pokemon> Player::getTeam() { return this->team; }
 
 std::vector<int> Player::getBag() { return this->bag; }
 
@@ -48,7 +48,7 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, Vie
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap - 1))
 			{
-				if (CombatTrigger()) *viewType = MENU;
+				if (CombatTrigger()) *viewType = COMBAT;
 				view->move(0, -32 / 0.6f);
 				yOnMap--;
 			}
@@ -62,7 +62,7 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, Vie
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap + 1))
 			{
-				if (CombatTrigger()) *viewType = MENU;
+				if (CombatTrigger()) *viewType = COMBAT;
 
 				view->move(0, 32 / 0.6f);
 				yOnMap++;
@@ -77,7 +77,7 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, Vie
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap + 1, yOnMap))
 			{
-				if (CombatTrigger()) *viewType = MENU;
+				if (CombatTrigger()) *viewType = COMBAT;
 				view->move(32 / 0.6f, 0);
 				xOnMap++;
 			}
@@ -91,7 +91,7 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, Vie
 		if (*frameCount % frameUpdater == 0) {
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap - 1, yOnMap))
 			{
-				if (CombatTrigger()) *viewType = MENU;
+				if (CombatTrigger()) *viewType = COMBAT;
 				view->move(-32 / 0.6f, 0);
 				xOnMap--;
 			}
@@ -138,7 +138,7 @@ bool Player::CombatTrigger()
 	int random = (rand() % 100);
 	if (tileValue == 1 || tileValue == 14)
 	{
-		if (random <= 8) 
+		if (random <= 100) 
 		{
 			isFighting = true;
 			return true;
