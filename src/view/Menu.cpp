@@ -69,9 +69,11 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound* soundEffect) 
             break;
         case 1:
             *currentView = INVENTORY;
+            soundEffect->playASound(MENUEFFECT);
             break;
         case 2:
            *currentView = SETTINGS;
+           soundEffect->playASound(MENUEFFECT);
            break;
         case 3:
             this->contextWindow->getWindow()->close();
