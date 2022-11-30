@@ -8,5 +8,6 @@ public:
 	Pokeball(int x, int y, std::string name, std::string path);
 	~Pokeball();
 
+	/// Adds a sauvage pokemon in the player's team.
 	void capture(Pokemon* p, Player* j);
 };

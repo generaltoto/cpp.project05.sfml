@@ -24,6 +24,7 @@ public:
     /// List of all capacities
     static Capacity capacities[619];
 
+    /// Creates a new pokemon.
     static void createPokemons(
         int index,
         int x,
@@ -36,13 +37,15 @@ public:
         std::vector<int> stats
     );
 
+    /// Creates a new capacity.
     static void createCapacity(
         int index,
         std::string name,
         int damage,
         std::string attackType,
         std::string type,
-        int accuracy
+        int accuracy,
+        int pp
     );
 
     /// Starts the game by calling all the initializers.

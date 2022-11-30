@@ -19,6 +19,8 @@ struct Capacity {
 	std::string attackType;
 	std::string type;
 	int accuracy;
+	int pp;
+	int current;
 };
 
 struct Level {

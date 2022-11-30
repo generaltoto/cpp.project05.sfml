@@ -110,6 +110,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>C:\Users\loctr\Documents\Projets\SFML - Pokemon Like;D:\Documents\G.Tech\GTech 2\Projet 5 - SFML;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tdelorme\source\repos\cpp.project05.sfml;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml;D:\Documents\G.Tech\GTech 2\Projet 5 - SFML</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,7 +146,6 @@
     <ClInclude Include="include\entities\Player.h" />
     <ClInclude Include="include\entities\Pokeball.h" />
     <ClInclude Include="include\entities\Pokemon.h" />
-    <ClInclude Include="include\entities\Spray.h" />
     <ClInclude Include="include\entities\TexturedElement.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\map\db_perlin.hpp" />
@@ -1089,7 +1089,6 @@
     <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\entities\Pokeball.cpp" />
     <ClCompile Include="src\entities\Pokemon.cpp" />
-    <ClCompile Include="src\entities\Spray.cpp" />
     <ClCompile Include="src\entities\TexturedElement.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\map\db_perlin.cpp" />
