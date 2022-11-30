@@ -70,8 +70,7 @@ void Game::runGame() {
 
 	srand(time(NULL));
 	Pokemon p = Game::pokemons[rand() % 808];
-	for (int i = 0; i < 6; i++) { player.addPokemon(p); }
-
+	player.addPokemon(p);
 
 	player.addItems(0, 10);
 	player.addItems(1, 69);
