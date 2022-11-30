@@ -1,5 +1,7 @@
 #include "include/entities/Pokemon.h"
 
+Pokemon::Pokemon() = default;
+
 Pokemon::Pokemon(
 	int x,
 	int y,
@@ -24,6 +26,17 @@ Pokemon::Pokemon(
 	this->levels.ExpToNext = level ^ 3;
 	this->levels.currentExp = 0;
 	initStats(stats, level);
+	this->currentHealth = this->currentStats[HP];
+}
+
+std::vector<int> Pokemon::getHealthAndMax()
+{
+	return std::vector<int>{ this->currentHealth, this->currentStats[HP] };
+}
+
+Level& Pokemon::getLevel()
+{
+	return this->levels;
 }
 
 void Pokemon::initStats(std::vector<int> stats, int level) {
@@ -43,6 +56,7 @@ void Pokemon::levelUp(int expEarn) {
 		this->levels.currentExp -= this->levels.ExpToNext;
 		this->levels.ExpToNext = this->levels.level ^ 3;
 		updateCurrentStat();
+		this->currentHealth += 1 + ((2 * this->baseStats[HP]) / 100);
 	}
 	if (this->levels.level == this->levels.evolveLvl) {
 		/*evolve();*/
@@ -59,8 +73,7 @@ void Pokemon::updateCurrentStat() {
 				+ 5;
 		}
 	}
-	this->currentStats[HP] = int
-	((2 * this->baseStats[HP] * this->levels.level) / 100)
+	this->currentStats[HP] = int((2 * this->baseStats[HP] * this->levels.level) / 100)
 		+ this->levels.level + 10;
 }
 

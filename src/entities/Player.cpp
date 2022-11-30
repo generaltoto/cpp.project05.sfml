@@ -1,10 +1,11 @@
 #include "include/entities/Player.h"
 
-Player::Player(std::string path) : TexturedElement(path) { 
+Player::Player(int x, int y, std::string name, std::string path) : TexturedElement(x, y, name, path) { 
+	this->nbPokemons = 0;
 	this->bag.resize(3);
-	this->xOnMap = 0;
-	this->yOnMap = 0;
-	this->name = "Petit Louis";
+	this->xOnMap = x;
+	this->yOnMap = x;
+	this->name = name;
 	this->path = path;
 	this->animeCount = 0;
 	this->animePos = std::vector<std::vector<sf::IntRect>>(ANIME_SACHA_RECT);
@@ -13,12 +14,21 @@ Player::Player(std::string path) : TexturedElement(path) {
 	this->sprite.setScale(0.6f, 0.6f);
 }
 
-std::vector<Pokemon> Player::getTeam() { return this->team; }
+int& Player::getNbPokemon()
+{
+	return this->nbPokemons;
+}
+
+Pokemon* Player::getTeam() { return this->team; }
 
 std::vector<int> Player::getBag() { return this->bag; }
 
 void Player::addPokemon(Pokemon p) {
-	if (this->team.size() < 6) this->team.push_back(p);
+	if (this->nbPokemons < 6)
+	{
+		team[nbPokemons] = p;
+		++this->nbPokemons;
+	}
 }
 
 void Player::removePokemon(int id) {

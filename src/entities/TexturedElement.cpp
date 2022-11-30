@@ -1,15 +1,6 @@
 #include "include/entities/TexturedElement.h"
 
-TexturedElement::TexturedElement(std::string path)
-{
-	if (this->asset.loadFromFile(path))
-	{
-		std::cout << "loaded : '" << path << "'" << std::endl;
-		this->sprite.setTexture(this->asset);
-	}
-		
-	else throw("ERROR::LOADING_ENTITY_TEXTURE");
-}
+TexturedElement::TexturedElement() = default;
 
 TexturedElement::TexturedElement(
 	int x,
@@ -22,9 +13,10 @@ TexturedElement::TexturedElement(
 	this->posY = y;
 	this->name = name;
 	this->path = path;
-	if (this->asset.loadFromFile(path)) {
+	this->asset = new sf::Texture;
+	if (this->asset->loadFromFile(path)) {
 		std::cout << "loaded : '" << path << "'" << std::endl;
-		this->sprite.setTexture(this->asset);
+		this->sprite.setTexture(*this->asset);
 	}
 	else throw("ERROR::LOADING_ENTITY_TEXTURE");
 }

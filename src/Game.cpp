@@ -1,26 +1,27 @@
 #include "include/Game.h"
 
 MainWindow* Game::mainWindow = nullptr;
-std::vector<Pokemon> Game::pokemons = {};
-std::vector<Capacity> Game::capacities = {};
+Pokemon Game::pokemons[809] = {};
+Capacity Game::capacities[619] = {};
 
 void Game::createPokemons(
-	int x, int y, std::string name, std::string path, std::vector<std::string> types,
+	int index, int x, int y, std::string name, std::string path, std::vector<std::string> types,
 	std::string caption, int level, std::vector<int> stats
 )
 {
-	Game::pokemons.push_back({ x, y, name, path, types, caption, level, stats });
+	Game::pokemons[index] = { x, y, name, path, types, caption, level, stats };
 }
 
-void Game::createCapacity(std::string name, int damage, std::string attackType, std::string type, int accuracy)
+void Game::createCapacity(int index, std::string name, int damage, std::string attackType, std::string type, int accuracy)
 {
-	Capacity c = { name, damage, attackType, type, accuracy };
-	Game::capacities.push_back(c);
+	Game::capacities[index] = { name, damage, attackType, type, accuracy };
 }
 
 void Game::startGame() {
 	sf::Font* font = new sf::Font();
 	mainWindow = new MainWindow(*font);
+	int pokemonIndex = 0;
+	int capacityIndex = 0;
 
 	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
 	{
@@ -32,6 +33,7 @@ void Game::startGame() {
 		types.resize(t.size());
 
 		Game::createPokemons(
+			pokemonIndex,
 			0, 0,
 			pokemons["name"]["english"],
 			pokemons["image"]["sprite"],
@@ -47,26 +49,34 @@ void Game::startGame() {
 				pokemons["base"]["Speed"]
 			}
 		);
+		++pokemonIndex;
 	}
 
 	for (auto& moves : DataManager::getAll("include/data/moves.json"))
 	{
 		Game::createCapacity(
+			capacityIndex,
 			moves["ename"],
 			moves["power"],
 			moves["category"],
 			moves["type"],
 			moves["accuracy"]
 		);
+		++capacityIndex;
 	}
 
 	std::cout << "LOADED::POKEMON_AND_MOVES" << std::endl;
 }
 
 void Game::runGame() {
-	Player player = Player("assets/sacha.png");
+	Player player = Player(0, 0, "Sacha", "assets/sacha.png");
 
 	srand(time(NULL));
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
+	player.addPokemon(Game::pokemons[rand() % 808]);
 	player.addPokemon(Game::pokemons[rand() % 808]);
 
 	player.addItems(0, 10);
@@ -96,9 +106,9 @@ void Game::runGame() {
 
 	Music music = { "assets/audio/main_music.ogg" };
 	music.play();
-	music.setVolume(60.f);
+	music.setVolume(5.f);
 	Sound soundEffect;
-	soundEffect.setVolume(75.f);
+	soundEffect.setVolume(5.f);
 
 	int frameCount = 0;
 	sf::Event e{};

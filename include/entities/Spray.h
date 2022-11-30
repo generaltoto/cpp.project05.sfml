@@ -8,7 +8,7 @@ private:
 	SprayType type;
 
 public:
-	Spray(SprayType, std::string path);
+	Spray(SprayType, int x, int y, std::string name, std::string path);
 	~Spray();
 
 	void updatePokemon(Pokemon* p);

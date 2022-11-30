@@ -25,7 +25,7 @@ void MainWindow::initWindow() {
     this->vMode = sf::VideoMode::getDesktopMode();
     this->window = new sf::RenderWindow(
         this->vMode,
-        "Strange Game",
+        "Pokemon RGB",
         sf::Style::Titlebar | sf::Style::Close
     );
     this->window->setPosition(sf::Vector2i(0, 0));

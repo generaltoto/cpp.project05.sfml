@@ -11,11 +11,13 @@ protected:
 	int posX, posY;
 	std::string name;
 	std::string path;
-	sf::Texture asset;
+	sf::Texture *asset;
 	sf::Sprite sprite;
 
 public:
-	TexturedElement(std::string path);
+
+	TexturedElement();
+
 	TexturedElement(
 		int x,
 		int y,
