@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{d446064e-25b8-424f-b1d6-1ce0d750ead3}</ProjectGuid>
     <RootNamespace>cppproject05sfml</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -73,8 +73,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\rmateescu\source\repos\cpp.project05.sfml;C:\Users\matee\source\repos\cpp.project05.sfml;C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;C:\Users\tdelorme\source\repos\cpp.project05.sfml;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\lib;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\rmateescu\source\repos\cpp.project05.sfml;C:\Users\matee\source\repos\cpp.project05.sfml;C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;C:\Users\tdelorme\source\repos\cpp.project05.sfml;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;C:\Users\matee\OneDrive\Bureau\SFML-2.5.1\lib;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Users\tdelorme\source\repos\cpp.project05.sfml;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\tdelorme\source\repos\cpp.project05.sfml;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml;C:\Users\loctr\Documents\Projets\SFML - Pokemon Like</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
