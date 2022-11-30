@@ -98,12 +98,18 @@ void Game::runGame() {
 	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
 		throw("ERROR::MAP_LOADING");
 
-	int frameCount = 0;
-	sf::Event e{};
+   Music music = { "assets/audio/main_music.ogg" };
+   music.play();
+   music.setVolume(20.f);
+   Sound soundEffect;
+   soundEffect.setVolume(75.f);
 
-	while (mainWindow->getWindow()->isOpen())
-	{
-		mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
+   int frameCount = 0;
+   sf::Event e{};
+
+   while (mainWindow->getWindow()->isOpen())
+   {
+      mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
 
 		while (mainWindow->getWindow()->pollEvent(e))
 		{

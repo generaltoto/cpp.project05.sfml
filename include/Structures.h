@@ -5,13 +5,23 @@
 # include <SFML/Window.hpp>
 # include <SFML/System.hpp>
 
+<<<<<<< HEAD
 enum Stat { HP, ATK, ATKSPE, DEF, DEFSPE, VIT };
 
 enum Status { OK, POISONED, SLEPT, BURNING, PARALYSED };
+=======
+enum Types { FIGHT, DRAKE, WATER, PLANT, ELEC, FIRE, ICE, BUG, POISON, PSY, ROCK, GROUND, GHOST, FLY, NORMAL, NOTYPE };
+
+enum Stat { HP, ATK, ATKSPE, DEF, DEFSPE, VIT };
+
+enum Status { NOT, POISONED, SLEPT, BURNING, PARALYSED, FROZEN };
+>>>>>>> feature/audio
 
 enum ViewTypes { MENU, PLAY, COMBAT, INVENTORY };
 
 enum SprayType { HEAL, RESET };
+
+enum SoundEffect { MENUEFFECT, ATKEFFECT, HEALEFFECT, STARTBATTLE, WINCOMBAT };
 
 struct Capacity {
 	std::string name;
@@ -19,6 +29,11 @@ struct Capacity {
 	std::string attackType;
 	std::string type;
 	int accuracy;
+<<<<<<< HEAD
+=======
+	Status effect;
+	int applyEffect;
+>>>>>>> feature/audio
 };
 
 struct Level {

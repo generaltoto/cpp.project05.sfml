@@ -111,7 +111,11 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+<<<<<<< HEAD
       <AdditionalIncludeDirectories>C:\Users\tdelorme\source\repos\cpp.project05.sfml;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml</AdditionalIncludeDirectories>
+=======
+      <AdditionalIncludeDirectories>C:\Users\tdelorme\source\repos\cpp.project05.sfml;D:\Documents\G.Tech\GTech 2\Projet 5 - SFML</AdditionalIncludeDirectories>
+>>>>>>> feature/audio
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,8 +143,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="src\data\DataManager.cpp" />
+=======
+>>>>>>> feature/audio
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\audio\Music.cpp" />
+    <ClCompile Include="src\audio\Sound.cpp" />
     <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
     <ClCompile Include="src\entities\Pokeball.cpp" />
@@ -163,14 +172,24 @@
     <Image Include="assets\pikachu.png" />
     <Image Include="assets\pixil-frame-0.png" />
     <Image Include="assets\pixil-frame-1.png" />
+<<<<<<< HEAD
     <Image Include="assets\pokemon.png" />
+=======
+    <Image Include="assets\pokemons.png" />
+>>>>>>> feature/audio
     <Image Include="assets\sacha.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\pixelFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClInclude Include="include\data\DataManager.h" />
+=======
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="include\audio\Music.h" />
+    <ClInclude Include="include\audio\Sound.h" />
+>>>>>>> feature/audio
     <ClInclude Include="include\entities\NPC.h" />
     <ClInclude Include="include\entities\Player.h" />
     <ClInclude Include="include\entities\Pokeball.h" />
@@ -189,9 +208,21 @@
   <ItemGroup>
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+<<<<<<< HEAD
     <None Include="include\data\moves.json" />
     <None Include="include\data\pokedex.json" />
+=======
+    <None Include="assets\audio\main_music.ogg" />
+    <None Include="assets\audio\music_battle.ogg" />
+>>>>>>> feature/audio
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\audio\atk_effect.wav" />
+    <Media Include="assets\audio\heal_effect.wav" />
+    <Media Include="assets\audio\menu_sound_effect.wav" />
+    <Media Include="assets\audio\start_battle.wav" />
+    <Media Include="assets\audio\win_battle.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

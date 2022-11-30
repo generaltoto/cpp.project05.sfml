@@ -44,19 +44,21 @@ void MainWindow::Menu::setValues() {
     texts[currentSelected].setOutlineThickness(10);
 }
 
-void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound* soundEffect) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && *currentView == MENU) {
         texts[currentSelected].setOutlineThickness(0);
         if (currentSelected < 3) ++currentSelected;
         else currentSelected = 0;
         texts[currentSelected].setOutlineThickness(10);
+        soundEffect->playASound(MENUEFFECT);
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && *currentView == MENU) {
         texts[currentSelected].setOutlineThickness(0);
         if (currentSelected > 0) --currentSelected;
         else currentSelected = 3;
         texts[currentSelected].setOutlineThickness(10);
+        soundEffect->playASound(MENUEFFECT);
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
@@ -64,6 +66,7 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView) {
         {
         case 0:
             *currentView = PLAY;
+            soundEffect->playASound(MENUEFFECT);
             break;
         case 1:
             *currentView = INVENTORY;

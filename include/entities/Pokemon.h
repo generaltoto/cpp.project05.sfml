@@ -21,6 +21,7 @@ public:
 		int y,
 		std::string name,
 		std::string path,
+<<<<<<< HEAD
 		std::vector<std::string> types,
 		std::string caption,
 		int level,
@@ -30,6 +31,17 @@ public:
 
 	void initStats(std::vector<int>, int level);
 
+=======
+		Types type[2],
+		Capacity capacities[4],
+		/*std::string caption,*/
+		int level,
+		int stats[6],
+		sf::IntRect pokeImg
+	);
+	~Pokemon();
+
+>>>>>>> feature/audio
 	void levelUp(int expEarn);
 
 	void updateCurrentStat();
