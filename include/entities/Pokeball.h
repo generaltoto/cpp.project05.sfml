@@ -5,7 +5,7 @@
 
 class Pokeball : public TexturedElement {
 public:
-	Pokeball();
+	Pokeball(std::string path);
 	~Pokeball();
 
 	void capture(Pokemon* p, Player* j);

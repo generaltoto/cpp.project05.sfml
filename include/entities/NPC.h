@@ -7,7 +7,7 @@ private:
 	std::string dialogs[10];
 
 public:
-	NPC();
+	NPC(std::string path);
 	~NPC();
 
 	void movePattern();

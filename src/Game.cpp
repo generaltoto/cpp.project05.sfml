@@ -9,10 +9,7 @@ void Game::createPokemons(
 	std::string caption, int level, std::vector<int> stats
 )
 {
-	Pokemon p = Pokemon(
-		x, y, name, path, types, caption, level, stats
-	);
-	Game::pokemons.push_back(p);
+	Game::pokemons.push_back({ x, y, name, path, types, caption, level, stats });
 }
 
 void Game::createCapacity(std::string name, int damage, std::string attackType, std::string type, int accuracy)
@@ -22,7 +19,8 @@ void Game::createCapacity(std::string name, int damage, std::string attackType, 
 }
 
 void Game::startGame() {
-	mainWindow = new MainWindow();
+	sf::Font* font = new sf::Font();
+	mainWindow = new MainWindow(*font);
 
 	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
 	{
@@ -66,20 +64,18 @@ void Game::startGame() {
 }
 
 void Game::runGame() {
-	Player player;
+	Player player = Player("assets/sacha.png");
 
 	srand(time(NULL));
-	Pokemon p = Game::pokemons[rand() % 808];
-	player.addPokemon(p);
+	player.addPokemon(Game::pokemons[rand() % 808]);
 
 	player.addItems(0, 10);
 	player.addItems(1, 69);
 	player.addItems(2, 15);
 
 	MainWindow::Menu gameMenu(mainWindow);
-	mainWindow->setMenu(&gameMenu);
-
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
+	mainWindow->setMenu(&gameMenu, &invMenu);
 
 	TileMap map;
 	MapGenerator mapGen(

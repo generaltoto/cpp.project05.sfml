@@ -1,6 +1,6 @@
 #include "include/entities/NPC.h"
 
-NPC::NPC() { }
+NPC::NPC(std::string path) : TexturedElement(path) { }
 
 NPC::~NPC() { }
 

@@ -90,24 +90,25 @@ public:
 private:
     sf::RenderWindow* window;
     sf::VideoMode vMode;
-    sf::Font* font;
+    sf::Font font;
 
     Menu* menu;
+    InventoryMenu* invMenu;
 
 public:
-    MainWindow();
+    MainWindow(sf::Font);
     ~MainWindow();
 
     /// Returns the window
     sf::RenderWindow* getWindow();
 
     /// Return the used font
-    sf::Font* getFont();
+    sf::Font &getFont();
 
     /// Returns the window's video mode
     sf::VideoMode* getVideoMode();
 
-    void setMenu(Menu* menu);
+    void setMenu(Menu* menu, InventoryMenu* invMenu);
 
     /// Initiates the windows and its parameters
     void initWindow();

@@ -1,6 +1,6 @@
 #include "include/entities/Pokeball.h"
 
-Pokeball::Pokeball() { }
+Pokeball::Pokeball(std::string path) : TexturedElement(path) { }
 
 Pokeball::~Pokeball() { }
 

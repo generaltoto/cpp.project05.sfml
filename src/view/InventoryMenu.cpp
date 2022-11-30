@@ -122,12 +122,36 @@ extern std::string convertToString(int number)
 void MainWindow::InventoryMenu::draw()
 {
 	this->contextWindow->getWindow()->draw(this->bg);
-	for (int i = 0; i < 6; i++) this->contextWindow->getWindow()->draw(pZones[i]);
-	for (int i = 0; i < 3; i++) this->contextWindow->getWindow()->draw(iZones[i]);
-	const int assetSize = 24;
+	for (auto& pZonesShape : pZones) this->contextWindow->getWindow()->draw(pZonesShape);
+	const int pokemonAssetSz = 40;
+	for (int i = 0; i < this->contextPlayer->getTeam().size(); i++)
+	{
+		sf::Sprite sp = this->contextPlayer->getTeam()[i].getSprite();
+		sp.setScale(2.f, 2.f);
+		sp.setPosition(
+			this->pZoneCoords[i].x + this->pZoneSize.x * 0.25,
+			this->pZoneCoords[i].y + this->pZoneSize.y * 0.20
+		);
+		this->contextWindow->getWindow()->draw(sp);
+
+		sf::Text txt;
+		txt.setFont(this->contextWindow->getFont());
+		txt.setString(this->contextPlayer->getTeam()[i].getName());
+		txt.setCharacterSize(55);
+		txt.setOutlineColor(sf::Color::Black);
+		txt.setPosition(
+			sp.getPosition().x + pokemonAssetSz + 100,
+			sp.getPosition().y + 20
+		);
+		this->contextWindow->getWindow()->draw(txt);
+		
+	}
+
+	for (auto& iZonesShape : iZones) this->contextWindow->getWindow()->draw(iZonesShape);
+	const int itemAssetSz = 24;
 	for (int i = 0; i < this->contextPlayer->getBag().size(); i++)
 	{
-		sf::IntRect spSize = { assetSize * i, 0, assetSize, assetSize };
+		sf::IntRect spSize = { itemAssetSz * i, 0, itemAssetSz, itemAssetSz };
 		sf::Texture t;
 		sf::Sprite sp;
 		if (t.loadFromFile("assets/items.png"))
@@ -148,12 +172,12 @@ void MainWindow::InventoryMenu::draw()
 			this->contextWindow->getWindow()->draw(sp);
 
 			sf::Text txt;
-			txt.setFont(*this->contextWindow->getFont());
+			txt.setFont(this->contextWindow->getFont());
 			txt.setString("x" + convertToString(this->contextPlayer->getBag()[i]));
 			txt.setCharacterSize(55);
 			txt.setOutlineColor(sf::Color::Black);
 			txt.setPosition(
-				sp.getPosition().x + assetSize + 100, sp.getPosition().y + 20
+				sp.getPosition().x + itemAssetSz + 100, sp.getPosition().y + 20
 			);
 			this->contextWindow->getWindow()->draw(txt);
 		}

@@ -1,6 +1,8 @@
 # pragma once
 # include "TexturedElement.h"
 # include "Pokemon.h"
+# include "include/map/MapGenerator.h"
+
 
 class Player : public TexturedElement {
 private:
@@ -9,8 +11,7 @@ private:
 	std::vector<int> bag;
 
 public:
-	Player();
-	~Player();
+	Player(std::string path);
 
 	std::vector<Pokemon> getTeam();
 

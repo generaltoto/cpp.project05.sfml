@@ -13,7 +13,6 @@ public:
 	std::map<Stat, int> baseStats;
 	std::map<Stat, int> currentStats;
 
-	Pokemon();
 	Pokemon(
 		int x,
 		int y,
@@ -24,7 +23,6 @@ public:
 		int level,
 		std::vector<int>
 	);
-	~Pokemon();
 
 	void initStats(std::vector<int>, int level);
 	void levelUp(int expEarn);

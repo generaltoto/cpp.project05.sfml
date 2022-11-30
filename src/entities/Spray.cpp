@@ -1,6 +1,6 @@
 # include "include/entities/Spray.h"
 
-Spray::Spray(SprayType st) { this->type = st; }
+Spray::Spray(SprayType st, std::string path) : TexturedElement(path) { this->type = st; }
 
 Spray::~Spray() { }
 

@@ -1,22 +1,25 @@
 #include "include/view/MainWindow.h"
 
-MainWindow::MainWindow() {
+MainWindow::MainWindow(sf::Font font) {
     this->window = nullptr;
-    this->font = new sf::Font();
+    this->font = font;
 
     initWindow();
 }
 MainWindow::~MainWindow() {
-    delete this->font;
     delete this->window;
 }
 
 sf::RenderWindow* MainWindow::getWindow() { return this->window; }
-sf::Font* MainWindow::getFont() { return this->font; }
+sf::Font &MainWindow::getFont() { return this->font; }
 
 sf::VideoMode* MainWindow::getVideoMode() { return &this->vMode; }
 
-void MainWindow::setMenu(Menu* menu) { this->menu = menu; }
+void MainWindow::setMenu(Menu* menu, InventoryMenu* invMenu) 
+{ 
+    this->menu = menu; 
+    this->invMenu = invMenu;
+}
 
 void MainWindow::initWindow() {
     this->vMode = sf::VideoMode::getDesktopMode();
@@ -26,7 +29,7 @@ void MainWindow::initWindow() {
         sf::Style::Titlebar | sf::Style::Close
     );
     this->window->setPosition(sf::Vector2i(0, 0));
-    if (!this->font->loadFromFile("assets/pixelFont.ttf")) throw("ERROR::FONT_LOADING");
+    if (!this->font.loadFromFile("assets/pixelFont.ttf")) throw("ERROR::FONT_LOADING");
 }
 
 void MainWindow::render(ViewTypes* currentView)

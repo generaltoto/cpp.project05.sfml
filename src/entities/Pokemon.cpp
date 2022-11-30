@@ -1,7 +1,5 @@
 #include "include/entities/Pokemon.h"
 
-Pokemon::Pokemon() = default;
-
 Pokemon::Pokemon(
 	int x,
 	int y,
@@ -11,7 +9,7 @@ Pokemon::Pokemon(
 	std::string caption,
 	int level,
 	std::vector<int> stats
-) {
+) : TexturedElement(x, y, name, path) {
 	this->posX = x;
 	this->posY = y;
 	this->name = name;
@@ -28,8 +26,6 @@ Pokemon::Pokemon(
 	initStats(stats, level);
 }
 
-Pokemon::~Pokemon() = default;
-
 void Pokemon::initStats(std::vector<int> stats, int level) {
 	this->baseStats.insert({ HP,stats[0] });
 	this->baseStats.insert({ ATK,stats[1] });
@@ -38,9 +34,6 @@ void Pokemon::initStats(std::vector<int> stats, int level) {
 	this->baseStats.insert({ DEFSPE,stats[4] });
 	this->baseStats.insert({ VIT,stats[5] });
 	updateCurrentStat();
-
-	if (!this->asset.loadFromFile(path)) throw("ERROR::LOADING_POKEMON_SPRITE");
-	this->sprite.setTexture(this->asset);
 }
 
 void Pokemon::levelUp(int expEarn) {

@@ -15,16 +15,17 @@ protected:
 	sf::Sprite sprite;
 
 public:
-	TexturedElement();
+	TexturedElement(std::string path);
 	TexturedElement(
 		int x,
 		int y,
 		std::string name,
 		std::string path
 	);
-	~TexturedElement();
 
-	sf::Sprite getSprite();
+	sf::Sprite &getSprite();
+
+	std::string &getName();
 
 	void displayEntity(sf::RenderWindow* window);
 
