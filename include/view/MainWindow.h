@@ -9,12 +9,9 @@
 
 #include "include/entities/TexturedElement.h"
 #include "include/Structures.h"
-<<<<<<< HEAD
 #include "include/entities/Player.h"
 #include <sstream>
-=======
 #include "include/audio/Sound.h"
->>>>>>> feature/audio
 
 class MainWindow {
 

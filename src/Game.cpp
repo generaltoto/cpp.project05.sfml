@@ -98,18 +98,18 @@ void Game::runGame() {
 	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
 		throw("ERROR::MAP_LOADING");
 
-   Music music = { "assets/audio/main_music.ogg" };
-   music.play();
-   music.setVolume(20.f);
-   Sound soundEffect;
-   soundEffect.setVolume(75.f);
+	Music music = { "assets/audio/main_music.ogg" };
+	music.play();
+	music.setVolume(60.f);
+	Sound soundEffect;
+	soundEffect.setVolume(75.f);
 
-   int frameCount = 0;
-   sf::Event e{};
+	int frameCount = 0;
+	sf::Event e{};
 
-   while (mainWindow->getWindow()->isOpen())
-   {
-      mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
+	while (mainWindow->getWindow()->isOpen())
+	{
+		mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
 
 		while (mainWindow->getWindow()->pollEvent(e))
 		{
@@ -121,7 +121,7 @@ void Game::runGame() {
 				switch (currentView)
 				{
 				case MENU:
-					gameMenu.navigateMenu(&currentView);
+					gameMenu.navigateMenu(&currentView, &soundEffect);
 					break;
 				case PLAY:
 					if (e.key.code == sf::Keyboard::Escape)
@@ -131,7 +131,6 @@ void Game::runGame() {
 						);
 						currentView = MENU;
 					}
-					std::cout << "here" << std::endl;
 					break;
 				case COMBAT:
 					break;

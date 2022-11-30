@@ -5,10 +5,7 @@ int main() {
     Game::startGame();
 
     Game::runGame();
-<<<<<<< HEAD
 
-=======
->>>>>>> feature/audio
     return 0;
 }
 

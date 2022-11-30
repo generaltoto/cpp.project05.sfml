@@ -11,7 +11,6 @@ void Spray::updatePokemon(Pokemon* p) {
 		p->currentStats[HP] += this->heal;
 		break;
 	case RESET:
-		p->pokemonStatus = OK;
 		break;
 	default:
 		break;

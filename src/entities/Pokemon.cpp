@@ -7,19 +7,10 @@ Pokemon::Pokemon(
 	int y,
 	std::string name,
 	std::string path,
-<<<<<<< HEAD
 	std::vector<std::string> types,
 	std::string caption,
 	int level,
 	std::vector<int> stats
-=======
-	Types type[2],
-	Capacity capacities[4],
-	/*std::string caption,*/
-	int level,
-	int stats[6],
-	sf::IntRect pokeImg
->>>>>>> feature/audio
 ) {
 	this->posX = x;
 	this->posY = y;
@@ -30,20 +21,16 @@ Pokemon::Pokemon(
 	{
 		this->type[i] = types[i];
 	}
-	/*this->caption = caption;*/
+	this->caption = caption;
 	this->levels.level = level;
 	this->levels.ExpToNext = level ^ 3;
 	this->levels.currentExp = 0;
-<<<<<<< HEAD
 	initStats(stats, level);
 }
 
-Pokemon::~Pokemon() { }
+Pokemon::~Pokemon() = default;
 
 void Pokemon::initStats(std::vector<int> stats, int level) {
-=======
-
->>>>>>> feature/audio
 	this->baseStats.insert({ HP,stats[0] });
 	this->baseStats.insert({ ATK,stats[1] });
 	this->baseStats.insert({ ATKSPE,stats[2] });
@@ -52,16 +39,9 @@ void Pokemon::initStats(std::vector<int> stats, int level) {
 	this->baseStats.insert({ VIT,stats[5] });
 	updateCurrentStat();
 
-	if (!this->asset.loadFromFile(path)) {
-		throw("C K C");
-	}
-	else {
-		this->sprite.setTexture(this->asset);
-		this->sprite.setTextureRect(pokeImg);
-	}
+	if (!this->asset.loadFromFile(path)) throw("ERROR::LOADING_POKEMON_SPRITE");
+	this->sprite.setTexture(this->asset);
 }
-
-Pokemon::~Pokemon() { }
 
 void Pokemon::levelUp(int expEarn) {
 	this->levels.currentExp += expEarn;
