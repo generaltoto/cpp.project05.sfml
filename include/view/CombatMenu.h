@@ -56,8 +56,10 @@ private:
 public:
 	bool activeCombat;
 
+	int activePokemonIdx;
 	int selectedPokemonIdx;
 	int selectedAttackIdx;
+	int sideNavigate = 0;
 
 	int currentSelected;
 	CombatAction currentView;
@@ -68,6 +70,12 @@ public:
 
 	/// Navigation through pokemon selection for combat
 	void navigate(Sound* soundEffect, ViewTypes* currentView);
+
+	/// Navigates through pokemon's capacity.
+	void navigateAttacks(Sound* soundEffect);
+
+	/// Navigates through pokemon team in combat.
+	void navigatePokemon(Sound* soundEffect);
 
 	/// Draws the entire menu
 	void drawMenu();

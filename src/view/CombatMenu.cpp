@@ -10,8 +10,9 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->selfPokemonPos = { 400,500 };
 	this->inGamePokemonScaleSize = { 15.f, 15.f };
 	this->statPokemonScaleSize = { 3.f, 3.f };
-	this->selectedPokemonIdx = 0;
-	this->selectedAttackIdx = 0;
+	this->activePokemonIdx = 0;
+	this->selectedAttackIdx = 4;
+	this->selectedPokemonIdx = 7;
 	this->activeCombat = false;
 	this->enemies = {};
 
@@ -186,7 +187,7 @@ void CombatMenu::drawPokeText(int i)
 
 void CombatMenu::drawAttacksSlots(Pokemon* pokemon)
 {
-	for (int i = 0; i < this->contextPlayer->getTeam()[selectedPokemonIdx].getCapacities().size() ; i++)
+	for (int i = 0; i < this->contextPlayer->getTeam()[activePokemonIdx].getCapacities().size() ; i++)
 	{
 		if (this->selectedAttackIdx == i)
 			this->attackSlot.setFillColor(this->activeColor);
@@ -195,17 +196,17 @@ void CombatMenu::drawAttacksSlots(Pokemon* pokemon)
 		sf::Vector2f slotPos;
 		slotPos = {
 			float(this->mainPos.x + 20),
-			float(this->mainPos.y + (i*122) + 10)
+			float(this->mainPos.y + (i* (this->mainSize.y / 5.2)) + 20)
 		};
 		sf::Vector2f slotSize;
 		slotSize = {
 			float(this->mainSize.x * 0.6),
-			float(this->mainSize.y / 5)
+			float(this->mainSize.y / 5.5)
 		};
 		this->attackSlot.setPosition(slotPos);
 		this->attackSlot.setSize(slotSize);
 		this->contextWindow->getWindow()->draw(this->attackSlot);
-		drawAttacksText(this->contextPlayer->getTeam()[selectedPokemonIdx].getCapacities()[i], i);
+		drawAttacksText(this->contextPlayer->getTeam()[activePokemonIdx].getCapacities()[i], i);
 	}
 }
 
@@ -219,8 +220,8 @@ void CombatMenu::drawAttacksText(Capacity capa, int i) {
 	txt.setOutlineColor(sf::Color::Black);
 	txt.setOutlineThickness(5);
 	txt.setPosition(
-		this->attackSlot.getPosition().x + (this->attackSlot.getSize().x/5),
-		this->attackSlot.getPosition().y + (this->attackSlot.getSize().y / 2)
+		this->attackSlot.getPosition().x + (this->attackSlot.getSize().x/6),
+		this->attackSlot.getPosition().y + (this->attackSlot.getSize().y / 2.5)
 	);
 	this->contextWindow->getWindow()->draw(txt);
 
@@ -235,8 +236,8 @@ void CombatMenu::drawAttacksText(Capacity capa, int i) {
 		std::to_string(capa.pp)
 	);
 	txt.setPosition(
-		this->attackSlot.getPosition().x + (this->attackSlot.getSize().x / 2),
-		this->attackSlot.getPosition().y + (this->attackSlot.getSize().y / 2)
+		this->attackSlot.getPosition().x + (this->attackSlot.getSize().x / 1.5),
+		this->attackSlot.getPosition().y + (this->attackSlot.getSize().y / 2.5)
 	);
 	this->contextWindow->getWindow()->draw(txt);
 }
@@ -285,9 +286,9 @@ void CombatMenu::drawShape()
 
 void CombatMenu::drawSelectedPokemon()
 {
-	this->contextPlayer->getTeam()[selectedPokemonIdx].getSprite().setPosition(this->selfPokemonPos);
-	this->contextPlayer->getTeam()[selectedPokemonIdx].getSprite().setScale(this->inGamePokemonScaleSize);
-	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[selectedPokemonIdx].getSprite());
+	this->contextPlayer->getTeam()[activePokemonIdx].getSprite().setPosition(this->selfPokemonPos);
+	this->contextPlayer->getTeam()[activePokemonIdx].getSprite().setScale(this->inGamePokemonScaleSize);
+	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[activePokemonIdx].getSprite());
 }
 
 void CombatMenu::drawSelectAction() {
@@ -297,40 +298,101 @@ void CombatMenu::drawSelectAction() {
 
 void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView) {
 	this->activeCombat = true;
+	if (sideNavigate == 0) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+			texts[currentSelected].setOutlineThickness(0);
+			if (currentSelected < 2) ++currentSelected;
+			else currentSelected = 0;
+			texts[currentSelected].setOutlineThickness(10);
+			soundEffect->playASound(MENUEFFECT);
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+			texts[currentSelected].setOutlineThickness(0);
+			if (currentSelected > 0) --currentSelected;
+			else currentSelected = 2;
+			texts[currentSelected].setOutlineThickness(10);
+			soundEffect->playASound(MENUEFFECT);
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			soundEffect->playASound(MENUEFFECT);
+			if (currentSelected == 0 && this->currentView == ATTACKS) {
+				this->selectedAttackIdx = 0;
+				this->sideNavigate = 1;
+			}
+			else if (currentSelected == 1 && this->currentView == TEAM) {
+				this->selectedPokemonIdx = 0;
+				this->sideNavigate = 2;
+			}
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+			*currentView = MENU;
+			soundEffect->playASound(MENUEFFECT);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+			switch (currentSelected)
+			{
+			case 0:
+				this->currentView = ATTACKS;
+				break;
+			case 1:
+				this->currentView = TEAM;
+				break;
+			case 2:
+				// flee feature
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	else if (sideNavigate == 1) {
+		navigateAttacks(soundEffect);
+	}
+	else {
+		navigatePokemon(soundEffect);
+	}
+}
+
+void CombatMenu::navigateAttacks(Sound* soundEffect) {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		texts[currentSelected].setOutlineThickness(0);
-		if (currentSelected < 2) ++currentSelected;
-		else currentSelected = 0;
-		texts[currentSelected].setOutlineThickness(10);
+		if (selectedAttackIdx < this->contextPlayer->getTeam()[activePokemonIdx].getCapacities().size()-1) ++selectedAttackIdx;
+		else selectedAttackIdx = 0;
 		soundEffect->playASound(MENUEFFECT);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		texts[currentSelected].setOutlineThickness(0);
-		if (currentSelected > 0) --currentSelected;
-		else currentSelected = 2;
-		texts[currentSelected].setOutlineThickness(10);
+		if (selectedAttackIdx > 0) --selectedAttackIdx;
+		else selectedAttackIdx = this->contextPlayer->getTeam()[activePokemonIdx].getCapacities().size()-1;
 		soundEffect->playASound(MENUEFFECT);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		*currentView = MENU;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+		soundEffect->playASound(MENUEFFECT);
+		this->selectedAttackIdx = 4;
+		this->sideNavigate = 0;
+		return;
+	}
+}
+
+void CombatMenu::navigatePokemon(Sound* soundEffect) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		if (selectedPokemonIdx < this->contextPlayer->getNbPokemon()-1) ++selectedPokemonIdx;
+		else selectedPokemonIdx = 0;
 		soundEffect->playASound(MENUEFFECT);
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-		switch (currentSelected)
-		{
-		case 0:
-			this->currentView = ATTACKS;
-			break;
-		case 1:
-			this->currentView = TEAM;
-			break;
-		case 2:
-			// flee feature
-			break;
-		default:
-			break;
-		}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		if (selectedPokemonIdx > 0) --selectedPokemonIdx;
+		else selectedPokemonIdx = this->contextPlayer->getNbPokemon() - 1;
+		soundEffect->playASound(MENUEFFECT);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+		soundEffect->playASound(MENUEFFECT);
+		this->selectedPokemonIdx = 7;
+		this->sideNavigate = 0;
+		return;
 	}
 }
 
@@ -345,7 +407,7 @@ void CombatMenu::drawMenu()
 	{
 	case ATTACKS:
 		this->currentView = ATTACKS;
-		this->drawAttacksSlots(&this->contextPlayer->getTeam()[selectedPokemonIdx]);
+		this->drawAttacksSlots(&this->contextPlayer->getTeam()[activePokemonIdx]);
 		break;
 	case TEAM:
 		this->currentView = TEAM;
