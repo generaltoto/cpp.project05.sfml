@@ -30,9 +30,6 @@ public:
     /// prevents an infinite load of enemy team in combat
     static bool loadedCommbatEnemies;
 
-    /// Loads a random enemy team depending on the encouter type
-    static std::vector<Pokemon> loadEnemyTeam(bool);
-
     /// Creates a pokemon from Json
     static void createPokemons(
         int index,
