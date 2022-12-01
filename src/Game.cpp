@@ -8,14 +8,13 @@ bool Game::loadedCommbatEnemies = false;
 std::vector<Pokemon> Game::loadEnemyTeam(bool isWild)
 {
 	std::vector<Pokemon> enemies = {};
+	srand(time(NULL));
 	if (isWild)
 	{
-		srand(time(NULL));
 		enemies.push_back(Game::pokemons[rand() % 808]);
 	}
 	else
 	{
-		srand(time(NULL));
 		for (int i = 0; i < rand() % 5 + 2; i++)
 		{
 			enemies.push_back(Game::pokemons[rand() % 808]);
@@ -30,6 +29,10 @@ void Game::createPokemons(
 )
 {
 	Game::pokemons[index] = { x, y, name, path, types, caption, level, stats };
+	for (int i = 0; i < rand() % 4 + 1; i++)
+	{
+		Game::pokemons[index].getCapacities()[i] = Game::capacities[rand() % 618];
+	}
 }
 
 void Game::createCapacity(int index, std::string name, int damage, std::string attackType, std::string type, int accuracy, int pp)
@@ -43,6 +46,20 @@ void Game::startGame() {
 
 	int pokemonIndex = 0;
 	int capacityIndex = 0;
+
+	for (auto& moves : DataManager::getAll("include/data/moves.json"))
+	{
+		Game::createCapacity(
+			capacityIndex,
+			moves["ename"],
+			moves["power"],
+			moves["category"],
+			moves["type"],
+			moves["accuracy"],
+			moves["pp"]
+		);
+		++capacityIndex;
+	}
 
 	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
 	{
@@ -71,20 +88,6 @@ void Game::startGame() {
 			}
 		);
 		++pokemonIndex;
-	}
-
-	for (auto& moves : DataManager::getAll("include/data/moves.json"))
-	{
-		Game::createCapacity(
-			capacityIndex,
-			moves["ename"],
-			moves["power"],
-			moves["category"],
-			moves["type"],
-			moves["accuracy"],
-			moves["pp"]
-		);
-		++capacityIndex;
 	}
 
 	std::cout << "LOADED::POKEMON_AND_MOVES" << std::endl;
