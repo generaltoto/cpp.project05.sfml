@@ -19,6 +19,7 @@ private:
 	sf::Vector2f mainSize;
 	sf::RectangleShape pokemonSlot;
 
+	sf::Vector2f enemyPokemonPos;
 	sf::Vector2f selfPokemonPos;
 	sf::Vector2f inGamePokemonScaleSize;
 	sf::Vector2f statPokemonScaleSize;

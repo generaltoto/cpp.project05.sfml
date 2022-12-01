@@ -83,6 +83,8 @@ void Pokemon::updateCurrentStat() {
 		+ this->levels.level + 10;
 }
 
+Capacity* Pokemon::getCapacities() { return this->capacities; }
+
 //Pokemon Pokemon::evolve() {
 //	
 //}

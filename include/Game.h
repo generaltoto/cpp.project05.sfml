@@ -53,7 +53,8 @@ public:
         int damage,
         std::string attackType,
         std::string type,
-        int accuracy
+        int accuracy,
+        int pp
     );
 
     /// Starts the game by calling all the initializers.

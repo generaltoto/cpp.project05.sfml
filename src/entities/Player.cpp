@@ -14,6 +14,8 @@ Player::Player(int x, int y, std::string name, std::string path) : TexturedEleme
 	this->sprite.setScale(0.6f, 0.6f);
 }
 
+Player::~Player() { }
+
 int& Player::getNbPokemon()
 {
 	return this->nbPokemons;
@@ -141,6 +143,24 @@ bool Player::CombatTrigger()
 		return false;
 	}
 	else return false;
+}
+
+void Player::healPokemon(SprayType type, Pokemon& p) {
+	switch (type) {
+	case HEAL:
+		if (p.currentHealth + 20 <= p.currentStats[HP]) p.currentHealth += 20;
+		else p.currentHealth = p.currentStats[HP];
+		this->bag[1]--;
+		break;
+	case RESET:
+		for (int i = 0; i < 4; i++) {
+			p.getCapacities()[i].current = p.getCapacities()[i].pp;
+		}
+		this->bag[2]--;
+		break;
+	default:
+		break;
+	}
 }
 
 

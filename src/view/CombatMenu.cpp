@@ -6,8 +6,9 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->contextPlayer = player;
 	this->mainPos = { 1400,600 };
 	this->mainSize = { 773, 450 };
-	this->selfPokemonPos = { 480,750 };
-	this->inGamePokemonScaleSize = { 5.75f, 5.75f };
+	this->enemyPokemonPos = { 1100, 50 };
+	this->selfPokemonPos = { 400,500 };
+	this->inGamePokemonScaleSize = { 15.f, 15.f };
 	this->statPokemonScaleSize = { 3.f, 3.f };
 	this->activeIndex = 0;
 	this->activeCombat = false;
@@ -34,8 +35,8 @@ void CombatMenu::drawEnemy()
 		if (it.currentHealth <= 0) continue;
 		else
 		{
-			it.getSprite().setScale(inGamePokemonScaleSize);
-			it.getSprite().setPosition(1240, 330);
+			it.getSprite().setScale(this->inGamePokemonScaleSize);
+			it.getSprite().setPosition(this->enemyPokemonPos);
 			contextWindow->getWindow()->draw(it.getSprite());
 
 			drawEnemySlot(it);

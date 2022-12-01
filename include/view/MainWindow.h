@@ -76,16 +76,18 @@ public:
 
         void setValues();
 
-        void navigateItems();
+        void navigateItems(Sound* soundEffect, ViewTypes* currentView);
 
-        void navigatePokemons();
+        void navigatePokemons(Sound* soundEffect, Player* p);
 
     public:
         InventoryMenu(MainWindow* window, Player* player);
         ~InventoryMenu();
 
-        void navigate();
+        /// Allows to select the differents options in the inventory menu.
+        void navigate(Sound* soundEffect, Player* p, ViewTypes* currentView);
 
+        /// Draws the inventory menu.
         void draw();
     };
 
@@ -145,6 +147,7 @@ public:
     /// Returns the window's video mode
     sf::VideoMode* getVideoMode();
 
+    /// Sets the menus.
     void setMenu(Menu* menu, InventoryMenu* invMenu);
 
     /// Initiates the windows and its parameters
@@ -156,18 +159,6 @@ public:
     /// Displays the menu when ESC is pressed (paused = true)
     /// or when we launch the game (pause = false).
     void displayMenuView(ViewTypes* currentView);
-
-    /// Draws a button depending on the following arguments
-    void drawButton(
-        sf::Vector2f dim,
-        sf::Vector2f pos,
-        std::string fontPath,
-        std::string text,
-        int textSize,
-        sf::Color textCol,
-        sf::Color shapeCol
-    );
-
 };
 
 
