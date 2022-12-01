@@ -63,7 +63,6 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, Vie
 			if ((tileValue < 4 || tileValue > 13) && !OutOfBoundaries(xOnMap, yOnMap + 1))
 			{
 				if (CombatTrigger()) *viewType = COMBAT;
-
 				view->move(0, 32 / 0.6f);
 				yOnMap++;
 			}
@@ -134,26 +133,14 @@ bool Player::OutOfBoundaries(int x, int y)
 
 bool Player::CombatTrigger()
 {
-	srand(time(NULL));
+	srand(time(0));
 	int random = (rand() % 100);
 	if (tileValue == 1 || tileValue == 14)
 	{
-		if (random <= 100) 
-		{
-			isFighting = true;
-			return true;
-		}
-		else
-		{
-			return false;
-			isFighting = false;
-		}
-	}
-	else
-	{
+		if (random <= 100) return true;
 		return false;
-		isFighting = false;
 	}
+	else return false;
 }
 
 

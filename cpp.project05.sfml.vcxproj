@@ -155,6 +155,7 @@
     <ClInclude Include="include\Structures.h" />
     <ClInclude Include="include\view\Button.h" />
     <ClInclude Include="include\view\MainWindow.h" />
+    <ClInclude Include="include\view\CombatMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\audio\atk_effect.wav" />
@@ -1102,6 +1103,7 @@
     <ClCompile Include="src\view\MainWindow.cpp" />
     <ClCompile Include="src\view\Menu.cpp" />
     <ClCompile Include="src\view\SettingsMenu.cpp" />
+    <ClCompile Include="src\view\CombatMenu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

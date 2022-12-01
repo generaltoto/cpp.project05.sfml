@@ -43,7 +43,9 @@ public:
         ~Menu();
 
         /// Navigates through the menu depending on the input 
-        void navigateMenu(ViewTypes* currentView, Sound* soundEffect);
+        void navigateMenu(
+            bool activeCombat, ViewTypes* currentView, Sound* soundEffect
+        );
 
         /// Draws the menu
         void draw();

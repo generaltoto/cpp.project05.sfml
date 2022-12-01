@@ -5,9 +5,9 @@ Pokemon Game::pokemons[809] = {};
 Capacity Game::capacities[619] = {};
 bool Game::loadedCommbatEnemies = false;
 
-std::vector<Pokemon>& Game::loadEnemyTeam(bool isWild)
+std::vector<Pokemon> Game::loadEnemyTeam(bool isWild)
 {
-	std::vector<Pokemon> enemies;
+	std::vector<Pokemon> enemies = {};
 	if (isWild)
 	{
 		srand(time(NULL));
@@ -40,12 +40,14 @@ void Game::createCapacity(int index, std::string name, int damage, std::string a
 void Game::startGame() {
 	sf::Font* font = new sf::Font();
 	mainWindow = new MainWindow(*font);
+	CombatManager::initCombatContexts(mainWindow);
+
 	int pokemonIndex = 0;
 	int capacityIndex = 0;
 
 	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
 	{
-		auto t = pokemons["type"];
+		auto &t = pokemons["type"];
 		std::vector<std::string> types;
 
 		if (t.size() < 2) types = { t[0] };
@@ -90,6 +92,7 @@ void Game::startGame() {
 
 void Game::runGame() {
 	Player player = Player(0, 0, "Sacha", "assets/sacha.png");
+	CombatManager::contextPlayer = &player;
 
 	srand(time(NULL));
 	player.addPokemon(Game::pokemons[rand() % 808]);
@@ -136,7 +139,7 @@ void Game::runGame() {
 
 	while (mainWindow->getWindow()->isOpen())
 	{
-		mainWindow->getWindow()->clear(sf::Color(255, 127, 127, 255)); // clear old frame
+		mainWindow->getWindow()->clear(sf::Color(35, 117, 38, 255));
 
 		while (mainWindow->getWindow()->pollEvent(e))
 		{
@@ -148,7 +151,7 @@ void Game::runGame() {
 				switch (currentView)
 				{
 				case MENU:
-					gameMenu.navigateMenu(&currentView, &soundEffect);
+					gameMenu.navigateMenu(CombatManager::activeCombat, &currentView, &soundEffect);
 					break;
 				case PLAY:
 					if (e.key.code == sf::Keyboard::Escape)
@@ -160,7 +163,8 @@ void Game::runGame() {
 					}
 					break;
 				case COMBAT:
-					CombatManager::runCombat(mainWindow, &player, Game::loadEnemyTeam(true));
+					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
+					CombatManager::runCombat();
 					break;
 				case INVENTORY:
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
@@ -169,8 +173,6 @@ void Game::runGame() {
 				case SETTINGS:
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
 					settMenu.navigateSettings(&currentView, &soundEffect, &music);
-				default:
-					break;
 				}
 				break;
 			default:
@@ -189,13 +191,14 @@ void Game::runGame() {
 			mainWindow->getWindow()->draw(map);
 			player.setPos(camera.getCenter().x - 4, camera.getCenter().y - 33);
 			player.displayEntity(mainWindow->getWindow());
+			break;
 		case COMBAT:
-			if (player.isFighting)
-			{
-				mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
-				player.isFighting = false;
-				CombatManager::drawCombat();
-			}
+			mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
+			if (!Game::loadedCommbatEnemies) 
+				CombatManager::initCombatEnemies(
+					Game::loadEnemyTeam(true), &Game::loadedCommbatEnemies
+				);
+			CombatManager::updateCombat();
 			break;
 		case INVENTORY:
 			invMenu.draw();
@@ -203,10 +206,8 @@ void Game::runGame() {
 		case SETTINGS:
 			settMenu.draw();
 			break;
-		default:
-			break;
 		}
 
-		mainWindow->getWindow()->display(); // indicates that the mainWindow is done rendering
+		mainWindow->getWindow()->display();
 	}
 }

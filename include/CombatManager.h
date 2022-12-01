@@ -3,6 +3,7 @@
 #include "include/view/MainWindow.h"
 #include "include/entities/Player.h"
 #include "include/entities/Pokemon.h"
+#include "include/view/CombatMenu.h"
 
 class CombatManager
 {
@@ -22,14 +23,21 @@ public:
 	/// Enemies for the combat
 	static std::vector<Pokemon> enemies;
 
-	/// Starts the combat
-	static void startCombat();
+	/// True if the player is currently in a combat (for menu gestion)
+	static bool activeCombat;
 
-	/// Main loop for combat
-	static void runCombat(MainWindow* window, Player* p, std::vector<Pokemon> &e);
+	/// Starts the combat
+	static void initCombatContexts(MainWindow*);
+
+	/// Loads the enemies once.
+	static void initCombatEnemies(std::vector<Pokemon>, bool*);
+
+	/// Main loop for combat. 
+	/// \return False when the combat is over
+	static bool runCombat();
 
 	/// Draws the combat
-	static void drawCombat();
+	static void updateCombat();
 
 	/// Ends combat, deletes objects and changes view
 	static void endCombat();

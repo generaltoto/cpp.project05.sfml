@@ -43,7 +43,9 @@ void MainWindow::Menu::setValues() {
     texts[currentSelected].setOutlineThickness(10);
 }
 
-void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound* soundEffect) {
+void MainWindow::Menu::navigateMenu(
+    bool activeCombat, ViewTypes* currentView, Sound* soundEffect
+) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         texts[currentSelected].setOutlineThickness(0);
         if (currentSelected < 3) ++currentSelected;
@@ -64,7 +66,8 @@ void MainWindow::Menu::navigateMenu(ViewTypes* currentView, Sound* soundEffect) 
         switch (currentSelected)
         {
         case 0:
-            *currentView = PLAY;
+            if (activeCombat) *currentView = COMBAT;
+            else *currentView = PLAY;
             soundEffect->playASound(MENUEFFECT);
             break;
         case 1:

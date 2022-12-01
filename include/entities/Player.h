@@ -13,8 +13,6 @@ private:
 	int tileValue = 0;
 
 public:
-	bool isFighting = false;
-
 	Player(int, int, std::string name, std::string path);
 
 	int& getNbPokemon();
