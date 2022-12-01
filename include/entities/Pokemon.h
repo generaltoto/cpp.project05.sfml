@@ -44,7 +44,7 @@ public:
 	void updateCurrentStat();
 
 	/// Returns the capacities of the pokemon.
-	std::vector<Capacity> getCapacities();
+	std::vector<Capacity>& getCapacities();
 
 	/*Pokemon evolve();*/
 };

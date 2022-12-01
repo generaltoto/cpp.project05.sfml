@@ -29,7 +29,7 @@ private:
 	sf::Color activeColor = { 127,127,127,127 };
 	sf::Color activeTextColor = { 255, 255, 255, 255 };
 
-	sf::Color basicColor = { 245, 245, 245, 245 };
+	sf::Color basicColor = { 225, 225, 225, 225 };
 	sf::Color basicTextColor = { 0, 0, 0, 255 };
 
 	std::vector<const char*> options;

@@ -83,7 +83,7 @@ void Pokemon::updateCurrentStat() {
 		+ this->levels.level + 10;
 }
 
-std::vector<Capacity> Pokemon::getCapacities() { return this->capacities; }
+std::vector<Capacity>& Pokemon::getCapacities() { return this->capacities; }
 
 //Pokemon Pokemon::evolve() {
 //	

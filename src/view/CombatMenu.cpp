@@ -186,29 +186,24 @@ void CombatMenu::drawPokeText(int i)
 
 void CombatMenu::drawAttacks(Pokemon* pokemon)
 {
-	for (int i = 0; i < pokemon->getCapacities().size(); i++)
+	for (int i = 0; i < this->contextPlayer->getTeam()[selectedPokemonIdx].getCapacities().size() ; i++)
 	{
 		if (this->selectedAttackIdx == i)
 			this->attackSlot.setFillColor(this->activeColor);
 		else this->attackSlot.setFillColor(this->basicColor);
 
 		sf::Vector2f slotPos;
-		if (i - 1 < 0)
-		{
-			slotPos = {
-				float(this->mainPos.x + this->mainSize.x * 0.05),
-				float(this->mainPos.y + this->mainSize.y * 0.05 + ((this->mainSize.y / 2) * i))
-			};
-		}
-		else
-		{
-			slotPos = {
-				float(this->mainPos.x + this->mainSize.x * 0.05 + (this->mainSize.y / 2)),
-				float(this->mainPos.y + this->mainSize.y * 0.05 + ((this->mainSize.y / 2) * (i - 2)))
-			};
-		}
+		slotPos = {
+			float(this->mainPos.x + 20),
+			float(this->mainPos.y + (i*122) + 10)
+		};
+		sf::Vector2f slotSize;
+		slotSize = {
+			float(this->mainSize.x * 0.95),
+			float(this->mainSize.y / 4.5)
+		};
 		this->attackSlot.setPosition(slotPos);
-		this->attackSlot.setSize({ 256, 122 });
+		this->attackSlot.setSize(slotSize);
 		this->contextWindow->getWindow()->draw(this->attackSlot);
 	}
 }
@@ -226,20 +221,20 @@ void CombatMenu::drawTeam()
 		if (i - 2 < 1)
 		{
 			slotPos = {
-				float(this->mainPos.x + this->mainSize.x * 0.05),
+				float(this->mainPos.x + (this->mainSize.x * 0.05) - 10),
 				float(this->mainPos.y + this->mainSize.y * 0.05 + ((this->mainSize.y / 3) * i))
 			};
 		}
 		else
 		{
 			slotPos = {
-				float(this->mainPos.x + this->mainSize.x * 0.05 + (this->mainSize.y / 2)),
+				float(this->mainPos.x + this->mainSize.x * 0.05 + (this->mainSize.y / 2) + 5),
 				float(this->mainPos.y + this->mainSize.y * 0.05 + ((this->mainSize.y / 3) * (i - 3)))
 			};
 		}
 		this->pokemonSlot.setPosition(slotPos);
 		this->pokemonSlot.setSize(
-			{ 256, 122 }
+			{ 225, 120 }
 		);
 		this->contextWindow->getWindow()->draw(this->pokemonSlot);
 		drawPokeImage(i, slotPos);

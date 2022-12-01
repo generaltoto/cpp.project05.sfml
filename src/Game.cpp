@@ -28,6 +28,7 @@ void Game::createPokemons(
 	std::string caption, int level, std::vector<int> stats
 )
 {
+	srand(time(NULL));
 	Game::pokemons[index] = { x, y, name, path, types, caption, level, stats };
 	for (int i = 0; i < rand() % 4 + 1; i++)
 	{
