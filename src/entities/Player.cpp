@@ -19,7 +19,7 @@ int& Player::getNbPokemon()
 	return this->nbPokemons;
 }
 
-std::vector<Pokemon> Player::getTeam() { return this->team; }
+Pokemon* Player::getTeam() { return this->team; }
 
 std::vector<int> Player::getBag() { return this->bag; }
 

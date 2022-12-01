@@ -15,8 +15,11 @@ void CombatManager::startCombat()
 	else throw("ERROR::LOADING_COMBAT_BACKGROUND");
 }
 
-void CombatManager::runCombat(std::vector<Pokemon> &enemies)
+void CombatManager::runCombat(MainWindow* window, Player* p, std::vector<Pokemon> &e)
 {
+	contextWindow = window;
+	contextPlayer = p;
+	enemies = e;
 	startCombat();
 }
 

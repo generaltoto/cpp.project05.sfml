@@ -160,7 +160,7 @@ void Game::runGame() {
 					}
 					break;
 				case COMBAT:
-					CombatManager::runCombat(Game::loadEnemyTeam(true));
+					CombatManager::runCombat(mainWindow, &player, Game::loadEnemyTeam(true));
 					break;
 				case INVENTORY:
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;

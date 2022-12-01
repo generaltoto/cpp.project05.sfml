@@ -26,7 +26,7 @@ public:
 	static void startCombat();
 
 	/// Main loop for combat
-	static void runCombat(std::vector<Pokemon> &enemies);
+	static void runCombat(MainWindow* window, Player* p, std::vector<Pokemon> &e);
 
 	/// Draws the combat
 	static void drawCombat();
