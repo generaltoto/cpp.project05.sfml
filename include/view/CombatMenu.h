@@ -11,7 +11,7 @@ private:
 	sf::Texture* bgText;
 	sf::Sprite bgSprite;
 
-	std::vector<Pokemon> enemies;
+	std::vector<Pokemon>* enemies;
 
 	// Lots of variables for element positions and colors
 	sf::RectangleShape mainShape;
@@ -66,10 +66,13 @@ public:
 
 	CombatMenu(MainWindow*, Player*);
 
-	void initCombatEnemies(std::vector<Pokemon> e, bool* loaded);
+	void initCombatEnemies(std::vector<Pokemon>* e, bool* loaded);
+
+	/// Loads a random enemy team depending on the encouter type
+	void loadEnemy(Pokemon p);
 
 	/// Navigation through pokemon selection for combat
-	void navigate(Sound* soundEffect, ViewTypes* currentView);
+	void navigate(Sound*, ViewTypes*, bool*);
 
 	/// Navigates through pokemon's capacity.
 	void navigateAttacks(Sound* soundEffect);

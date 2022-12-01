@@ -5,24 +5,6 @@ Pokemon Game::pokemons[809] = {};
 Capacity Game::capacities[619] = {};
 bool Game::loadedCommbatEnemies = false;
 
-std::vector<Pokemon> Game::loadEnemyTeam(bool isWild)
-{
-	std::vector<Pokemon> enemies = {};
-	srand(time(NULL));
-	if (isWild)
-	{
-		enemies.push_back(Game::pokemons[rand() % 808]);
-	}
-	else
-	{
-		for (int i = 0; i < rand() % 5 + 2; i++)
-		{
-			enemies.push_back(Game::pokemons[rand() % 808]);
-		}
-	}
-	return enemies;
-}
-
 void Game::createPokemons(
 	int index, int x, int y, std::string name, std::string path, std::vector<std::string> types,
 	std::string caption, int level, std::vector<int> stats
@@ -166,7 +148,7 @@ void Game::runGame() {
 					}
 					break;
 				case COMBAT:
-					combatMenu.navigate(&soundEffect, &currentView);
+					combatMenu.navigate(&soundEffect, &currentView, &Game::loadedCommbatEnemies);
 					break;
 				case INVENTORY:
 					invMenu.navigate(&soundEffect, &player, &currentView);
@@ -196,10 +178,10 @@ void Game::runGame() {
 			break;
 		case COMBAT:
 			mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
-			if (!Game::loadedCommbatEnemies)
-				combatMenu.initCombatEnemies(
-					Game::loadEnemyTeam(true), &Game::loadedCommbatEnemies
-				);
+			if (!Game::loadedCommbatEnemies) {
+				loadedCommbatEnemies = true;
+				combatMenu.loadEnemy(Game::pokemons[rand() % 808]);
+			}
 			combatMenu.drawMenu();
 			break;
 		case INVENTORY:

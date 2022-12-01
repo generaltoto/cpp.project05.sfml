@@ -14,7 +14,7 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->selectedAttackIdx = 4;
 	this->selectedPokemonIdx = 7;
 	this->activeCombat = false;
-	this->enemies = {};
+	this->enemies = new std::vector<Pokemon>;
 
 	this->bgText = new sf::Texture();
 	if (this->bgText->loadFromFile("assets/combat.png"))
@@ -55,15 +55,22 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	texts[currentSelected].setOutlineThickness(10);
 }
 
-void CombatMenu::initCombatEnemies(std::vector<Pokemon> e, bool* loaded)
+void CombatMenu::initCombatEnemies(std::vector<Pokemon>* e, bool* loaded)
 {
 	this->enemies = e;
 	*loaded = true;
 }
 
+void CombatMenu::loadEnemy(Pokemon p)
+{
+	
+	if (!enemies->empty()) enemies = {};
+	enemies->push_back(p);
+}
+
 void CombatMenu::drawEnemy()
 {
-	for (auto& it : this->enemies)
+	for (auto& it : *this->enemies)
 	{
 		if (it.currentHealth <= 0) continue;
 		else
@@ -296,7 +303,7 @@ void CombatMenu::drawSelectAction() {
 	for (auto t : texts) this->contextWindow->getWindow()->draw(t);
 }
 
-void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView) {
+void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* loadedEnemiesSprites) {
 	this->activeCombat = true;
 	if (sideNavigate == 0) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
@@ -332,6 +339,7 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView) {
 			soundEffect->playASound(MENUEFFECT);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+			auto flee = ((this->contextPlayer->getTeam()[activePokemonIdx].currentStats[VIT] * 32) / (this->enemies[0]->currentStats[VIT] % 255)) + 30;
 			switch (currentSelected)
 			{
 			case 0:
@@ -341,7 +349,13 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView) {
 				this->currentView = TEAM;
 				break;
 			case 2:
-				// flee feature
+				if (flee >= 255 || rand() % 255 <= flee) {
+					this->activeCombat == false;
+					loadedEnemiesSprites = false;
+					this->enemies = {};
+					*currentView = PLAY;
+					return;
+				}
 				break;
 			default:
 				break;
