@@ -48,7 +48,8 @@ private:
 	void drawTeam();
 	void drawPokeImage(int, sf::Vector2f);
 	void drawPokeText(int);
-	void drawAttacks(Pokemon*);
+	void drawAttacksSlots(Pokemon*);
+	void drawAttacksText(Capacity capa, int i);
 	void drawSelectedPokemon();
 	void drawSelectAction();
 

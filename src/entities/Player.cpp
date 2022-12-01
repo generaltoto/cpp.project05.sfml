@@ -44,7 +44,7 @@ void Player::removeItem(int bag, int sub) { this->bag[bag] -= sub; }
 void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, ViewTypes *viewType) {
 	
 
-	const int frameUpdater = 300;
+	const int frameUpdater = 30;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		tileValue = level[(MAPHEIGHT * (yOnMap-1)) + xOnMap];
 		if (*frameCount % frameUpdater == 0) {

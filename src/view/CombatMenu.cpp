@@ -184,7 +184,7 @@ void CombatMenu::drawPokeText(int i)
 	this->contextWindow->getWindow()->draw(txt);
 }
 
-void CombatMenu::drawAttacks(Pokemon* pokemon)
+void CombatMenu::drawAttacksSlots(Pokemon* pokemon)
 {
 	for (int i = 0; i < this->contextPlayer->getTeam()[selectedPokemonIdx].getCapacities().size() ; i++)
 	{
@@ -199,13 +199,46 @@ void CombatMenu::drawAttacks(Pokemon* pokemon)
 		};
 		sf::Vector2f slotSize;
 		slotSize = {
-			float(this->mainSize.x * 0.95),
-			float(this->mainSize.y / 4.5)
+			float(this->mainSize.x * 0.6),
+			float(this->mainSize.y / 5)
 		};
 		this->attackSlot.setPosition(slotPos);
 		this->attackSlot.setSize(slotSize);
 		this->contextWindow->getWindow()->draw(this->attackSlot);
+		drawAttacksText(this->contextPlayer->getTeam()[selectedPokemonIdx].getCapacities()[i], i);
 	}
+}
+
+void CombatMenu::drawAttacksText(Capacity capa, int i) {
+	sf::Text txt;
+	txt.setFont(this->contextWindow->getFont());
+
+	// drawing capacity name 
+	txt.setString(capa.name);
+	txt.setCharacterSize(20);
+	txt.setOutlineColor(sf::Color::Black);
+	txt.setOutlineThickness(5);
+	txt.setPosition(
+		this->attackSlot.getPosition().x + (this->attackSlot.getSize().x/5),
+		this->attackSlot.getPosition().y + (this->attackSlot.getSize().y / 2)
+	);
+	this->contextWindow->getWindow()->draw(txt);
+
+	txt.setOutlineThickness(0);
+	txt.setCharacterSize(15);
+	txt.setColor(this->basicTextColor);
+
+	//drawing capacity pp
+	txt.setString("PP : " +
+		std::to_string(capa.current) +
+		"/" +
+		std::to_string(capa.pp)
+	);
+	txt.setPosition(
+		this->attackSlot.getPosition().x + (this->attackSlot.getSize().x / 2),
+		this->attackSlot.getPosition().y + (this->attackSlot.getSize().y / 2)
+	);
+	this->contextWindow->getWindow()->draw(txt);
 }
 
 void CombatMenu::drawTeam()
@@ -312,7 +345,7 @@ void CombatMenu::drawMenu()
 	{
 	case ATTACKS:
 		this->currentView = ATTACKS;
-		this->drawAttacks(&this->contextPlayer->getTeam()[selectedPokemonIdx]);
+		this->drawAttacksSlots(&this->contextPlayer->getTeam()[selectedPokemonIdx]);
 		break;
 	case TEAM:
 		this->currentView = TEAM;
