@@ -13,6 +13,9 @@ private:
 	sf::Vector2f mainSize;
 	sf::RectangleShape pokemonSlot;
 
+	sf::Vector2f selfPokemonPos;
+	sf::Vector2f selfPokemonScaleSize;
+
 	sf::Color activeColor = { 127,127,127,127 };
 	sf::Color activeTextColor = { 255, 255, 255, 255 };
 
@@ -26,6 +29,8 @@ private:
 	void drawPokeSlot();
 
 	void drawShapes();
+
+	void drawSelectedPokemon();
 
 public:
 	int activeIndex;

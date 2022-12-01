@@ -6,7 +6,9 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->contextPlayer = player;
 	this->mainPos = { 1400,600 };
 	this->mainSize = { 773, 450 };
-	this->activeIndex = 0;
+	this->selfPokemonPos = { 480,750 };
+	this->selfPokemonScaleSize = { 5.75f, 5.75f };
+	this->activeIndex = 3;
 }
 
 void CombatMenu::drawPokeImage(int i, sf::Vector2f slotPos)
@@ -99,6 +101,14 @@ void CombatMenu::drawShapes()
 	this->contextWindow->getWindow()->draw(this->mainShape);
 }
 
+void CombatMenu::drawSelectedPokemon()
+{
+	
+	this->contextPlayer->getTeam()[activeIndex].getSprite().setPosition(this->selfPokemonPos);
+	this->contextPlayer->getTeam()[activeIndex].getSprite().setScale(this->selfPokemonScaleSize);
+	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[activeIndex].getSprite());
+}
+
 void CombatMenu::navigateMenu()
 {
 }
@@ -107,4 +117,5 @@ void CombatMenu::drawMenu()
 {
 	this->drawShapes();
 	this->drawPokeSlot();
+	this->drawSelectedPokemon();
 }
