@@ -43,7 +43,7 @@ void MainWindow::SettingsMenu::setValues(Sound* soundEffect, Music* music) {
    volText[0].setString(std::to_string(int(music->getVolume())));
 }
 
-void MainWindow::SettingsMenu::navigateSettings(ViewTypes* currentView, Sound* soundEffect, Music* music) {
+void MainWindow::SettingsMenu::navigate(ViewTypes* currentView, Sound* soundEffect, Music* music) {
    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
       texts[currentSelected].setOutlineThickness(0);
       if (currentSelected < 2) ++currentSelected;

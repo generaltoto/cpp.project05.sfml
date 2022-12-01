@@ -40,7 +40,6 @@ void Game::createCapacity(int index, std::string name, int damage, std::string a
 void Game::startGame() {
 	sf::Font* font = new sf::Font();
 	mainWindow = new MainWindow(*font);
-	CombatManager::initCombatContexts(mainWindow);
 
 	int pokemonIndex = 0;
 	int capacityIndex = 0;
@@ -92,7 +91,6 @@ void Game::startGame() {
 
 void Game::runGame() {
 	Player player = Player(0, 0, "Sacha", "assets/sacha.png");
-	CombatManager::contextPlayer = &player;
 
 	srand(time(NULL));
 	player.addPokemon(Game::pokemons[rand() % 808]);
@@ -115,6 +113,7 @@ void Game::runGame() {
 	MainWindow::Menu gameMenu(mainWindow);
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
 	MainWindow::SettingsMenu settMenu(mainWindow, &soundEffect, &music);
+	CombatMenu combatMenu = CombatMenu(mainWindow, &player);
 	mainWindow->setMenu(&gameMenu, &invMenu);
 
 	TileMap map;
@@ -151,7 +150,7 @@ void Game::runGame() {
 				switch (currentView)
 				{
 				case MENU:
-					gameMenu.navigateMenu(CombatManager::activeCombat, &currentView, &soundEffect);
+					gameMenu.navigate(combatMenu.activeCombat, &currentView, &soundEffect);
 					break;
 				case PLAY:
 					if (e.key.code == sf::Keyboard::Escape)
@@ -164,7 +163,7 @@ void Game::runGame() {
 					break;
 				case COMBAT:
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
-					CombatManager::runCombat();
+					combatMenu.navigate();
 					break;
 				case INVENTORY:
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
@@ -172,7 +171,7 @@ void Game::runGame() {
 					break;
 				case SETTINGS:
 					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
-					settMenu.navigateSettings(&currentView, &soundEffect, &music);
+					settMenu.navigate(&currentView, &soundEffect, &music);
 				}
 				break;
 			default:
@@ -194,11 +193,11 @@ void Game::runGame() {
 			break;
 		case COMBAT:
 			mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
-			if (!Game::loadedCommbatEnemies) 
-				CombatManager::initCombatEnemies(
+			if (!Game::loadedCommbatEnemies)
+				combatMenu.initCombatEnemies(
 					Game::loadEnemyTeam(true), &Game::loadedCommbatEnemies
 				);
-			CombatManager::updateCombat();
+			combatMenu.drawMenu();
 			break;
 		case INVENTORY:
 			invMenu.draw();

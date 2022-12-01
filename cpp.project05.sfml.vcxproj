@@ -137,7 +137,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\CombatManager.h" />
     <ClInclude Include="include\audio\Music.h" />
     <ClInclude Include="include\audio\Sound.h" />
     <ClInclude Include="include\data\DataManager.h" />
@@ -1084,7 +1083,6 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CombatManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\audio\Music.cpp" />
     <ClCompile Include="src\audio\Sound.cpp" />

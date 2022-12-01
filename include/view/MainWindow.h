@@ -43,7 +43,7 @@ public:
         ~Menu();
 
         /// Navigates through the menu depending on the input 
-        void navigateMenu(
+        void navigate(
             bool activeCombat, ViewTypes* currentView, Sound* soundEffect
         );
 
@@ -115,7 +115,7 @@ public:
        ~SettingsMenu();
 
        /// Allows you to navigate in the settings.
-       void navigateSettings(ViewTypes* currentView, Sound* soundEffect, Music* music);
+       void navigate(ViewTypes* currentView, Sound* soundEffect, Music* music);
 
        /// Updates the values of volumes to display.
        void updateDrawVol(Sound* soundEffect, Music* music);

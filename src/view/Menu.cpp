@@ -43,7 +43,7 @@ void MainWindow::Menu::setValues() {
     texts[currentSelected].setOutlineThickness(10);
 }
 
-void MainWindow::Menu::navigateMenu(
+void MainWindow::Menu::navigate(
     bool activeCombat, ViewTypes* currentView, Sound* soundEffect
 ) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
