@@ -20,6 +20,36 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 		this->bgSprite.setTexture(*this->bgText);
 	}
 	else throw("ERROR::LOADING_COMBAT_BACKGROUND");
+
+
+	this->currentSelected = 0;
+
+	this->zoneCoords = { {1100,620 }, {1100, 770}, {1100, 920} };
+	this->zoneSize = { 300, 130 };
+	for (int i = 0; i < 3; i++)
+	{
+		sf::RectangleShape s;
+		s.setPosition(this->zoneCoords[i]);
+		s.setSize(this->zoneSize);
+		s.setFillColor({ 127,127,127,200 });
+		this->zones.push_back(s);
+	}
+
+	options = { "Attack", "Pokemons", "Flee" };
+	texts.resize(3);
+	sizes = { 27,27,27 };
+
+	for (std::size_t i{}; i < texts.size(); ++i) {
+		texts[i].setFont(this->contextWindow->getFont());
+		texts[i].setString(options[i]);
+		texts[i].setCharacterSize(sizes[i]);
+		texts[i].setOutlineColor(sf::Color::Black);
+		texts[i].setPosition(
+			this->zoneCoords[i].x + this->zoneSize.x * 0.25,
+			this->zoneCoords[i].y + this->zoneSize.y * 0.37
+		);
+	}
+	texts[currentSelected].setOutlineThickness(10);
 }
 
 void CombatMenu::initCombatEnemies(std::vector<Pokemon> e, bool* loaded)
@@ -196,15 +226,37 @@ void CombatMenu::drawShape()
 
 void CombatMenu::drawSelectedPokemon()
 {
-	
 	this->contextPlayer->getTeam()[activeIndex].getSprite().setPosition(this->selfPokemonPos);
 	this->contextPlayer->getTeam()[activeIndex].getSprite().setScale(this->inGamePokemonScaleSize);
 	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[activeIndex].getSprite());
 }
 
-void CombatMenu::navigate()
-{
+void CombatMenu::drawSelectAction() {
+	for (int i = 0; i < 3; i++) this->contextWindow->getWindow()->draw(zones[i]);
+	for (auto t : texts) this->contextWindow->getWindow()->draw(t);
+}
+
+void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView) {
 	this->activeCombat = true;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		texts[currentSelected].setOutlineThickness(0);
+		if (currentSelected < 2) ++currentSelected;
+		else currentSelected = 0;
+		texts[currentSelected].setOutlineThickness(10);
+		soundEffect->playASound(MENUEFFECT);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		texts[currentSelected].setOutlineThickness(0);
+		if (currentSelected > 0) --currentSelected;
+		else currentSelected = 2;
+		texts[currentSelected].setOutlineThickness(10);
+		soundEffect->playASound(MENUEFFECT);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		*currentView = MENU;
+		soundEffect->playASound(MENUEFFECT);
+	}
 }
 
 void CombatMenu::drawMenu()
@@ -214,4 +266,5 @@ void CombatMenu::drawMenu()
 	this->drawShape();
 	this->drawPokeSlot();
 	this->drawSelectedPokemon();
+	this->drawSelectAction();
 }
