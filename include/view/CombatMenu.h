@@ -31,6 +31,15 @@ private:
 	sf::Color basicColor = { 245, 245, 245, 245 };
 	sf::Color basicTextColor = { 0, 0, 0, 255 };
 
+	std::vector<const char*> options;
+	std::vector<sf::Text> texts;
+	std::vector<std::size_t> sizes;
+
+	int currentSelected;
+	std::vector<sf::Vector2f> zoneCoords;
+	sf::Vector2f zoneSize;
+	std::vector<sf::RectangleShape> zones;
+
 	void drawEnemy();
 	void drawEnemySlot(Pokemon);
 	void drawPokeImage(int, sf::Vector2f);
@@ -38,6 +47,7 @@ private:
 	void drawPokeSlot();
 	void drawShape();
 	void drawSelectedPokemon();
+	void drawSelectAction();
 
 public:
 	bool activeCombat;
@@ -49,7 +59,7 @@ public:
 	void initCombatEnemies(std::vector<Pokemon> e, bool* loaded);
 
 	/// Navigation through pokemon selection for combat
-	void navigate();
+	void navigate(Sound* soundEffect, ViewTypes* currentView);
 
 	/// Draws the entire menu
 	void drawMenu();

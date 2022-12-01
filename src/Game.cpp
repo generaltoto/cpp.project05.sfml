@@ -163,8 +163,7 @@ void Game::runGame() {
 					}
 					break;
 				case COMBAT:
-					if (e.key.code == sf::Keyboard::Escape) currentView = MENU;
-					combatMenu.navigate();
+					combatMenu.navigate(&soundEffect, &currentView);
 					break;
 				case INVENTORY:
 					invMenu.navigate(&soundEffect, &player, &currentView);
