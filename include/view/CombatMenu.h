@@ -79,5 +79,6 @@ public:
 
 	/// Draws the entire menu
 	void drawMenu();
+
 };
 

@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\rmateescu\source\repos\cpp.project05.sfml;C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -141,6 +141,7 @@
     <ClInclude Include="include\audio\Sound.h" />
     <ClInclude Include="include\data\DataManager.h" />
     <ClInclude Include="include\data\json.hpp" />
+    <ClInclude Include="include\data\Types.h" />
     <ClInclude Include="include\entities\NPC.h" />
     <ClInclude Include="include\entities\Player.h" />
     <ClInclude Include="include\entities\Pokeball.h" />
@@ -1079,6 +1080,7 @@
     <None Include="assets\audio\music_battle.ogg" />
     <None Include="include\data\moves.json" />
     <None Include="include\data\pokedex.json" />
+    <None Include="include\data\types.json" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>

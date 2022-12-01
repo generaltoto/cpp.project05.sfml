@@ -394,6 +394,14 @@ void CombatMenu::navigatePokemon(Sound* soundEffect) {
 		this->sideNavigate = 0;
 		return;
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		soundEffect->playASound(MENUEFFECT);
+		if (selectedPokemonIdx != activePokemonIdx) {
+			activePokemonIdx = selectedPokemonIdx;
+			this->contextPlayer->getTeam()[activePokemonIdx].currentHealth = enemies[0].enemyAttack(enemies[0], this->contextPlayer->getTeam()[activePokemonIdx]);
+		}
+		else return;
+	}
 }
 
 void CombatMenu::drawMenu()

@@ -46,5 +46,11 @@ public:
 	/// Returns the capacities of the pokemon.
 	std::vector<Capacity>& getCapacities();
 
+	int fromTypesToInt(std::string typeName);
+
+	float getTypeAdvantage(Pokemon, Pokemon, int);
+
+	int enemyAttack(Pokemon, Pokemon);
+
 	/*Pokemon evolve();*/
 };
