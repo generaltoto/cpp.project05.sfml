@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>C:\Users\loctr\Documents\Projets\SFML - Pokemon Like;D:\Documents\G.Tech\GTech 2\Projet 5 - SFML;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\loctr\Documents\Projets\SFML - Pokemon Like;D:\Documents\G.Tech\GTech 2\Projet 5 - SFML;C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml;C:\Users\tdelorme\source\repos\cpp.project05.sfml</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
