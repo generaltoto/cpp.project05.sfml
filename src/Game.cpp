@@ -31,7 +31,7 @@ void Game::createPokemons(
 	Game::pokemons[index] = { x, y, name, path, types, caption, level, stats };
 	for (int i = 0; i < rand() % 4 + 1; i++)
 	{
-		Game::pokemons[index].getCapacities()[i] = Game::capacities[rand() % 618];
+		Game::pokemons[index].getCapacities().push_back(Game::capacities[rand() % 618]);
 	}
 }
 

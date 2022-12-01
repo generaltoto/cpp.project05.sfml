@@ -4,7 +4,7 @@
 class Pokemon : public TexturedElement {
 private:
 	std::vector<std::string> type;
-	Capacity capacities[4];
+	std::vector<Capacity> capacities;
 	std::string caption;
 	struct Level levels;
 
@@ -44,7 +44,7 @@ public:
 	void updateCurrentStat();
 
 	/// Returns the capacities of the pokemon.
-	Capacity* getCapacities();
+	std::vector<Capacity> getCapacities();
 
 	/*Pokemon evolve();*/
 };

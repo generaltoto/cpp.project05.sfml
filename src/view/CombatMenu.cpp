@@ -10,7 +10,8 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->selfPokemonPos = { 400,500 };
 	this->inGamePokemonScaleSize = { 15.f, 15.f };
 	this->statPokemonScaleSize = { 3.f, 3.f };
-	this->activeIndex = 0;
+	this->selectedPokemonIdx = 0;
+	this->selectedAttackIdx = 0;
 	this->activeCombat = false;
 	this->enemies = {};
 
@@ -23,6 +24,7 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 
 
 	this->currentSelected = 0;
+	this->currentView = ATTACKS;
 
 	this->zoneCoords = { {1100,620 }, {1100, 770}, {1100, 920} };
 	this->zoneSize = { 300, 130 };
@@ -182,12 +184,41 @@ void CombatMenu::drawPokeText(int i)
 	this->contextWindow->getWindow()->draw(txt);
 }
 
-void CombatMenu::drawPokeSlot()
+void CombatMenu::drawAttacks(Pokemon* pokemon)
+{
+	for (int i = 0; i < pokemon->getCapacities().size(); i++)
+	{
+		if (this->selectedAttackIdx == i)
+			this->attackSlot.setFillColor(this->activeColor);
+		else this->attackSlot.setFillColor(this->basicColor);
+
+		sf::Vector2f slotPos;
+		if (i - 1 < 0)
+		{
+			slotPos = {
+				float(this->mainPos.x + this->mainSize.x * 0.05),
+				float(this->mainPos.y + this->mainSize.y * 0.05 + ((this->mainSize.y / 2) * i))
+			};
+		}
+		else
+		{
+			slotPos = {
+				float(this->mainPos.x + this->mainSize.x * 0.05 + (this->mainSize.y / 2)),
+				float(this->mainPos.y + this->mainSize.y * 0.05 + ((this->mainSize.y / 2) * (i - 2)))
+			};
+		}
+		this->attackSlot.setPosition(slotPos);
+		this->attackSlot.setSize({ 256, 122 });
+		this->contextWindow->getWindow()->draw(this->attackSlot);
+	}
+}
+
+void CombatMenu::drawTeam()
 {
 	const int assetSize = 40;
 	for (int i = 0; i < this->contextPlayer->getNbPokemon(); i++)
 	{
-		if (this->activeIndex == i)
+		if (this->selectedPokemonIdx == i)
 			this->pokemonSlot.setFillColor(this->activeColor);
 		else this->pokemonSlot.setFillColor(this->basicColor);
 
@@ -226,9 +257,9 @@ void CombatMenu::drawShape()
 
 void CombatMenu::drawSelectedPokemon()
 {
-	this->contextPlayer->getTeam()[activeIndex].getSprite().setPosition(this->selfPokemonPos);
-	this->contextPlayer->getTeam()[activeIndex].getSprite().setScale(this->inGamePokemonScaleSize);
-	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[activeIndex].getSprite());
+	this->contextPlayer->getTeam()[selectedPokemonIdx].getSprite().setPosition(this->selfPokemonPos);
+	this->contextPlayer->getTeam()[selectedPokemonIdx].getSprite().setScale(this->inGamePokemonScaleSize);
+	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[selectedPokemonIdx].getSprite());
 }
 
 void CombatMenu::drawSelectAction() {
@@ -257,6 +288,22 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView) {
 		*currentView = MENU;
 		soundEffect->playASound(MENUEFFECT);
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		switch (currentSelected)
+		{
+		case 0:
+			this->currentView = ATTACKS;
+			break;
+		case 1:
+			this->currentView = TEAM;
+			break;
+		case 2:
+			// flee feature
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void CombatMenu::drawMenu()
@@ -264,7 +311,19 @@ void CombatMenu::drawMenu()
 	this->contextWindow->getWindow()->draw(this->bgSprite);
 	this->drawEnemy();
 	this->drawShape();
-	this->drawPokeSlot();
 	this->drawSelectedPokemon();
 	this->drawSelectAction();
+	switch (this->currentView)
+	{
+	case ATTACKS:
+		this->currentView = ATTACKS;
+		this->drawAttacks(&this->contextPlayer->getTeam()[selectedPokemonIdx]);
+		break;
+	case TEAM:
+		this->currentView = TEAM;
+		this->drawTeam();
+		break;
+	default:
+		break;
+	}
 }

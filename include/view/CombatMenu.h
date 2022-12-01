@@ -18,6 +18,7 @@ private:
 	sf::Vector2f mainPos;
 	sf::Vector2f mainSize;
 	sf::RectangleShape pokemonSlot;
+	sf::RectangleShape attackSlot;
 
 	sf::Vector2f enemyPokemonPos;
 	sf::Vector2f selfPokemonPos;
@@ -35,24 +36,30 @@ private:
 	std::vector<sf::Text> texts;
 	std::vector<std::size_t> sizes;
 
-	int currentSelected;
 	std::vector<sf::Vector2f> zoneCoords;
 	sf::Vector2f zoneSize;
 	std::vector<sf::RectangleShape> zones;
 
+	enum CombatAction { ATTACKS, TEAM };
+
+	void drawShape();
 	void drawEnemy();
 	void drawEnemySlot(Pokemon);
+	void drawTeam();
 	void drawPokeImage(int, sf::Vector2f);
 	void drawPokeText(int);
-	void drawPokeSlot();
-	void drawShape();
+	void drawAttacks(Pokemon*);
 	void drawSelectedPokemon();
 	void drawSelectAction();
 
 public:
 	bool activeCombat;
 
-	int activeIndex;
+	int selectedPokemonIdx;
+	int selectedAttackIdx;
+
+	int currentSelected;
+	CombatAction currentView;
 
 	CombatMenu(MainWindow*, Player*);
 
