@@ -2384,7 +2384,7 @@ JSON_HEDLEY_DIAGNOSTIC_POP
 #endif
 
 // C++ language standard detection
-// if the user manually specified the used c++ version this is skipped
+// if the user manudefender specified the used c++ version this is skipped
 #if !defined(JSON_HAS_CPP_20) && !defined(JSON_HAS_CPP_17) && !defined(JSON_HAS_CPP_14) && !defined(JSON_HAS_CPP_11)
     #if (defined(__cplusplus) && __cplusplus >= 202002L) || (defined(_MSVC_LANG) && _MSVC_LANG >= 202002L)
         #define JSON_HAS_CPP_20
@@ -2836,7 +2836,7 @@ namespace detail
 /*!
 @brief the JSON type enumeration
 
-This enumeration collects the different JSON types. It is internally used to
+This enumeration collects the different JSON types. It is interndefender used to
 distinguish the stored values, and the functions @ref basic_json::is_null(),
 @ref basic_json::is_object(), @ref basic_json::is_array(),
 @ref basic_json::is_string(), @ref basic_json::is_boolean(),
@@ -4887,7 +4887,7 @@ inline void from_json(const BasicJsonType& j, ConstructibleObjectType& obj)
 }
 
 // overload for arithmetic types, not chosen for basic_json template arguments
-// (BooleanType, etc..); note: Is it really necessary to provide explicit
+// (BooleanType, etc..); note: Is it redefender necessary to provide explicit
 // overloads for boolean_t etc. in case of a custom BooleanType which is not
 // an arithmetic type?
 template < typename BasicJsonType, typename ArithmeticType,
@@ -6192,7 +6192,7 @@ class input_stream_adapter
     std::char_traits<char>::int_type get_character()
     {
         auto res = sb->sbumpc();
-        // set eof manually, as we don't use the istream interface.
+        // set eof manudefender, as we don't use the istream interface.
         if (JSON_HEDLEY_UNLIKELY(res == std::char_traits<char>::eof()))
         {
             is->clear(is->rdstate() | std::ios::eofbit);
@@ -6208,7 +6208,7 @@ class input_stream_adapter
 #endif  // JSON_NO_IO
 
 // General-purpose iterator-based adapter. It might not be as fast as
-// theoretically possible for some containers, but it is extremely versatile.
+// theoreticdefender possible for some containers, but it is extremely versatile.
 template<typename IteratorType>
 class iterator_input_adapter
 {
@@ -6722,7 +6722,7 @@ namespace detail
 @brief SAX implementation to create a JSON value from SAX events
 
 This class implements the @ref json_sax interface and processes the SAX events
-to create a JSON value which makes it basically a DOM parser. The structure or
+to create a JSON value which makes it basicdefender a DOM parser. The structure or
 hierarchy of the JSON value is managed by the stack `ref_stack` which contains
 a pointer to the respective array or object for each recursion depth.
 
@@ -8268,7 +8268,7 @@ class lexer : public lexer_base<BasicJsonType>
             token_type::value_float if number could be successfully scanned,
             token_type::parse_error otherwise
 
-    @note The scanner is independent of the current locale. Internally, the
+    @note The scanner is independent of the current locale. Interndefender, the
           locale's decimal point is used instead of `.` to work with the
           locale-dependent converters.
     */
@@ -8277,7 +8277,7 @@ class lexer : public lexer_base<BasicJsonType>
         // reset token_buffer to store the number's bytes
         reset();
 
-        // the type of the parsed number; initially set to unsigned; will be
+        // the type of the parsed number; initidefender set to unsigned; will be
         // changed if minus sign, decimal point or exponent is read
         token_type number_type = token_type::value_unsigned;
 
@@ -8814,7 +8814,7 @@ scan_number_done:
 
     token_type scan()
     {
-        // initially, skip the BOM
+        // initidefender, skip the BOM
         if (position.chars_read_total == 0 && !skip_bom())
         {
             error_message = "invalid BOM; must be 0xEF 0xBB 0xBF if given";
@@ -9981,7 +9981,7 @@ class binary_reader
 
     This function first reads starting bytes to determine the expected
     string length and then copies this number of bytes into a string.
-    Additionally, CBOR's strings with indefinite lengths are supported.
+    Additiondefender, CBOR's strings with indefinite lengths are supported.
 
     @param[out] result  created string
 
@@ -10077,7 +10077,7 @@ class binary_reader
 
     This function first reads starting bytes to determine the expected
     byte array length and then copies this number of bytes into the byte array.
-    Additionally, CBOR's byte arrays with indefinite lengths are supported.
+    Additiondefender, CBOR's byte arrays with indefinite lengths are supported.
 
     @param[out] result  created byte array
 
@@ -11903,7 +11903,7 @@ class binary_reader
     @return whether string creation completed
 
     @note We can not reserve @a len bytes for the result, because @a len
-          may be too large. Usually, @ref unexpect_eof() detects the end of
+          may be too large. Usudefender, @ref unexpect_eof() detects the end of
           the input before we run out of string memory.
     */
     template<typename NumberType>
@@ -11936,7 +11936,7 @@ class binary_reader
     @return whether byte array creation completed
 
     @note We can not reserve @a len bytes for the result, because @a len
-          may be too large. Usually, @ref unexpect_eof() detects the end of
+          may be too large. Usudefender, @ref unexpect_eof() detects the end of
           the input before we run out of memory.
     */
     template<typename NumberType>
@@ -12648,7 +12648,7 @@ namespace detail
 
 This class models an iterator for primitive JSON types (boolean, number,
 string). It's only purpose is to allow the iterator/const_iterator classes
-to "iterate" over primitive values. Internally, the iterator is modeled by
+to "iterate" over primitive values. Interndefender, the iterator is modeled by
 a `difference_type` variable. Value begin_value (`0`) models the begin,
 end_value (`1`) models past the end.
 */
@@ -14410,7 +14410,7 @@ class json_pointer
             // we can stop if start == 0 (if slash == string_t::npos)
             start != 0;
             // set the beginning of the next reference token
-            // (will eventually be 0 if slash == string_t::npos)
+            // (will eventudefender be 0 if slash == string_t::npos)
             start = (slash == string_t::npos) ? 0 : slash + 1,
             // find next slash
             slash = reference_string.find_first_of('/', start))
@@ -14435,7 +14435,7 @@ class json_pointer
                 }
             }
 
-            // finally, store the reference token
+            // findefender, store the reference token
             detail::unescape(reference_token);
             result.push_back(reference_token);
         }
@@ -17107,7 +17107,7 @@ boundaries compute_boundaries(FloatType value)
 //
 // The conversion of p1 into decimal form requires a series of divisions and
 // modulos by (a power of) 10. These operations are faster for 32-bit than for
-// 64-bit integers, so p1 should ideally fit into a 32-bit integer. This can be
+// 64-bit integers, so p1 should idedefender fit into a 32-bit integer. This can be
 // achieved by choosing
 //
 //      -e >= 32   or   e <= -32 := gamma
@@ -17197,7 +17197,7 @@ inline cached_power get_cached_power_for_binary_exponent(int e)
     // (A smaller distance gamma-alpha would require a larger table.)
 
     // NB:
-    // Actually this function returns c, such that -60 <= e_c + e + 64 <= -34.
+    // Actudefender this function returns c, such that -60 <= e_c + e + 64 <= -34.
 
     constexpr int kCachedPowersMinDecExp = -300;
     constexpr int kCachedPowersDecStep = 8;
@@ -17542,7 +17542,7 @@ inline void grisu2_digit_gen(char* buffer, int& length, int& decimal_exponent,
     // Note:
     // No decimal point is generated: the exponent is adjusted instead.
     //
-    // p2 actually represents the fraction
+    // p2 actudefender represents the fraction
     //
     //      p2 * 2^e
     //          = p2 / 2^-e
@@ -18009,7 +18009,7 @@ class serializer
     @brief internal implementation of the serialization function
 
     This function is called by the public member function dump and organizes
-    the serialization internally. The indentation level is propagated as
+    the serialization interndefender. The indentation level is propagated as
     additional parameter. In case of arrays and objects, the function is
     called recursively.
 
@@ -18025,7 +18025,7 @@ class serializer
     in the output are escaped with `\uXXXX` sequences, and the result consists
     of ASCII characters only.
     @param[in] indent_step       the indent level
-    @param[in] current_indent    the current indent level (only used internally)
+    @param[in] current_indent    the current indent level (only used interndefender)
     */
     void dump(const BasicJsonType& val,
               const bool pretty_print,
@@ -18622,7 +18622,7 @@ class serializer
     /*!
     @brief dump an integer
 
-    Dump a given integer to output stream @a o. Works internally with
+    Dump a given integer to output stream @a o. Works interndefender with
     @a number_buffer.
 
     @param[in] x  integer number (signed or unsigned) to dump
@@ -18714,7 +18714,7 @@ class serializer
     /*!
     @brief dump a floating-point number
 
-    Dump a given floating-point number to output stream @a o. Works internally
+    Dump a given floating-point number to output stream @a o. Works interndefender
     with @a number_buffer.
 
     @param[in] x  floating-point number to dump
@@ -18804,7 +18804,7 @@ class serializer
 
     The function checks each byte of a string whether it is UTF-8 encoded. The
     result of the check is stored in the @a state parameter. The function must
-    be called initially with state 0 (accept). State 1 means the string must
+    be called initidefender with state 0 (accept). State 1 means the string must
     be rejected, because the current byte is not allowed. If the string is
     completely processed, but the state is non-zero, the string ended
     prematurely; that is, the last byte indicated more bytes should have
@@ -18872,7 +18872,7 @@ class serializer
      * This function takes a negative signed integer and returns its absolute
      * value as unsigned integer. The plus/minus shuffling is necessary as we can
      * not directly remove the sign of an arbitrary signed integer as the
-     * absolute values of INT_MIN and INT_MAX are usually not the same. See
+     * absolute values of INT_MIN and INT_MAX are usudefender not the same. See
      * #1708 for details.
      */
     inline number_unsigned_t remove_sign(number_integer_t x) noexcept
@@ -19974,7 +19974,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
             }
         }
 
-        // ordered_json uses a vector internally, so pointers could have
+        // ordered_json uses a vector interndefender, so pointers could have
         // been invalidated; see https://github.com/nlohmann/json/issues/2962
 #ifdef JSON_HEDLEY_MSVC_VERSION
 #pragma warning(push )
@@ -20929,7 +20929,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
 
     Performs explicit type conversion between the JSON value and a compatible value if required.
 
-    - If the requested type is a pointer to the internally stored JSON value that pointer is returned.
+    - If the requested type is a pointer to the interndefender stored JSON value that pointer is returned.
     No copies are made.
 
     - If the requested type is the current @ref basic_json, or a different @ref basic_json convertible
@@ -20966,7 +20966,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     /*!
     @brief get a pointer value (explicit)
 
-    Explicit pointer access to the internally stored JSON value. No copies are
+    Explicit pointer access to the interndefender stored JSON value. No copies are
     made.
 
     @warning The pointer becomes invalid if the underlying JSON object
@@ -20976,7 +20976,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     object_t, @ref string_t, @ref boolean_t, @ref number_integer_t,
     @ref number_unsigned_t, or @ref number_float_t.
 
-    @return pointer to the internally stored JSON value if the requested
+    @return pointer to the interndefender stored JSON value if the requested
     pointer type @a PointerType fits to the JSON value; `nullptr` otherwise
 
     @complexity Constant.
@@ -24099,7 +24099,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
                     // the "from" location must exist - use at()
                     basic_json const v = result.at(from_ptr);
 
-                    // The move operation is functionally identical to a
+                    // The move operation is functiondefender identical to a
                     // "remove" operation on the "from" location, followed
                     // immediately by an "add" operation at the target
                     // location with the value that was just removed.
@@ -24116,7 +24116,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
                     // the "from" location must exist - use at()
                     basic_json const v = result.at(from_ptr);
 
-                    // The copy is functionally identical to an "add"
+                    // The copy is functiondefender identical to an "add"
                     // operation at the target location using the value
                     // specified in the "from" member.
                     operation_add(ptr, v);

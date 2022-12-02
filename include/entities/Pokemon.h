@@ -6,13 +6,15 @@ private:
 	std::vector<std::string> type;
 	std::vector<Capacity> capacities;
 	std::string caption;
-	struct Level levels;
+	Level levels;
 
 public:
 	/// Stocks the base stats of the pokemon.
 	std::map<Stat, int> baseStats;
+
 	/// Stocks the current stats of the pokemon.
 	std::map<Stat, int> currentStats;
+
 	/// Stocks the current health of the pokemon.
 	int currentHealth;
 
@@ -44,7 +46,17 @@ public:
 	void updateCurrentStat();
 
 	/// Returns the capacities of the pokemon.
-	std::vector<Capacity> getCapacities();
+	std::vector<Capacity>& getCapacities();
 
-	/*Pokemon evolve();*/
+	/// Returns the type position in the Types Matrice ('include/date/Types.h')
+	int fromTypesToInt(const std::string &typeName);
+
+	/// Returns the efficiency of a given Pokemon against another one.
+	float getTypeAdvantage(Pokemon, Pokemon, int);
+
+	/// Attacks a given pokemon with a given capacity index and the attacker
+	void pokemonAttack(Pokemon* attacker, Pokemon* defender, const int capacityIndex);
+
+	/// Chooses the best attack to use against a pokemon
+	void pokemonIAChoseAttack(Pokemon*, Pokemon*);
 };

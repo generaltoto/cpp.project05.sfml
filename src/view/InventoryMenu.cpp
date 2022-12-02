@@ -5,9 +5,9 @@ void MainWindow::InventoryMenu::setValues()
 	this->currentSelected = 1;
 	this->healingPokemon = false;
 
-	if (!this->bgAsset.loadFromFile(this->bgPath))
+	if (!this->bgAsset.loadFromFile(INVENTORY_BG_ASSET_PATH))
 		throw("ERROR::INVENTORY_BACKGROUND_LOADING");
-	else this->bg.setTexture(this->bgAsset);
+	this->bg.setTexture(this->bgAsset);
 
 	this->pZoneCoords = { {60, 100}, {60, 250}, {60, 400}, {60, 550}, {60, 700}, {60, 850} };
 	this->pZoneSize = { 800, 125 };
@@ -178,7 +178,7 @@ void MainWindow::InventoryMenu::draw()
 		sf::IntRect spSize = { itemAssetSz * i, 0, itemAssetSz, itemAssetSz };
 		sf::Texture t;
 		sf::Sprite sp;
-		if (t.loadFromFile("assets/items.png"))
+		if (t.loadFromFile(ITEMS_ASSET_PATH))
 		{
 			sp.setTexture(t);
 			sp.setTextureRect(spSize);

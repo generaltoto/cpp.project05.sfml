@@ -1,8 +1,12 @@
 # pragma once
-# include <iostream>
 # include <SFML/Graphics.hpp>
-# include <SFML/Audio.hpp>
 # include "include/Structures.h"
+# include <iostream>
+# include <chrono>
+# include <thread>
+using namespace std::this_thread;
+using namespace std::chrono;
+
 
 class TexturedElement {
 protected:

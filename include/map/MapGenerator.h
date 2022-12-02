@@ -1,9 +1,11 @@
 #pragma once
 #include "include/map/db_perlin.hpp"
 #include <iostream>
-#include <SFML/Graphics.hpp>
-#define MAPHEIGHT 256
-#define MAPWIDTH 256
+#include "SFML/Graphics.hpp"
+
+const int MAPHEIGHT = 256;
+const int MAPWIDTH = 256;
+
 #define DB_PERLIN_IMPL
 
 class MapGenerator
@@ -48,7 +50,6 @@ private:
 
 public:
 	MapGenerator(int winWidth, int winHeight);
-	~MapGenerator();
 	
 	/// Get the 1D array
 	int *GetLevel2();

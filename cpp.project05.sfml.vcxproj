@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{d446064e-25b8-424f-b1d6-1ce0d750ead3}</ProjectGuid>
     <RootNamespace>cppproject05sfml</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -48,7 +48,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -71,8 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\rmateescu\source\repos\cpp.project05.sfml;C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Users\thoma\workspaces\GTECH2\cpp.project05.sfml;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,6 +138,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);sfml-system.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib</AdditionalDependencies>
+      <StackReserveSize>200000000</StackReserveSize>
+      <StackCommitSize>200000000</StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -141,9 +147,8 @@
     <ClInclude Include="include\audio\Sound.h" />
     <ClInclude Include="include\data\DataManager.h" />
     <ClInclude Include="include\data\json.hpp" />
-    <ClInclude Include="include\entities\NPC.h" />
+    <ClInclude Include="include\data\Types.h" />
     <ClInclude Include="include\entities\Player.h" />
-    <ClInclude Include="include\entities\Pokeball.h" />
     <ClInclude Include="include\entities\Pokemon.h" />
     <ClInclude Include="include\entities\TexturedElement.h" />
     <ClInclude Include="include\Game.h" />
@@ -151,7 +156,6 @@
     <ClInclude Include="include\map\MapGenerator.h" />
     <ClInclude Include="include\map\TileMap.h" />
     <ClInclude Include="include\Structures.h" />
-    <ClInclude Include="include\view\Button.h" />
     <ClInclude Include="include\view\MainWindow.h" />
     <ClInclude Include="include\view\CombatMenu.h" />
   </ItemGroup>
@@ -1065,7 +1069,7 @@
     <Image Include="assets\inventoryBackground.png" />
     <Image Include="assets\items.png" />
     <Image Include="assets\menuBackground.jpg" />
-    <Image Include="assets\pixil-frame-0.png" />
+    <Image Include="assets\tiles.png" />
     <Image Include="assets\pixil-frame-1.png" />
     <Image Include="assets\sacha.png" />
   </ItemGroup>
@@ -1079,6 +1083,7 @@
     <None Include="assets\audio\music_battle.ogg" />
     <None Include="include\data\moves.json" />
     <None Include="include\data\pokedex.json" />
+    <None Include="include\data\types.json" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
@@ -1086,15 +1091,12 @@
     <ClCompile Include="src\audio\Music.cpp" />
     <ClCompile Include="src\audio\Sound.cpp" />
     <ClCompile Include="src\data\DataManager.cpp" />
-    <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
-    <ClCompile Include="src\entities\Pokeball.cpp" />
     <ClCompile Include="src\entities\Pokemon.cpp" />
     <ClCompile Include="src\entities\TexturedElement.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\map\db_perlin.cpp" />
     <ClCompile Include="src\map\MapGenerator.cpp" />
-    <ClCompile Include="src\view\Button.cpp" />
     <ClCompile Include="src\view\InventoryMenu.cpp" />
     <ClCompile Include="src\view\MainWindow.cpp" />
     <ClCompile Include="src\view\Menu.cpp" />

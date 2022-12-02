@@ -2,33 +2,30 @@
 
 Sound::Sound() {
 	sf::SoundBuffer buff;
-	if (!buff.loadFromFile("assets/audio/menu_sound_effect.wav")) {
+	if (!buff.loadFromFile(MENU_SOUND_PATH)) {
 		throw("ERROR_LOAD_SOUND");
 	}
 	this->soundList.insert({ MENUEFFECT, buff });
 
-	if (!buff.loadFromFile("assets/audio/atk_effect.wav")) {
+	if (!buff.loadFromFile(ATTACK_SOUND_PATH)) {
 		throw("ERROR_LOAD_SOUND");
 	}
 	this->soundList.insert({ ATKEFFECT, buff });
 
-	if (!buff.loadFromFile("assets/audio/heal_effect.wav")) {
+	if (!buff.loadFromFile(HEAL_SOUND_PATH)) {
 		throw("ERROR_LOAD_SOUND");
 	}
 	this->soundList.insert({ HEALEFFECT, buff });
 
-	if (!buff.loadFromFile("assets/audio/start_battle.wav")) {
+	if (!buff.loadFromFile(BATTLE_START_SOUND_PATH)) {
 		throw("ERROR_LOAD_SOUND");
 	}
 	this->soundList.insert({ STARTBATTLE, buff });
 
-	if (!buff.loadFromFile("assets/audio/win_battle.wav")) {
+	if (!buff.loadFromFile(BATTLE_WIN_SOUND_PATH)) {
 		throw("ERROR_LOAD_SOUND");
 	}
 	this->soundList.insert({ WINCOMBAT, buff });
-}
-
-Sound::~Sound() {
 }
 
 std::map<SoundEffect, sf::SoundBuffer> Sound::getSoundList() {
@@ -52,13 +49,11 @@ void Sound::playASound(SoundEffect needed) {
 		break;
 	case STARTBATTLE:
 		this->sound.setBuffer(this->soundList[needed]);
-		play();;
+		play();
 		break;
 	case WINCOMBAT:
 		this->sound.setBuffer(this->soundList[needed]);
 		play();
-		break;
-	default:
 		break;
 	}
 }

@@ -1,5 +1,5 @@
-# ifndef CPP_SFML_GAME_H
-# define CPP_SFML_GAME_H
+# pragma once
+
 # include "include/view/MainWindow.h"
 # include "include/entities/Player.h"
 # include "include/map/TileMap.h"
@@ -17,6 +17,7 @@ using json = nlohmann::json;
 class Game {
 
 public:
+
     /// Instantiation of our mainWindow
     static MainWindow* mainWindow;
 
@@ -27,15 +28,12 @@ public:
     static Capacity capacities[619];
 
     /// Stores if the combat enemies were load,
-    /// prevents an infinite load of enemy team in combat
-    static bool loadedCommbatEnemies;
-
-    /// Loads a random enemy team depending on the encouter type
-    static std::vector<Pokemon> loadEnemyTeam(bool);
+    /// prevents an infinite load of attacker team in combat
+    static bool loadedCombatEnemies;
 
     /// Creates a pokemon from Json
     static void createPokemons(
-        int index,
+        const int index,
         int x,
         int y,
         std::string name,
@@ -63,6 +61,3 @@ public:
     /// Handles the main loop of the game.
     static void runGame();
 };
-
-
-#endif //CPP_SFML_GAME_H

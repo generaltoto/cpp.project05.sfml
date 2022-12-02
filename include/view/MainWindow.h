@@ -1,30 +1,21 @@
-#ifndef CPP_SFML_MAINWINDOW_H
-#define CPP_SFML_MAINWINDOW_H
-
-
+#pragma once
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Audio.hpp>
 
 #include "include/entities/TexturedElement.h"
 #include "include/Structures.h"
 #include "include/entities/Player.h"
-#include <sstream>
 #include "include/audio/Sound.h"
 #include "include/audio/Music.h"
 
 class MainWindow {
 
 public:
-    /// Menu to be dispalyed in the menu view.
     class Menu
     {
     protected:
         MainWindow* contextWindow;
         int currentSelected;
 
-        const char* bgPath = "assets/menuBackground.jpg";
         sf::Texture bgAsset;
         sf::Sprite bg;
 
@@ -57,7 +48,6 @@ public:
         MainWindow* contextWindow;
         Player* contextPlayer;
 
-        const char* bgPath = "assets/inventoryBackground.png";
         sf::Texture bgAsset;
         sf::Sprite bg;
 
@@ -117,7 +107,7 @@ public:
        ~SettingsMenu();
 
        /// Allows you to navigate in the settings.
-       void navigate(ViewTypes* currentView, Sound* soundEffect, Music* music);
+       void navigate(ViewTypes* currentView, Sound* soundEffect, Music* music, Music* battleMusic);
 
        /// Updates the values of volumes to display.
        void updateDrawVol(Sound* soundEffect, Music* music);
@@ -131,11 +121,8 @@ private:
     sf::VideoMode vMode;
     sf::Font font;
 
-    Menu* menu;
-    InventoryMenu* invMenu;
-
 public:
-    MainWindow(sf::Font);
+    MainWindow(const sf::Font&);
     ~MainWindow();
 
     /// Returns the window
@@ -147,19 +134,6 @@ public:
     /// Returns the window's video mode
     sf::VideoMode* getVideoMode();
 
-    /// Sets the menus.
-    void setMenu(Menu* menu, InventoryMenu* invMenu);
-
     /// Initiates the windows and its parameters
     void initWindow();
-
-    /// Renders our mainWindow.
-    void render(ViewTypes* currentView);
-
-    /// Displays the menu when ESC is pressed (paused = true)
-    /// or when we launch the game (pause = false).
-    void displayMenuView(ViewTypes* currentView);
 };
-
-
-#endif //CPP_SFML_MAINWINDOW_H

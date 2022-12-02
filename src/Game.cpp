@@ -3,28 +3,10 @@
 MainWindow* Game::mainWindow = nullptr;
 Pokemon Game::pokemons[809] = {};
 Capacity Game::capacities[619] = {};
-bool Game::loadedCommbatEnemies = false;
-
-std::vector<Pokemon> Game::loadEnemyTeam(bool isWild)
-{
-	std::vector<Pokemon> enemies = {};
-	srand(time(NULL));
-	if (isWild)
-	{
-		enemies.push_back(Game::pokemons[rand() % 808]);
-	}
-	else
-	{
-		for (int i = 0; i < rand() % 5 + 2; i++)
-		{
-			enemies.push_back(Game::pokemons[rand() % 808]);
-		}
-	}
-	return enemies;
-}
+bool Game::loadedCombatEnemies = false;
 
 void Game::createPokemons(
-	int index, int x, int y, std::string name, std::string path, std::vector<std::string> types,
+	const int index, int x, int y, std::string name, std::string path, std::vector<std::string> types,
 	std::string caption, int level, std::vector<int> stats
 )
 {
@@ -41,13 +23,13 @@ void Game::createCapacity(int index, std::string name, int damage, std::string a
 }
 
 void Game::startGame() {
-	sf::Font* font = new sf::Font();
+	const sf::Font* font = new sf::Font();
 	mainWindow = new MainWindow(*font);
 
 	int pokemonIndex = 0;
 	int capacityIndex = 0;
 
-	for (auto& moves : DataManager::getAll("include/data/moves.json"))
+	for (auto& moves : DataManager::getAll(MOVES_JSON_PATH))
 	{
 		Game::createCapacity(
 			capacityIndex,
@@ -61,9 +43,9 @@ void Game::startGame() {
 		++capacityIndex;
 	}
 
-	for (auto& pokemons : DataManager::getAll("include/data/pokedex.json"))
+	for (auto& pokemons : DataManager::getAll(POKEMON_JSON_PATH))
 	{
-		auto &t = pokemons["type"];
+		auto& t = pokemons["type"];
 		std::vector<std::string> types;
 
 		if (t.size() < 2) types = { t[0] };
@@ -94,48 +76,43 @@ void Game::startGame() {
 }
 
 void Game::runGame() {
-	Player player = Player(0, 0, "Sacha", "assets/sacha.png");
-
-	srand(time(NULL));
+	// Player Init
+	Player player = Player(0, 0, "Sacha", PLAYER_ASSET_PATH);
+	srand(time(0));
 	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-
 	player.addItems(0, 10);
-	player.addItems(1, 69);
-	player.addItems(2, 15);
+	player.addItems(1, 5);
+	player.addItems(2, 2);
 
-	Music music = { "assets/audio/main_music.ogg" };
-	music.setVolume(50);
-	music.play();
+	// Music Init
+	Music music = { MAIN_MUSIC_PATH };
+	Music battleMusic = { BATTLE_MUSIC_PATH };
 	Sound soundEffect;
-	soundEffect.setVolume(50);
+	music.setVolume(20);
+	music.play();
+	music.setIsPlayed(true);
+	battleMusic.setVolume(10);
+	battleMusic.setIsPlayed(false);
+	soundEffect.setVolume(20);
 
+	// Menus Init
 	MainWindow::Menu gameMenu(mainWindow);
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
 	MainWindow::SettingsMenu settMenu(mainWindow, &soundEffect, &music);
 	CombatMenu combatMenu = CombatMenu(mainWindow, &player);
-	mainWindow->setMenu(&gameMenu, &invMenu);
 
+	// Map Init
 	TileMap map;
-	MapGenerator mapGen(
-		mainWindow->getVideoMode()->width, mainWindow->getVideoMode()->height
-	);
+	MapGenerator mapGen(mainWindow->getVideoMode()->width, mainWindow->getVideoMode()->height);
+	if (!map.load(TILES_ASSET_PATH, sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
+		throw("ERROR::MAP_LOADING");
+	player.SetMapPosition(mapGen.GetEntry(), MAPHEIGHT - 1);
 
 	ViewTypes currentView = MENU;
 
 	sf::View camera;
 	camera.setCenter(sf::Vector2f((32 * mapGen.GetEntry()) / 0.6f, 32 * (MAPHEIGHT - 1) / 0.6f));
 	camera.setSize(sf::Vector2f(mainWindow->getVideoMode()->width / 2, mainWindow->getVideoMode()->height / 2));
-
-	player.SetMapPosition(mapGen.GetEntry(), MAPHEIGHT - 1);
-
-	//2.9 pour 64 * 64   11.6 pour 256 * 256
-	if (!map.load("assets/pixil-frame-0.png", sf::Vector2u(32, 32), mapGen.GetLevel2(), MAPWIDTH, MAPHEIGHT, 0.6))
-		throw("ERROR::MAP_LOADING");
 
 	int frameCount = 0;
 	sf::Event e{};
@@ -146,6 +123,18 @@ void Game::runGame() {
 
 		while (mainWindow->getWindow()->pollEvent(e))
 		{
+			if (currentView == COMBAT && music.getIsPlayed()) {
+				music.pause();
+				music.setIsPlayed(false);
+				battleMusic.play();
+				battleMusic.setIsPlayed(true);
+			}
+			else if (currentView != COMBAT && battleMusic.getIsPlayed()) {
+				battleMusic.pause();
+				battleMusic.setIsPlayed(false);
+				music.play();
+				music.setIsPlayed(true);
+			}
 			switch (e.type) {
 			case sf::Event::Closed:
 				mainWindow->getWindow()->close();
@@ -166,15 +155,13 @@ void Game::runGame() {
 					}
 					break;
 				case COMBAT:
-					combatMenu.navigate(&soundEffect, &currentView);
+					combatMenu.navigate(&soundEffect, &currentView, &Game::loadedCombatEnemies);
 					break;
 				case INVENTORY:
 					invMenu.navigate(&soundEffect, &player, &currentView);
 					break;
 				case SETTINGS:
-					settMenu.navigate(&currentView, &soundEffect, &music);
-				default:
-					break;
+					settMenu.navigate(&currentView, &soundEffect, &music, &battleMusic);
 				}
 				break;
 			default:
@@ -196,10 +183,13 @@ void Game::runGame() {
 			break;
 		case COMBAT:
 			mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
-			if (!Game::loadedCommbatEnemies)
-				combatMenu.initCombatEnemies(
-					Game::loadEnemyTeam(true), &Game::loadedCommbatEnemies
-				);
+			if (!Game::loadedCombatEnemies) {
+				music.pause();
+				soundEffect.playASound(STARTBATTLE);
+				sleep_for(seconds(2));
+				loadedCombatEnemies = true;
+				combatMenu.loadAttacker(&Game::pokemons[rand() % 808], &loadedCombatEnemies);
+			}
 			combatMenu.drawMenu();
 			break;
 		case INVENTORY:

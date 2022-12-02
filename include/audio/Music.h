@@ -4,6 +4,7 @@
 class Music {
 private:
 	sf::Music music;
+	bool isPlayed;
 
 public:
 
@@ -21,6 +22,12 @@ public:
 
 	/// Returns the current volume of the music.
 	float getVolume();
+
+	/// Returns if the music is played or not.
+	bool getIsPlayed();
+
+	/// Sets if the music is on pause or not.
+	void setIsPlayed(bool played);
 
 	/// Sets the volume of the music.
 	void setVolume(float vol);
