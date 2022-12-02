@@ -72,8 +72,7 @@ void Pokemon::updateCurrentStat() {
 	this->currentStats.insert({ DEF,0 });
 	this->currentStats.insert({ DEFSPE,0 });
 	this->currentStats.insert({ VIT,0 });
-	std::map<Stat, int>::iterator it;
-	for (it = currentStats.begin(); it != currentStats.end(); it++) {
+	for (auto it = currentStats.begin(); it != currentStats.end(); ++it) {
 		if (it != this->currentStats.begin()) {
 			this->currentStats[it->first] =
 				(((2 * this->baseStats[it->first]) 
@@ -89,64 +88,75 @@ std::vector<Capacity>& Pokemon::getCapacities() { return this->capacities; }
 float Pokemon::getTypeAdvantage(Pokemon attacking, Pokemon defending, int capacity)
 {
 	float ratio = 0;
-	for (int x = 0; x < defending.type.size(); x++) {
-		if (ratio != 0) ratio *= typeTable[fromTypesToInt(attacking.getCapacities()[capacity].type)][fromTypesToInt(defending.type[x])];
-		else ratio += typeTable[fromTypesToInt(attacking.getCapacities()[capacity].type)][fromTypesToInt(defending.type[x])];
+	for (auto const &t : defending.type) {
+		if (ratio != 0) ratio *= typeTable[fromTypesToInt(attacking.getCapacities()[capacity].type)][fromTypesToInt(t)];
+		else ratio += typeTable[fromTypesToInt(attacking.getCapacities()[capacity].type)][fromTypesToInt(t)];
 	}
 	return ratio;
 }
 
-int Pokemon::fromTypesToInt(std::string typeName) {
-	if (typeName == "Normal") return 0;
-	else if (typeName == "Fighting") return 1;
-	else if (typeName == "Flying") return 2;
-	else if (typeName == "Poison") return 3;
-	else if (typeName == "Ground") return 4;
-	else if (typeName == "Rock") return 5;
-	else if (typeName == "Bug") return 6;
-	else if (typeName == "Ghost") return 7;
-	else if (typeName == "Steel") return 8;
-	else if (typeName == "Fire") return 9;
-	else if (typeName == "Water") return 10;
-	else if (typeName == "Grass") return 11;
-	else if (typeName == "Electric") return 12;
-	else if (typeName == "Psychic") return 13;
-	else if (typeName == "Ice") return 14;
-	else if (typeName == "Dragon") return 15;
-	else if (typeName == "Dark") return 16;
-	else if (typeName == "Fairy") return 17;
-	else return 0;
+int Pokemon::fromTypesToInt(const std::string &typeName) {
+	if (typeName == "Normal")   return 0;
+	if (typeName == "Fighting") return 1;
+	if (typeName == "Flying")   return 2;
+	if (typeName == "Poison")   return 3;
+	if (typeName == "Ground")   return 4;
+	if (typeName == "Rock")     return 5;
+	if (typeName == "Bug")      return 6;
+	if (typeName == "Ghost")    return 7;
+	if (typeName == "Steel")    return 8;
+	if (typeName == "Fire")     return 9;
+	if (typeName == "Water")    return 10;
+	if (typeName == "Grass")    return 11;
+	if (typeName == "Electric") return 12;
+	if (typeName == "Psychic")  return 13;
+	if (typeName == "Ice")      return 14;
+	if (typeName == "Dragon")   return 15;
+	if (typeName == "Dark")     return 16;
+	if (typeName == "Fairy")    return 17;
+	return 0;
 }
 
+void Pokemon::pokemonAttack(Pokemon* attacker, Pokemon* defender, const int capacityIndex)
+{
+	if (attacker->getCapacities()[capacityIndex].attackType == "physic" && attacker->getCapacities()[capacityIndex].current > 0)
+	{
+		attacker->getCapacities()[capacityIndex].current--;
+		defender->currentHealth -= round(((((attacker->getLevel().level * 0.4 + 2) * attacker->currentStats[ATK] * (
+			attacker->getCapacities()[capacityIndex].damage) / (attacker->currentStats[DEF] * 50)) + 2) * attacker->getTypeAdvantage(*attacker, *defender, capacityIndex))
+		);
+	}
+	else if (attacker->getCapacities()[capacityIndex].attackType == "special" && attacker->getCapacities()[capacityIndex].current > 0)
+	{
+		attacker->getCapacities()[capacityIndex].current--;
+		defender->currentHealth -= round(((((attacker->getLevel().level * 0.4 + 2) * attacker->currentStats[ATKSPE] * (
+			attacker->getCapacities()[capacityIndex].damage) / (attacker->currentStats[DEFSPE] * 50)) + 2) * attacker->getTypeAdvantage(*attacker, *defender, capacityIndex))
+		);
+	}
+}
 
-void Pokemon::pokemonAttack(Pokemon* attacker, Pokemon* defender) {
+void Pokemon::pokemonIAChoseAttack(Pokemon* attacker, Pokemon* defender) {
 	int capaToCast = 0;
 	int currentCapa = 0;
 	for (int i = 0; i < attacker->getCapacities().size(); i++) {
 		if (attacker->getCapacities()[i].attackType == "physic")
 		{
-			currentCapa = attacker->currentStats[ATK] * attacker->getCapacities()[i].damage * attacker->getTypeAdvantage(*attacker, *defender, capaToCast);
+			currentCapa = attacker->currentStats[ATK] * attacker->getCapacities()[i].damage * (
+				attacker->getTypeAdvantage(*attacker, *defender, capaToCast)
+				);
 		}
 		else if (attacker->getCapacities()[i].attackType == "special")
 		{
-			currentCapa = attacker->currentStats[ATKSPE] * attacker->getCapacities()[i].damage * attacker->getTypeAdvantage(*attacker, *defender, capaToCast);
+			currentCapa = attacker->currentStats[ATKSPE] * attacker->getCapacities()[i].damage * (
+				attacker->getTypeAdvantage(*attacker, *defender, capaToCast)
+				);
 		}
 		else if (attacker->getCapacities()[i].attackType == "status") {
 			currentCapa = 0;
 		}
-		if (i == 0 || currentCapa > capaToCast)
-		{
-			capaToCast = i;
-		}
+		if (i == 0 || currentCapa > capaToCast) capaToCast = i;
 	}
-	if (attacker->getCapacities()[capaToCast].attackType == "physic" && attacker->getCapacities()[capaToCast].current > 0)
-	{
-		attacker->getCapacities()[capaToCast].current--;
-		defender->currentHealth -= round(((((attacker->getLevel().level * 0.4 + 2) * attacker->currentStats[ATK] * attacker->getCapacities()[capaToCast].damage) / (attacker->currentStats[DEF] * 50)) + 2) * attacker->getTypeAdvantage(*attacker, *defender, capaToCast));
-	}
-	else if (attacker->getCapacities()[capaToCast].attackType == "special" && attacker->getCapacities()[capaToCast].current > 0)
-	{
-		attacker->getCapacities()[capaToCast].current--;
-		defender->currentHealth -= round(((((attacker->getLevel().level * 0.4 + 2) * attacker->currentStats[ATKSPE] * attacker->getCapacities()[capaToCast].damage) / (attacker->currentStats[DEFSPE] * 50)) + 2) * attacker->getTypeAdvantage(*attacker, *defender, capaToCast));
-	}
+
+	this->pokemonAttack(attacker, defender, capaToCast);
+	
 }

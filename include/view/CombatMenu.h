@@ -45,7 +45,7 @@ private:
 	void drawShape();
 	void drawAttacker();
 	void drawAttackerSlot(Pokemon*);
-	void drawDefenderSolt(Pokemon*);
+	void drawDefenderSlot(Pokemon*);
 	void drawTeam();
 	void drawPokeImage(int, sf::Vector2f);
 	void drawPokeText(int);
@@ -55,11 +55,19 @@ private:
 	void drawSelectAction();
 
 public:
+	/// Indicates if a combat in running or not (when we go back to menu and press play)
 	bool activeCombat;
 
+	/// Team pokemon currently in battle
 	int activePokemonIdx;
+
+	/// Selected pokemon in selection menu (the one highlighted)
 	int selectedPokemonIdx;
+
+	/// Selected attack in selection menu (the one highlighted)
 	int selectedAttackIdx;
+
+	/// Selected tab in combat menu
 	int sideNavigate = 0;
 
 	int currentSelected;
@@ -84,8 +92,9 @@ public:
 
 	/// Checks if a pokemon is dead after an attack.
 	/// Then, destroys the pokemon if needed.
-	/// Returns a boolean.
-	void isDead(Sound*);
+	/// \return false is combat is ended
+	///	\return true if combat is still running
+	bool isCombatActive(Sound*);
 
 	/// Draws the entire menu
 	void drawMenu();

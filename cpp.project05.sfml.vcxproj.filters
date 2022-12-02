@@ -4,16 +4,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\audio\Music.cpp" />
     <ClCompile Include="src\audio\Sound.cpp" />
-    <ClCompile Include="src\entities\NPC.cpp" />
     <ClCompile Include="src\entities\Player.cpp" />
-    <ClCompile Include="src\entities\Pokeball.cpp" />
     <ClCompile Include="src\entities\Pokemon.cpp" />
     <ClCompile Include="src\entities\TexturedElement.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\map\db_perlin.cpp" />
     <ClCompile Include="src\map\MapGenerator.cpp" />
     <ClCompile Include="src\data\DataManager.cpp" />
-    <ClCompile Include="src\view\Button.cpp" />
     <ClCompile Include="src\view\InventoryMenu.cpp" />
     <ClCompile Include="src\view\MainWindow.cpp" />
     <ClCompile Include="src\view\Menu.cpp" />
@@ -23,9 +20,7 @@
   <ItemGroup>
     <ClInclude Include="include\audio\Music.h" />
     <ClInclude Include="include\audio\Sound.h" />
-    <ClInclude Include="include\entities\NPC.h" />
     <ClInclude Include="include\entities\Player.h" />
-    <ClInclude Include="include\entities\Pokeball.h" />
     <ClInclude Include="include\entities\Pokemon.h" />
     <ClInclude Include="include\entities\TexturedElement.h" />
     <ClInclude Include="include\Game.h" />
@@ -35,7 +30,6 @@
     <ClInclude Include="include\map\MapGenerator.h" />
     <ClInclude Include="include\map\TileMap.h" />
     <ClInclude Include="include\Structures.h" />
-    <ClInclude Include="include\view\Button.h" />
     <ClInclude Include="include\view\MainWindow.h" />
     <ClInclude Include="include\view\CombatMenu.h" />
     <ClInclude Include="include\data\Types.h" />
@@ -51,7 +45,7 @@
     <Image Include="assets\inventoryBackground.png" />
     <Image Include="assets\items.png" />
     <Image Include="assets\menuBackground.jpg" />
-    <Image Include="assets\pixil-frame-0.png" />
+    <Image Include="assets\tiles.png" />
     <Image Include="assets\pixil-frame-1.png" />
     <Image Include="assets\sacha.png" />
     <Image Include="assets\combat.png" />

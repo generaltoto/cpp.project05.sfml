@@ -17,7 +17,7 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->enemies = nullptr;
 
 	this->bgText = new sf::Texture();
-	if (this->bgText->loadFromFile("assets/combat.png"))
+	if (this->bgText->loadFromFile(COMBAT_ASSET_PATH))
 	{
 		this->bgSprite.setTexture(*this->bgText);
 	}
@@ -108,7 +108,7 @@ void CombatMenu::drawAttackerSlot(Pokemon* pokemon)
 
 	txt.setOutlineThickness(0);
 	txt.setCharacterSize(20);
-	txt.setColor(sf::Color::Black);
+	txt.setFillColor(sf::Color::Black);
 
 	//drawing pokemon level
 	txt.setString("Level :    " + std::to_string(pokemon->getLevel().level));
@@ -132,7 +132,7 @@ void CombatMenu::drawAttackerSlot(Pokemon* pokemon)
 
 }
 
-void CombatMenu::drawDefenderSolt(Pokemon* pokemon)
+void CombatMenu::drawDefenderSlot(Pokemon* pokemon)
 {
 	//creating stats zone
 	sf::Vector2f statsPos = { 0,250 };
@@ -167,7 +167,7 @@ void CombatMenu::drawDefenderSolt(Pokemon* pokemon)
 
 	txt.setOutlineThickness(0);
 	txt.setCharacterSize(20);
-	txt.setColor(sf::Color::Black);
+	txt.setFillColor(sf::Color::Black);
 
 	//drawing pokemon level
 	txt.setString("Level :    " + std::to_string(pokemon->getLevel().level));
@@ -215,7 +215,7 @@ void CombatMenu::drawPokeText(int i)
 
 	txt.setOutlineThickness(0);
 	txt.setCharacterSize(15);
-	txt.setColor(this->basicTextColor);
+	txt.setFillColor(this->basicTextColor);
 
 	//drawing pokemon level
 	txt.setString("Level : " + std::to_string(this->contextPlayer->getTeam()[i].getLevel().level));
@@ -280,7 +280,7 @@ void CombatMenu::drawAttacksText(Capacity capa, int i) {
 
 	txt.setOutlineThickness(0);
 	txt.setCharacterSize(15);
-	txt.setColor(this->basicTextColor);
+	txt.setFillColor(this->basicTextColor);
 
 	//drawing capacity pp
 	txt.setString("PP : " +
@@ -343,7 +343,7 @@ void CombatMenu::drawSelectedPokemon()
 	this->contextPlayer->getTeam()[activePokemonIdx].getSprite().setScale(this->inGamePokemonScaleSize);
 	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[activePokemonIdx].getSprite());
 
-	drawDefenderSolt(&this->contextPlayer->getTeam()[activePokemonIdx]);
+	drawDefenderSlot(&this->contextPlayer->getTeam()[activePokemonIdx]);
 }
 
 void CombatMenu::drawSelectAction() {
@@ -353,8 +353,10 @@ void CombatMenu::drawSelectAction() {
 
 void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* loadedEnemies) {
 	this->activeCombat = true;
-	if (sideNavigate == 0) {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+	if (sideNavigate == 0) 
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) 
+		{
 			texts[currentSelected].setOutlineThickness(0);
 			if (currentSelected < 2) ++currentSelected;
 			else currentSelected = 0;
@@ -362,7 +364,8 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* load
 			soundEffect->playASound(MENUEFFECT);
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
+		{
 			texts[currentSelected].setOutlineThickness(0);
 			if (currentSelected > 0) --currentSelected;
 			else currentSelected = 2;
@@ -370,24 +373,30 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* load
 			soundEffect->playASound(MENUEFFECT);
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
+		{
 			soundEffect->playASound(MENUEFFECT);
-			if (currentSelected == 0 && this->currentView == ATTACKS) {
+			if (currentSelected == 0 && this->currentView == ATTACKS) 
+			{
 				this->selectedAttackIdx = 0;
 				this->sideNavigate = 1;
 			}
-			else if (currentSelected == 1 && this->currentView == TEAM) {
+			else if (currentSelected == 1 && this->currentView == TEAM) 
+			{
 				this->selectedPokemonIdx = 0;
 				this->sideNavigate = 2;
 			}
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) 
+		{
 			*currentView = MENU;
 			soundEffect->playASound(MENUEFFECT);
+			this->activeCombat = isCombatActive(soundEffect);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-			auto flee = (this->contextPlayer->getTeam()[activePokemonIdx].currentStats[VIT] * 32) / (enemies[0].currentStats[VIT] %255) + 30;
+			auto const flee = (this->contextPlayer->getTeam()[activePokemonIdx].currentStats[VIT] * 32) / (
+				enemies[0].currentStats[VIT] %255) + 30;
 			switch (currentSelected)
 			{
 			case 0:
@@ -398,25 +407,23 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* load
 				break;
 			case 2:
 				if (flee >= 255 || rand() % 255 <= flee) {
-					this->activeCombat == false;
+					this->activeCombat = false;
 					*loadedEnemies = false;
 					this->enemies = nullptr;
 					*currentView = PLAY;
 					return;
 				}
-				else {
-					this->enemies[0].pokemonAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
-					soundEffect->playASound(ATKEFFECT);
-					sleep_for(seconds(1));
-					isDead(soundEffect);
-				}
+				this->enemies[0].pokemonIAChoseAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
+				soundEffect->playASound(ATKEFFECT);
+				sleep_for(seconds(1));
+				isCombatActive(soundEffect);
 				break;
 			default:
 				break;
 			}
 		}
 		if (enemies == nullptr) {
-			this->activeCombat == false;
+			this->activeCombat = false;
 			*loadedEnemies = false;
 			*currentView = PLAY;
 			return;
@@ -480,26 +487,30 @@ void CombatMenu::navigatePokemon(Sound* soundEffect) {
 		sleep_for(seconds(1));
 		if (selectedPokemonIdx != activePokemonIdx) {
 			activePokemonIdx = selectedPokemonIdx;
-			this->enemies[0].pokemonAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
+			this->enemies[0].pokemonIAChoseAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
 			soundEffect->playASound(ATKEFFECT);
-			isDead(soundEffect);
+			isCombatActive(soundEffect);
 		}
 		else return;
 	}
 }
 
 void CombatMenu::attackTurn(Sound* soundEffect) {
-	this->contextPlayer->getTeam()[activePokemonIdx].pokemonAttack(&this->contextPlayer->getTeam()[activePokemonIdx], enemies);
+	this->contextPlayer->getTeam()[activePokemonIdx].pokemonAttack(
+		&this->contextPlayer->getTeam()[activePokemonIdx], enemies, this->selectedAttackIdx - 1
+	);
 	soundEffect->playASound(ATKEFFECT);
 	sleep_for(seconds(2));
-	this->enemies[0].pokemonAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
+	this->enemies[0].pokemonIAChoseAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
 	soundEffect->playASound(ATKEFFECT);
 	sleep_for(seconds(1));
-	isDead(soundEffect);
+	isCombatActive(soundEffect);
 }
 
-void CombatMenu::isDead(Sound* soundEffect) {
-	if (this->enemies->currentHealth <= 0) {
+bool CombatMenu::isCombatActive(Sound* soundEffect) {
+	if (this->enemies == nullptr) return false;
+
+	if (this->enemies->currentHealth <= 0 && this->contextPlayer->getTeam()[activePokemonIdx].currentHealth > 0) {
 		this->enemies = nullptr;
 		this->contextPlayer->getTeam()[activePokemonIdx].levelUp(150);
 		for (int i = 0; i < this->contextPlayer->getNbPokemon(); i++) {
@@ -507,21 +518,26 @@ void CombatMenu::isDead(Sound* soundEffect) {
 		}
 		soundEffect->playASound(WINCOMBAT);
 		sleep_for(seconds(2));
+		return false;
 	}
-	else if (this->contextPlayer->getTeam()[activePokemonIdx].currentHealth <= 0)
-		if (this->contextPlayer->getNbPokemon()-1 == activePokemonIdx) {
+
+	if (this->contextPlayer->getTeam()[activePokemonIdx].currentHealth <= 0)
+	{
+		if (this->contextPlayer->getNbPokemon() - 1 == activePokemonIdx) {
 			soundEffect->playASound(WINCOMBAT);
 			sleep_for(seconds(3));
 			this->contextWindow->getWindow()->close();
+			return false;
 		}
-		else {
-			for (int i = activePokemonIdx; i < this->contextPlayer->getNbPokemon(); i++) {
-				this->contextPlayer->getTeam()[i] = this->contextPlayer->getTeam()[i + 1];
-			}
-		/*delete& this->contextPlayer->getTeam()[this->contextPlayer->getNbPokemon()];*/
+		for (int i = activePokemonIdx; i < this->contextPlayer->getNbPokemon(); i++) {
+			this->contextPlayer->getTeam()[i] = this->contextPlayer->getTeam()[i + 1];
+		}
 		if (activePokemonIdx < this->contextPlayer->getNbPokemon()) activePokemonIdx++;
-		else activePokemonIdx = 0;
+		return true;
 	}
+
+	activePokemonIdx = 0;
+	return true;
 }
 
 void CombatMenu::drawMenu() {

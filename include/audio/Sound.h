@@ -1,5 +1,7 @@
 #pragma once
 # include "include/Structures.h"
+# include <map>
+# include "SFML/Audio.hpp"
 
 class Sound {
 private:
@@ -8,7 +10,6 @@ private:
 
 public:
 	Sound ();
-	~Sound ();
 
 	/// Returns the list of all the sounds effects.
 	std::map<SoundEffect, sf::SoundBuffer> getSoundList();

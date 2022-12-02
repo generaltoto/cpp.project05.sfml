@@ -4,14 +4,14 @@
 
 void MapGenerator::GenerateMap() {
 
-    std::cout << seed << std::endl;
+    std::cout << "MAP_SEED : " << seed << std::endl;
     for (auto y = 0; y < MAPWIDTH; ++y) {
         for (auto x = 0; x < MAPHEIGHT; ++x) {
 
             level[x][y] = (
                 db::perlin(float(x) / 64.0f, float(y) / 64.0f, seed * 0.25f) * 1.0f +
                 db::perlin(float(x) / 32.0f, float(y) / 32.0f, seed * 0.75f) * 0.5f
-                ) / 0.5f; 
+                ) / 0.2f; 
         }
     }
 }
@@ -208,10 +208,6 @@ findMap:
         seed1 = this->seed;
         goto findMap;
     }
-}
-
-MapGenerator::~MapGenerator()
-{
 }
 
 int *MapGenerator::GetLevel2() {

@@ -1,5 +1,5 @@
-# ifndef CPP_SFML_GAME_H
-# define CPP_SFML_GAME_H
+# pragma once
+
 # include "include/view/MainWindow.h"
 # include "include/entities/Player.h"
 # include "include/map/TileMap.h"
@@ -29,11 +29,11 @@ public:
 
     /// Stores if the combat enemies were load,
     /// prevents an infinite load of attacker team in combat
-    static bool loadedCommbatEnemies;
+    static bool loadedCombatEnemies;
 
     /// Creates a pokemon from Json
     static void createPokemons(
-        int index,
+        const int index,
         int x,
         int y,
         std::string name,
@@ -61,6 +61,3 @@ public:
     /// Handles the main loop of the game.
     static void runGame();
 };
-
-
-#endif //CPP_SFML_GAME_H

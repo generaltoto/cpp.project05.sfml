@@ -1,7 +1,7 @@
 #include "include/entities/Player.h"
 
 Player::Player(int x, int y, std::string name, std::string path) : TexturedElement(x, y, name, path) { 
-	this->nbPokemons = 0;
+	this->nbPokemon = 0;
 	this->bag.resize(3);
 	this->xOnMap = x;
 	this->yOnMap = x;
@@ -9,32 +9,27 @@ Player::Player(int x, int y, std::string name, std::string path) : TexturedEleme
 	this->path = path;
 	this->animeCount = 0;
 	this->animePos = std::vector<std::vector<sf::IntRect>>(ANIME_SACHA_RECT);
-	if (animePos.size() <= 0) throw("ERROR::LOADING_PLAYER_SPRITE");
+	if (animePos.empty()) throw("ERROR::LOADING_PLAYER_SPRITE");
 	else this->sprite.setTextureRect(this->animePos[0][this->animeCount]);
 	this->sprite.setScale(0.6f, 0.6f);
 }
 
-Player::~Player() { }
-
-int& Player::getNbPokemon()
-{
-	return this->nbPokemons;
-}
+int& Player::getNbPokemon() { return this->nbPokemon; }
 
 Pokemon* Player::getTeam() { return this->team; }
 
 std::vector<int> Player::getBag() { return this->bag; }
 
 void Player::addPokemon(Pokemon p) {
-	if (this->nbPokemons < 6)
+	if (this->nbPokemon < 6)
 	{
-		team[nbPokemons] = p;
-		++this->nbPokemons;
+		team[nbPokemon] = p;
+		++this->nbPokemon;
 	}
 }
 
 void Player::removePokemon(Pokemon* p) {
-	//std::remove(std::begin(team), std::end(team), p);
+	// not implemented //
 }
 
 void Player::addItems(int bag, int added) { this->bag[bag] += added; }
@@ -106,31 +101,19 @@ void Player::updatePlayer(int* frameCount, sf::View* view, const int* level, Vie
 
 void Player::SetMapPosition(int x, int y)
 {
-	xOnMap = x;
-	yOnMap = y;
+	this->xOnMap = x;
+	this->yOnMap = y;
 }
 
-int Player::GetMapPositionx()
-{
-	return xOnMap;
-}
+int Player::GetMapPositionX() { return this->xOnMap; }
 
-int Player::GetMapPositiony()
-{
-	return yOnMap;
-}
+int Player::GetMapPositionY() { return this->yOnMap; }
 
 bool Player::OutOfBoundaries(int x, int y)
 {
-	if (x >= MAPWIDTH || x < 0)
-	{
-		return true;
-	}
-	else if (y > MAPHEIGHT-1 || y < 0)
-	{
-		return true;
-	}
-	else return false;
+	if (x >= MAPWIDTH || x < 0) return true;
+	if (y > MAPHEIGHT-1 || y < 0) return true;
+	return false;
 }
 
 bool Player::CombatTrigger()
@@ -139,10 +122,10 @@ bool Player::CombatTrigger()
 	int random = (rand() % 100);
 	if (tileValue == 1 || tileValue == 14)
 	{
-		if (random <= 100) return true;
+		if (random <= 8) return true;
 		return false;
 	}
-	else return false;
+	return false;
 }
 
 void Player::healPokemon(SprayType type, Pokemon& p) {
@@ -157,8 +140,6 @@ void Player::healPokemon(SprayType type, Pokemon& p) {
 			p.getCapacities()[i].current = p.getCapacities()[i].pp;
 		}
 		this->bag[2]--;
-		break;
-	default:
 		break;
 	}
 }

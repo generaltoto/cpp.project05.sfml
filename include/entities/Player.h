@@ -6,7 +6,7 @@
 
 class Player : public TexturedElement {
 private:
-	int nbPokemons;
+	int nbPokemon;
 	Pokemon team[6];
 	int xOnMap, yOnMap;
 	std::vector<int> bag;
@@ -14,7 +14,6 @@ private:
 
 public:
 	Player(int, int, std::string name, std::string path);
-	~Player();
 
 	/// Returns the number of pokemons in the player's team.
 	int& getNbPokemon();
@@ -29,6 +28,7 @@ public:
 	void addPokemon(Pokemon p);
 
 	/// Removes a pokemon in the team.
+	///	NOT IMPLEMENTED /// 
 	void removePokemon(Pokemon*);
 
 	/// Heals a given pokemon with a given spray type.
@@ -51,10 +51,10 @@ public:
 	bool CombatTrigger();
 
 	/// Returns the x position of the player on the map.
-	int GetMapPositionx();
+	int GetMapPositionX();
 
 	/// Returns the y position of the player on the map.
-	int GetMapPositiony();
+	int GetMapPositionY();
 
 	/// Checks if the player is still on the map.
 	bool OutOfBoundaries(int x, int y);

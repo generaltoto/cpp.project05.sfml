@@ -15,7 +15,6 @@ TexturedElement::TexturedElement(
 	this->path = path;
 	this->asset = new sf::Texture;
 	if (this->asset->loadFromFile(path)) {
-		std::cout << "loaded : '" << path << "'" << std::endl;
 		this->sprite.setTexture(*this->asset);
 	}
 	else throw("ERROR::LOADING_ENTITY_TEXTURE");

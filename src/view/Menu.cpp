@@ -11,7 +11,7 @@ MainWindow::Menu::~Menu() {
 void MainWindow::Menu::setValues() {
     this->currentSelected = 0;
 
-    if (!this->bgAsset.loadFromFile(this->bgPath))
+    if (!this->bgAsset.loadFromFile(MENU_BG_ASSET_PATH))
         throw("ERROR::INVENTORY_BACKGROUND_LOADING");
     else this->bg.setTexture(this->bgAsset);
 

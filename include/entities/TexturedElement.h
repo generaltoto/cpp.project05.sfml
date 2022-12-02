@@ -1,12 +1,11 @@
 # pragma once
-# include <iostream>
 # include <SFML/Graphics.hpp>
-# include <SFML/Audio.hpp>
+# include "include/Structures.h"
+# include <iostream>
 # include <chrono>
 # include <thread>
-# include "include/Structures.h"
-using namespace std::this_thread; // sleep_for, sleep_until
-using namespace std::chrono; // nanoseconds, system_clock, seconds
+using namespace std::this_thread;
+using namespace std::chrono;
 
 
 class TexturedElement {
