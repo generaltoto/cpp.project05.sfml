@@ -27,7 +27,7 @@ almost no way of healing your pokemons. You'll have to be better.
   * Random pokemon encounter in the wild
 * Inventory management
 
-###Movements 
+### Movements 
 
 **GGeneral navigation :** Move in the game using the *UP*, *DOWN*, *RIGHT*, *LEFT* keys. You'll also need to use them when navigating in menus. Press *ENTER* to select an option in a menu. 
 
