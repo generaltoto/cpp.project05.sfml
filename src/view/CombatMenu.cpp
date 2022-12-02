@@ -457,10 +457,10 @@ void CombatMenu::navigateAttacks(Sound* soundEffect) {
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 		this->sideNavigate = 0;
-		this->selectedAttackIdx = 4;
 		soundEffect->playASound(MENUEFFECT);
 		sleep_for(seconds(1));
 		attackTurn(soundEffect);
+		this->selectedAttackIdx = 4;
 	}
 }
 

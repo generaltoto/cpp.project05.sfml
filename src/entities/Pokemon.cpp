@@ -151,7 +151,8 @@ void Pokemon::pokemonIAChoseAttack(Pokemon* attacker, Pokemon* defender) {
 				attacker->getTypeAdvantage(*attacker, *defender, capaToCast)
 				);
 		}
-		else if (attacker->getCapacities()[i].attackType == "status") {
+		else if (attacker->getCapacities()[i].attackType == "status") 
+		{
 			currentCapa = 0;
 		}
 		if (i == 0 || currentCapa > capaToCast) capaToCast = i;
