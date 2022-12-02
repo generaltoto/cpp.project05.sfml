@@ -1070,7 +1070,6 @@
     <Image Include="assets\items.png" />
     <Image Include="assets\menuBackground.jpg" />
     <Image Include="assets\tiles.png" />
-    <Image Include="assets\pixil-frame-1.png" />
     <Image Include="assets\sacha.png" />
   </ItemGroup>
   <ItemGroup>
