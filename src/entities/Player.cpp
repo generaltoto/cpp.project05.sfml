@@ -122,7 +122,7 @@ bool Player::CombatTrigger()
 	int random = (rand() % 100);
 	if (tileValue == 1 || tileValue == 14)
 	{
-		if (random <= 8) return true;
+		if (random <= 15) return true;
 		return false;
 	}
 	return false;
