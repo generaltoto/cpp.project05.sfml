@@ -11,7 +11,7 @@ private:
 	sf::Texture* bgText;
 	sf::Sprite bgSprite;
 
-	std::vector<Pokemon>* enemies;
+	Pokemon* enemies;
 
 	// Lots of variables for element positions and colors
 	sf::RectangleShape mainShape;
@@ -20,7 +20,7 @@ private:
 	sf::RectangleShape pokemonSlot;
 	sf::RectangleShape attackSlot;
 
-	sf::Vector2f enemyPokemonPos;
+	sf::Vector2f attackerPokemonPos;
 	sf::Vector2f selfPokemonPos;
 	sf::Vector2f inGamePokemonScaleSize;
 	sf::Vector2f statPokemonScaleSize;
@@ -43,8 +43,9 @@ private:
 	enum CombatAction { ATTACKS, TEAM };
 
 	void drawShape();
-	void drawEnemy();
-	void drawEnemySlot(Pokemon);
+	void drawAttacker();
+	void drawAttackerSlot(Pokemon*);
+	void drawDefenderSolt(Pokemon*);
 	void drawTeam();
 	void drawPokeImage(int, sf::Vector2f);
 	void drawPokeText(int);
@@ -66,10 +67,8 @@ public:
 
 	CombatMenu(MainWindow*, Player*);
 
-	void initCombatEnemies(std::vector<Pokemon>* e, bool* loaded);
-
-	/// Loads a random enemy team depending on the encouter type
-	void loadEnemy(Pokemon p);
+	/// Loads a random attacker team depending on the encouter type
+	void loadAttacker(Pokemon* p, bool* loaded);
 
 	/// Navigation through pokemon selection for combat
 	void navigate(Sound*, ViewTypes*, bool*);
@@ -80,8 +79,15 @@ public:
 	/// Navigates through pokemon team in combat.
 	void navigatePokemon(Sound* soundEffect);
 
+	/// Plays the turn of each pokemon.
+	void attackTurn(Sound*);
+
+	/// Checks if a pokemon is dead after an attack.
+	/// Then, destroys the pokemon if needed.
+	/// Returns a boolean.
+	void isDead(Sound*);
+
 	/// Draws the entire menu
 	void drawMenu();
-
 };
 

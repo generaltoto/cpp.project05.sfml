@@ -80,21 +80,25 @@ void Game::runGame() {
 
 	srand(time(NULL));
 	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
-	player.addPokemon(Game::pokemons[rand() % 808]);
+	//player.addPokemon(Game::pokemons[rand() % 808]);
+	//player.addPokemon(Game::pokemons[rand() % 808]);
+	//player.addPokemon(Game::pokemons[rand() % 808]);
+	//player.addPokemon(Game::pokemons[rand() % 808]);
+	//player.addPokemon(Game::pokemons[rand() % 808]);
 
 	player.addItems(0, 10);
 	player.addItems(1, 69);
 	player.addItems(2, 15);
 
 	Music music = { "assets/audio/main_music.ogg" };
-	music.setVolume(50);
+	music.setVolume(20);
 	music.play();
+	music.setIsPlayed(true);
+	Music battleMusic = { "assets/audio/music_battle.ogg" };
+	battleMusic.setVolume(20);
+	battleMusic.setIsPlayed(false);
 	Sound soundEffect;
-	soundEffect.setVolume(50);
+	soundEffect.setVolume(20);
 
 	MainWindow::Menu gameMenu(mainWindow);
 	MainWindow::InventoryMenu invMenu(mainWindow, &player);
@@ -128,6 +132,18 @@ void Game::runGame() {
 
 		while (mainWindow->getWindow()->pollEvent(e))
 		{
+			if (currentView == COMBAT && music.getIsPlayed()) {
+				music.pause();
+				music.setIsPlayed(false);
+				battleMusic.play();
+				battleMusic.setIsPlayed(true);
+			}
+			else if (currentView != COMBAT && battleMusic.getIsPlayed()) {
+				battleMusic.pause();
+				battleMusic.setIsPlayed(false);
+				music.play();
+				music.setIsPlayed(true);
+			}
 			switch (e.type) {
 			case sf::Event::Closed:
 				mainWindow->getWindow()->close();
@@ -154,7 +170,7 @@ void Game::runGame() {
 					invMenu.navigate(&soundEffect, &player, &currentView);
 					break;
 				case SETTINGS:
-					settMenu.navigate(&currentView, &soundEffect, &music);
+					settMenu.navigate(&currentView, &soundEffect, &music, &battleMusic);
 				default:
 					break;
 				}
@@ -179,8 +195,11 @@ void Game::runGame() {
 		case COMBAT:
 			mainWindow->getWindow()->setView(mainWindow->getWindow()->getDefaultView());
 			if (!Game::loadedCommbatEnemies) {
+				music.pause();;
+				soundEffect.playASound(STARTBATTLE);
+				sleep_for(seconds(2));
 				loadedCommbatEnemies = true;
-				combatMenu.loadEnemy(Game::pokemons[rand() % 808]);
+				combatMenu.loadAttacker(&Game::pokemons[rand() % 808], &loadedCommbatEnemies);
 			}
 			combatMenu.drawMenu();
 			break;

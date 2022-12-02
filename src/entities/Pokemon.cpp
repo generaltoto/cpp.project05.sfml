@@ -119,35 +119,34 @@ int Pokemon::fromTypesToInt(std::string typeName) {
 }
 
 
-int Pokemon::enemyAttack(Pokemon enemy, Pokemon ally) {
-	int capaALancer = 0;
+void Pokemon::pokemonAttack(Pokemon* attacker, Pokemon* defender) {
+	int capaToCast = 0;
 	int currentCapa = 0;
-	for (int i = 0; i < enemy.getCapacities().size(); i++) {
-		if (enemy.getCapacities()[i].attackType == "physic")
+	for (int i = 0; i < attacker->getCapacities().size(); i++) {
+		if (attacker->getCapacities()[i].attackType == "physic")
 		{
-			currentCapa = enemy.currentStats[ATK] * enemy.getCapacities()[i].damage * enemy.getTypeAdvantage(enemy, ally, capaALancer);
+			currentCapa = attacker->currentStats[ATK] * attacker->getCapacities()[i].damage * attacker->getTypeAdvantage(*attacker, *defender, capaToCast);
 		}
-		else if (enemy.getCapacities()[i].attackType == "special")
+		else if (attacker->getCapacities()[i].attackType == "special")
 		{
-			currentCapa = enemy.currentStats[ATKSPE] * enemy.getCapacities()[i].damage * enemy.getTypeAdvantage(enemy, ally, capaALancer);
+			currentCapa = attacker->currentStats[ATKSPE] * attacker->getCapacities()[i].damage * attacker->getTypeAdvantage(*attacker, *defender, capaToCast);
 		}
-		if (i == 0 || currentCapa > capaALancer)
+		else if (attacker->getCapacities()[i].attackType == "status") {
+			currentCapa = 0;
+		}
+		if (i == 0 || currentCapa > capaToCast)
 		{
-			capaALancer = i;
+			capaToCast = i;
 		}
 	}
-	if (enemy.getCapacities()[capaALancer].attackType == "physic")
+	if (attacker->getCapacities()[capaToCast].attackType == "physic" && attacker->getCapacities()[capaToCast].current > 0)
 	{
-		ally.currentHealth -= round(((((enemy.getLevel().level * 0.4 + 2) * enemy.currentStats[ATK] * enemy.getCapacities()[capaALancer].damage) / (enemy.currentStats[DEF] * 50)) + 2) * enemy.getTypeAdvantage(enemy, ally, capaALancer));
+		attacker->getCapacities()[capaToCast].current--;
+		defender->currentHealth -= round(((((attacker->getLevel().level * 0.4 + 2) * attacker->currentStats[ATK] * attacker->getCapacities()[capaToCast].damage) / (attacker->currentStats[DEF] * 50)) + 2) * attacker->getTypeAdvantage(*attacker, *defender, capaToCast));
 	}
-	else if (enemy.getCapacities()[capaALancer].attackType == "special")
+	else if (attacker->getCapacities()[capaToCast].attackType == "special" && attacker->getCapacities()[capaToCast].current > 0)
 	{
-		ally.currentHealth -= round(((((enemy.getLevel().level * 0.4 + 2) * enemy.currentStats[ATKSPE] * enemy.getCapacities()[capaALancer].damage) / (enemy.currentStats[DEFSPE] * 50)) + 2) * enemy.getTypeAdvantage(enemy, ally, capaALancer));
+		attacker->getCapacities()[capaToCast].current--;
+		defender->currentHealth -= round(((((attacker->getLevel().level * 0.4 + 2) * attacker->currentStats[ATKSPE] * attacker->getCapacities()[capaToCast].damage) / (attacker->currentStats[DEFSPE] * 50)) + 2) * attacker->getTypeAdvantage(*attacker, *defender, capaToCast));
 	}
-	return ally.currentHealth;
-	std::cout << "curent health :" << ally.currentHealth  << std::endl;
-	std::cout <<"dmg inflicted :" << round(((((enemy.getLevel().level * 0.4 + 2) * enemy.currentStats[ATKSPE] * enemy.getCapacities()[capaALancer].damage) / (enemy.currentStats[DEFSPE] * 50)) + 2) * enemy.getTypeAdvantage(enemy, ally, capaALancer)) << std::endl;
 }
-//Pokemon Pokemon::evolve() {
-//	
-//}

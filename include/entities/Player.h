@@ -29,7 +29,7 @@ public:
 	void addPokemon(Pokemon p);
 
 	/// Removes a pokemon in the team.
-	void removePokemon(int id);
+	void removePokemon(Pokemon*);
 
 	/// Heals a given pokemon with a given spray type.
 	void healPokemon(SprayType type, Pokemon& p);

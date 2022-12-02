@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{d446064e-25b8-424f-b1d6-1ce0d750ead3}</ProjectGuid>
     <RootNamespace>cppproject05sfml</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Users\rmateescu\source\repos\cpp.project05.sfml;C:\Users\rmateescu\Desktop\SFML-2.5.1\include;C:\Users\thoma\Documents\C++ Librairies\SFML-VisualStudio\include;C:\Users\tdelorme\Documents\Visual Studio 2022\Development Librairies\SFML\include;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\include;C:\Users\loctr\Documents\Dev\Visual Libraries\SFML-2.5.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\rmateescu\Desktop\SFML-2.5.1\lib;D:\Documents\Dev\Visual Libraries\SFML-2.5.1\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

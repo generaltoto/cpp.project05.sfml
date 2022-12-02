@@ -33,8 +33,8 @@ void Player::addPokemon(Pokemon p) {
 	}
 }
 
-void Player::removePokemon(int id) {
-
+void Player::removePokemon(Pokemon* p) {
+	//std::remove(std::begin(team), std::end(team), p);
 }
 
 void Player::addItems(int bag, int added) { this->bag[bag] += added; }

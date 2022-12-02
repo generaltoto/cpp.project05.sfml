@@ -17,6 +17,7 @@ using json = nlohmann::json;
 class Game {
 
 public:
+
     /// Instantiation of our mainWindow
     static MainWindow* mainWindow;
 
@@ -27,7 +28,7 @@ public:
     static Capacity capacities[619];
 
     /// Stores if the combat enemies were load,
-    /// prevents an infinite load of enemy team in combat
+    /// prevents an infinite load of attacker team in combat
     static bool loadedCommbatEnemies;
 
     /// Creates a pokemon from Json

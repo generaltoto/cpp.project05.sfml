@@ -6,7 +6,7 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->contextPlayer = player;
 	this->mainPos = { 1400,600 };
 	this->mainSize = { 773, 450 };
-	this->enemyPokemonPos = { 1100, 50 };
+	this->attackerPokemonPos = { 1100, 50 };
 	this->selfPokemonPos = { 400,500 };
 	this->inGamePokemonScaleSize = { 15.f, 15.f };
 	this->statPokemonScaleSize = { 3.f, 3.f };
@@ -14,7 +14,7 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	this->selectedAttackIdx = 4;
 	this->selectedPokemonIdx = 7;
 	this->activeCombat = false;
-	this->enemies = new std::vector<Pokemon>;
+	this->enemies = nullptr;
 
 	this->bgText = new sf::Texture();
 	if (this->bgText->loadFromFile("assets/combat.png"))
@@ -45,7 +45,7 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	for (std::size_t i{}; i < texts.size(); ++i) {
 		texts[i].setFont(this->contextWindow->getFont());
 		texts[i].setString(options[i]);
-		texts[i].setCharacterSize(sizes[i]);
+		texts[i].setCharacterSize(sizes[int(i)]);
 		texts[i].setOutlineColor(sf::Color::Black);
 		texts[i].setPosition(
 			this->zoneCoords[i].x + this->zoneSize.x * 0.25,
@@ -55,41 +55,29 @@ CombatMenu::CombatMenu(MainWindow* mainWindow, Player* player)
 	texts[currentSelected].setOutlineThickness(10);
 }
 
-void CombatMenu::initCombatEnemies(std::vector<Pokemon>* e, bool* loaded)
+void CombatMenu::loadAttacker(Pokemon* p, bool* loaded)
 {
-	this->enemies = e;
+	enemies = p;
 	*loaded = true;
 }
 
-void CombatMenu::loadEnemy(Pokemon p)
+void CombatMenu::drawAttacker()
 {
-	
-	if (!enemies->empty()) enemies = {};
-	enemies->push_back(p);
-}
-
-void CombatMenu::drawEnemy()
-{
-	for (auto& it : *this->enemies)
+	if (this->enemies)
 	{
-		if (it.currentHealth <= 0) continue;
-		else
-		{
-			it.getSprite().setScale(this->inGamePokemonScaleSize);
-			it.getSprite().setPosition(this->enemyPokemonPos);
-			contextWindow->getWindow()->draw(it.getSprite());
+		this->enemies->getSprite().setScale(this->inGamePokemonScaleSize);
+		this->enemies->getSprite().setPosition(this->attackerPokemonPos);
+		contextWindow->getWindow()->draw(this->enemies->getSprite());
 
-			drawEnemySlot(it);
-			break;
-		}
+		drawAttackerSlot(enemies);
 	}
 }
 
-void CombatMenu::drawEnemySlot(Pokemon pokemon)
+void CombatMenu::drawAttackerSlot(Pokemon* pokemon)
 {
 	//creating stats zone
-	sf::Vector2f statsPos = { 0,150 };
-	sf::Vector2f statsSize = { 670, 170 };
+	sf::Vector2f statsPos = { 0,50 };
+	sf::Vector2f statsSize = { 650, 150 };
 
 	sf::RectangleShape s;
 	s.setPosition(statsPos);
@@ -97,24 +85,24 @@ void CombatMenu::drawEnemySlot(Pokemon pokemon)
 	s.setFillColor({ 245,245,245,245 });
 	contextWindow->getWindow()->draw(s);
 
-	pokemon.getSprite().setScale(statPokemonScaleSize);
-	pokemon.getSprite().setPosition(
+	pokemon->getSprite().setScale(statPokemonScaleSize);
+	pokemon->getSprite().setPosition(
 		statsPos.x + statsSize.x * 0.025,
 		statsPos.y + statsSize.y * 0.05
 	);
-	contextWindow->getWindow()->draw(pokemon.getSprite());
+	contextWindow->getWindow()->draw(pokemon->getSprite());
 
 	sf::Text txt;
 	txt.setFont(contextWindow->getFont());
 
 	// drawing pokemon name 
-	txt.setString(pokemon.getName());
+	txt.setString(pokemon->getName());
 	txt.setCharacterSize(30);
 	txt.setOutlineColor(sf::Color::Black);
 	txt.setOutlineThickness(5);
 	txt.setPosition(
-		pokemon.getSprite().getPosition().x + this->assetSize + 100,
-		pokemon.getSprite().getPosition().y + 20
+		pokemon->getSprite().getPosition().x + this->assetSize + 100,
+		pokemon->getSprite().getPosition().y + 20
 	);
 	contextWindow->getWindow()->draw(txt);
 
@@ -123,25 +111,83 @@ void CombatMenu::drawEnemySlot(Pokemon pokemon)
 	txt.setColor(sf::Color::Black);
 
 	//drawing pokemon level
-	txt.setString("Level :    " + std::to_string(pokemon.getLevel().level));
+	txt.setString("Level :    " + std::to_string(pokemon->getLevel().level));
 	txt.setPosition(
-		pokemon.getSprite().getPosition().x + this->assetSize + 100,
-		pokemon.getSprite().getPosition().y + 90
+		pokemon->getSprite().getPosition().x + this->assetSize + 100,
+		pokemon->getSprite().getPosition().y + 90
 	);
 	contextWindow->getWindow()->draw(txt);
 
 	//drawing pokemon hp
 	txt.setString("HP :    " +
-		std::to_string(pokemon.getHealthAndMax()[0]) +
+		std::to_string(pokemon->getHealthAndMax()[0]) +
 		"  /  " +
-		std::to_string(pokemon.getHealthAndMax()[1])
+		std::to_string(pokemon->getHealthAndMax()[1])
 	);
 	txt.setPosition(
-		pokemon.getSprite().getPosition().x + this->assetSize + 300,
-		pokemon.getSprite().getPosition().y + 90
+		pokemon->getSprite().getPosition().x + this->assetSize + 300,
+		pokemon->getSprite().getPosition().y + 90
 	);
 	contextWindow->getWindow()->draw(txt);
 
+}
+
+void CombatMenu::drawDefenderSolt(Pokemon* pokemon)
+{
+	//creating stats zone
+	sf::Vector2f statsPos = { 0,250 };
+	sf::Vector2f statsSize = { 650, 150 };
+
+	sf::RectangleShape s;
+	s.setPosition(statsPos);
+	s.setSize(statsSize);
+	s.setFillColor({ 245,245,245,245 });
+	contextWindow->getWindow()->draw(s);
+
+	pokemon->getSprite().setScale(statPokemonScaleSize);
+	pokemon->getSprite().setPosition(
+		statsPos.x + statsSize.x * 0.025,
+		statsPos.y + statsSize.y * 0.05
+	);
+	contextWindow->getWindow()->draw(pokemon->getSprite());
+
+	sf::Text txt;
+	txt.setFont(contextWindow->getFont());
+
+	// drawing pokemon name 
+	txt.setString(pokemon->getName());
+	txt.setCharacterSize(30);
+	txt.setOutlineColor(sf::Color::Black);
+	txt.setOutlineThickness(5);
+	txt.setPosition(
+		pokemon->getSprite().getPosition().x + this->assetSize + 100,
+		pokemon->getSprite().getPosition().y + 20
+	);
+	contextWindow->getWindow()->draw(txt);
+
+	txt.setOutlineThickness(0);
+	txt.setCharacterSize(20);
+	txt.setColor(sf::Color::Black);
+
+	//drawing pokemon level
+	txt.setString("Level :    " + std::to_string(pokemon->getLevel().level));
+	txt.setPosition(
+		pokemon->getSprite().getPosition().x + this->assetSize + 100,
+		pokemon->getSprite().getPosition().y + 90
+	);
+	contextWindow->getWindow()->draw(txt);
+
+	//drawing pokemon hp
+	txt.setString("HP :    " +
+		std::to_string(pokemon->getHealthAndMax()[0]) +
+		"  /  " +
+		std::to_string(pokemon->getHealthAndMax()[1])
+	);
+	txt.setPosition(
+		pokemon->getSprite().getPosition().x + this->assetSize + 300,
+		pokemon->getSprite().getPosition().y + 90
+	);
+	contextWindow->getWindow()->draw(txt);
 }
 
 void CombatMenu::drawPokeImage(int i, sf::Vector2f slotPos)
@@ -296,6 +342,8 @@ void CombatMenu::drawSelectedPokemon()
 	this->contextPlayer->getTeam()[activePokemonIdx].getSprite().setPosition(this->selfPokemonPos);
 	this->contextPlayer->getTeam()[activePokemonIdx].getSprite().setScale(this->inGamePokemonScaleSize);
 	this->contextWindow->getWindow()->draw(this->contextPlayer->getTeam()[activePokemonIdx].getSprite());
+
+	drawDefenderSolt(&this->contextPlayer->getTeam()[activePokemonIdx]);
 }
 
 void CombatMenu::drawSelectAction() {
@@ -303,7 +351,7 @@ void CombatMenu::drawSelectAction() {
 	for (auto t : texts) this->contextWindow->getWindow()->draw(t);
 }
 
-void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* loadedEnemiesSprites) {
+void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* loadedEnemies) {
 	this->activeCombat = true;
 	if (sideNavigate == 0) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
@@ -339,7 +387,7 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* load
 			soundEffect->playASound(MENUEFFECT);
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
-			auto flee = ((this->contextPlayer->getTeam()[activePokemonIdx].currentStats[VIT] * 32) / (this->enemies[0]->currentStats[VIT] % 255)) + 30;
+			auto flee = (this->contextPlayer->getTeam()[activePokemonIdx].currentStats[VIT] * 32) / (enemies[0].currentStats[VIT] %255) + 30;
 			switch (currentSelected)
 			{
 			case 0:
@@ -351,15 +399,27 @@ void CombatMenu::navigate(Sound* soundEffect, ViewTypes* currentView, bool* load
 			case 2:
 				if (flee >= 255 || rand() % 255 <= flee) {
 					this->activeCombat == false;
-					loadedEnemiesSprites = false;
-					this->enemies = {};
+					*loadedEnemies = false;
+					this->enemies = nullptr;
 					*currentView = PLAY;
 					return;
+				}
+				else {
+					this->enemies[0].pokemonAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
+					soundEffect->playASound(ATKEFFECT);
+					sleep_for(seconds(1));
+					isDead(soundEffect);
 				}
 				break;
 			default:
 				break;
 			}
+		}
+		if (enemies == nullptr) {
+			this->activeCombat == false;
+			*loadedEnemies = false;
+			*currentView = PLAY;
+			return;
 		}
 	}
 	else if (sideNavigate == 1) {
@@ -388,6 +448,13 @@ void CombatMenu::navigateAttacks(Sound* soundEffect) {
 		this->sideNavigate = 0;
 		return;
 	}
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		this->sideNavigate = 0;
+		this->selectedAttackIdx = 4;
+		soundEffect->playASound(MENUEFFECT);
+		sleep_for(seconds(1));
+		attackTurn(soundEffect);
+	}
 }
 
 void CombatMenu::navigatePokemon(Sound* soundEffect) {
@@ -410,18 +477,56 @@ void CombatMenu::navigatePokemon(Sound* soundEffect) {
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
 		soundEffect->playASound(MENUEFFECT);
+		sleep_for(seconds(1));
 		if (selectedPokemonIdx != activePokemonIdx) {
 			activePokemonIdx = selectedPokemonIdx;
-			this->contextPlayer->getTeam()[activePokemonIdx].currentHealth = enemies[0].enemyAttack(enemies[0], this->contextPlayer->getTeam()[activePokemonIdx]);
+			this->enemies[0].pokemonAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
+			soundEffect->playASound(ATKEFFECT);
+			isDead(soundEffect);
 		}
 		else return;
 	}
 }
 
-void CombatMenu::drawMenu()
-{
+void CombatMenu::attackTurn(Sound* soundEffect) {
+	this->contextPlayer->getTeam()[activePokemonIdx].pokemonAttack(&this->contextPlayer->getTeam()[activePokemonIdx], enemies);
+	soundEffect->playASound(ATKEFFECT);
+	sleep_for(seconds(2));
+	this->enemies[0].pokemonAttack(enemies, &this->contextPlayer->getTeam()[activePokemonIdx]);
+	soundEffect->playASound(ATKEFFECT);
+	sleep_for(seconds(1));
+	isDead(soundEffect);
+}
+
+void CombatMenu::isDead(Sound* soundEffect) {
+	if (this->enemies->currentHealth <= 0) {
+		this->enemies = nullptr;
+		this->contextPlayer->getTeam()[activePokemonIdx].levelUp(150);
+		for (int i = 0; i < this->contextPlayer->getNbPokemon(); i++) {
+			this->contextPlayer->getTeam()[i].levelUp(150);
+		}
+		soundEffect->playASound(WINCOMBAT);
+		sleep_for(seconds(2));
+	}
+	else if (this->contextPlayer->getTeam()[activePokemonIdx].currentHealth <= 0)
+		if (this->contextPlayer->getNbPokemon()-1 == activePokemonIdx) {
+			soundEffect->playASound(WINCOMBAT);
+			sleep_for(seconds(3));
+			this->contextWindow->getWindow()->close();
+		}
+		else {
+			for (int i = activePokemonIdx; i < this->contextPlayer->getNbPokemon(); i++) {
+				this->contextPlayer->getTeam()[i] = this->contextPlayer->getTeam()[i + 1];
+			}
+		/*delete& this->contextPlayer->getTeam()[this->contextPlayer->getNbPokemon()];*/
+		if (activePokemonIdx < this->contextPlayer->getNbPokemon()) activePokemonIdx++;
+		else activePokemonIdx = 0;
+	}
+}
+
+void CombatMenu::drawMenu() {
 	this->contextWindow->getWindow()->draw(this->bgSprite);
-	this->drawEnemy();
+	this->drawAttacker();
 	this->drawShape();
 	this->drawSelectedPokemon();
 	this->drawSelectAction();

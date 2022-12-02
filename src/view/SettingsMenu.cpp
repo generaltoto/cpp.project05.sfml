@@ -43,7 +43,7 @@ void MainWindow::SettingsMenu::setValues(Sound* soundEffect, Music* music) {
    volText[0].setString(std::to_string(int(music->getVolume())));
 }
 
-void MainWindow::SettingsMenu::navigate(ViewTypes* currentView, Sound* soundEffect, Music* music) {
+void MainWindow::SettingsMenu::navigate(ViewTypes* currentView, Sound* soundEffect, Music* music, Music* battleMusic) {
    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
       texts[currentSelected].setOutlineThickness(0);
       if (currentSelected < 2) ++currentSelected;
@@ -65,6 +65,7 @@ void MainWindow::SettingsMenu::navigate(ViewTypes* currentView, Sound* soundEffe
       {
       case 0:
          music->setVolume(music->getVolume()-5.f);
+         battleMusic->setVolume(music->getVolume() - 5.f);
          soundEffect->playASound(MENUEFFECT);
          updateDrawVol(soundEffect, music);
          break;
@@ -83,6 +84,7 @@ void MainWindow::SettingsMenu::navigate(ViewTypes* currentView, Sound* soundEffe
       {
       case 0:
          music->setVolume(music->getVolume() + 5.f);
+         battleMusic->setVolume(music->getVolume() + 5.f);
          soundEffect->playASound(MENUEFFECT);
          updateDrawVol(soundEffect, music);
          break;

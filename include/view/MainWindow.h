@@ -117,7 +117,7 @@ public:
        ~SettingsMenu();
 
        /// Allows you to navigate in the settings.
-       void navigate(ViewTypes* currentView, Sound* soundEffect, Music* music);
+       void navigate(ViewTypes* currentView, Sound* soundEffect, Music* music, Music* battleMusic);
 
        /// Updates the values of volumes to display.
        void updateDrawVol(Sound* soundEffect, Music* music);

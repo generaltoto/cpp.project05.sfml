@@ -16,6 +16,10 @@ void Music::stop() { this->music.stop(); }
 
 float Music::getVolume() { return music.getVolume(); }
 
+bool Music::getIsPlayed() { return this->isPlayed; }
+
+void Music::setIsPlayed(bool played) { this->isPlayed = played; }
+
 void Music::setVolume(float vol) { 
 	if (vol >= 0 && vol <= 100) {
 		this->music.setVolume(vol);

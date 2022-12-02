@@ -50,7 +50,5 @@ public:
 
 	float getTypeAdvantage(Pokemon, Pokemon, int);
 
-	int enemyAttack(Pokemon, Pokemon);
-
-	/*Pokemon evolve();*/
+	void pokemonAttack(Pokemon*, Pokemon*);
 };
